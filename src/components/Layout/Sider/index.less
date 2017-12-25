@@ -1,0 +1,32 @@
+.layout-sider-children {
+  .logo {
+    height: 64px;
+    position: relative;
+    line-height: 64px;
+    padding-left: 20px;
+    transition: all .3s;
+    background: #002140;
+    overflow: hidden;
+    img {
+      display: inline-block;
+      vertical-align: middle;
+      height: 32px;
+    }
+    h1 {
+      color: #fff;
+      display: inline-block;
+      vertical-align: middle;
+      font-size: 18px;
+      margin: 0 0 0 12px;
+      font-weight: 400;
+      transition: all 3s;
+    }
+  }
+}
+
+.ant-layout-sider-collapsed .logo {
+  padding-left: 20px;
+  > a {
+    width: 32px;
+  }
+}

@@ -1,0 +1,32 @@
+.layout {
+  min-height: 100vh;
+  .layout-content {
+    margin-left: 180px;
+    transition: all 0.2s;
+  }
+  .collapsed {
+    margin-left: 80px;
+    transition: all 0.2s;
+  }
+
+  @media screen and (max-width: 575px) {
+    .layout-content {
+      margin-left: 0;
+      transition: all 0.2s;
+    }
+
+    .collapsed {
+      margin-left: 0px;
+      transition: all 0.2s;
+    }
+  }
+
+  .sider {
+    min-height: 100vh;
+    box-shadow: 2px 0 6px rgba(0, 21, 41, .35);
+    z-index: 10;
+    position: fixed;
+    left: 0;
+  }
+}
+

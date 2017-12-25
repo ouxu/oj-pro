@@ -1,0 +1,28 @@
+.layout {
+  .layout-header {
+    z-index: 9;
+    padding: 0 12px 0 0;
+    background: #fff;
+    line-height: 64px;
+    box-shadow: 0 4px 30px rgba(0, 21, 41, .15);
+    .logo {
+      display: none;
+    }
+    @media screen and (max-width: 575px) {
+      .logo {
+        display: block;
+        height: 64px;
+        position: relative;
+        line-height: 64px;
+        padding-left: 20px;
+        transition: all .3s;
+        overflow: hidden;
+        img {
+          display: inline-block;
+          vertical-align: middle;
+          height: 32px;
+        }
+      }
+    }
+  }
+}

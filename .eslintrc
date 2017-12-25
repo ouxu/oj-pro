@@ -1,0 +1,13 @@
+{
+  "parser": "babel-eslint",
+  "env": {
+    "browser": true,
+    "commonjs": true,
+    "amd": true,
+    "es6": true
+  },
+  "extends": [
+    "standard",
+    "standard-jsx"
+  ]
+}
