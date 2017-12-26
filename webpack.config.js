@@ -9,7 +9,7 @@ module.exports = function (webpackConfig, env) {
       ACCESS_KEY: process.env.ACCESS_KEY,
       SECRET_KEY: process.env.SECRET_KEY,
       bucket: process.env.bucket,
-      path: process.env.path
+      path: process.env.qiniu_path || ''
     } : require('./pushConfig').qiniu
     webpackConfig.plugins.push(new QiniuPlugin(qiniu))
   }
