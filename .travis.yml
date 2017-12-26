@@ -1,0 +1,24 @@
+language: node_js
+node_js:
+- '8'
+directories:
+- node_modules
+before_install:
+- mkdir -p  ~/.ssh/
+- openssl aes-256-cbc -K $encrypted_07db29993623_key -iv $encrypted_07db29993623_iv
+  -in .travis.enc -out ~/.ssh/id_rsa -d
+- chmod 600 ~/.ssh/id_rsa
+- echo -e "Host 123.206.55.207 \n\tStrictHostKeyChecking no\n" >> ~/.ssh/config
+script:
+- npm run build
+after_success:
+- cd ./dist
+- tar -jcf newoj.tar.bz2 *
+- scp newoj.tar.bz2 ubuntu@123.206.55.207:~/
+- ssh ubuntu@123.206.55.207 'mkdir -p /usr/share/nginx/html/newoj && mv ~/newoj.tar.bz2
+  /usr/share/nginx/html/newoj'
+- ssh ubuntu@123.206.55.207 'cd /usr/share/nginx/html/newoj && tar -jxf newoj.tar.bz2
+  && rm -rf newoj.tar.bz2'
+branches:
+  only:
+  - master
