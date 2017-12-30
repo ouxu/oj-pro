@@ -11,7 +11,6 @@ import qs from 'query-string'
 
 class ProblemPage extends Component {
   componentDidMount () {
-    console.log(1)
     const {dispatch, match, location} = this.props
     dispatch({
       type: 'problem/init',
@@ -21,24 +20,21 @@ class ProblemPage extends Component {
     })
     const {s = ''} = qs.parse(location.search)
     if (s) {
-      dispatch({type: 'problem/getStatus', payload: {result: s}}).catch(e => {
-
-      })
+      dispatch({type: 'problem/getStatus', payload: {result: s}}).catch(e => {})
     }
   }
 
   render () {
-    const {problems, problem, match, dispatch, user, location} = this.props
-
-    const {detail, layout, editor, result, activeKey} = problem
+    const {problems, problem, match, dispatch, user} = this.props
+    const {detail, layout, editor, activeKey, solutionId} = problem
     const {problemsList} = problems
     const {params} = match
     const editorProps = {dispatch, params, user, ...editor}
-    const detailProps = {activeKey, dispatch, detail, result, problemsList}
+    const detailProps = {activeKey, dispatch, detail, solutionId, problemsList}
     return (
       <Row type='flex' className='problem-page'>
         <Col xs={24} sm={layout.left} className='left pl-10'>
-          <ProblemDetail {...detailProps} key={layout.left} />
+          <ProblemDetail {...detailProps} />
         </Col>
         <Col xs={24} sm={layout.right} className='right'>
           <div className='action hand' onClick={() => dispatch({type: 'problem/changeLayout'})}>

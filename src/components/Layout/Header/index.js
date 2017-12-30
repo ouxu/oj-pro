@@ -62,7 +62,7 @@ class HeaderContent extends Component {
             <ButtonGroup>
               <Button
                 type='primary' size='small'
-                onClick={() => dispatch({type: 'user/showModal'})}
+                onClick={() => dispatch({type: 'utils/showModal'})}
               >
                 登录
               </Button>

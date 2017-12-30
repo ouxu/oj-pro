@@ -26,7 +26,7 @@ export default {
   problemsSearch: 'problems/search',
   problemsMine: 'problems/mine',
   problemsImport: 'problems/import',
-
+  queryResult: 'judge/:id/result',
   // Tags
   tag: 'tag/',
   tagCreate: 'tag/createTag',

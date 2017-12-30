@@ -22,4 +22,10 @@ const getStatus = (id) => request({
   method: 'get'
 })
 
-export { getProblem, submit,getStatus}
+const queryResult = (id) => request({
+  url: API.queryResult.replace(':id', id),
+  token: true,
+  method: 'get'
+})
+
+export { getProblem, submit, getStatus, queryResult }

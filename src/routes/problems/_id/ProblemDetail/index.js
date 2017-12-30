@@ -13,7 +13,7 @@ import TweenOne from 'rc-tween-one'
 
 const {TabPane} = Tabs
 
-const ProblemDetail = ({activeKey, dispatch, detail, result, problemsList}) => {
+const ProblemDetail = ({activeKey, dispatch, detail, solutionId, problemsList}) => {
   const {page, size, keyword} = problemsList
 
   return (
@@ -37,7 +37,7 @@ const ProblemDetail = ({activeKey, dispatch, detail, result, problemsList}) => {
             <Simple detail={detail} />
           </TabPane>
           <TabPane tab='评测' key='submit'>
-            <Result result={result} />
+            <Result solutionId={solutionId} />
           </TabPane>
         </Tabs>
       </div>

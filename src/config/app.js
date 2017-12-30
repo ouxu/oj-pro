@@ -1,4 +1,5 @@
 export default {
   logoSrc: '/app/favicon.ico',
-  name: 'NEUQer'
+  name: 'NEUQer',
+  resultQueryTime: 2000
 }

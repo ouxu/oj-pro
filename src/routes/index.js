@@ -7,6 +7,8 @@ import homeModel from './home/model'
 import ProblemsModel from './problems/model'
 import ProblemsDetailModel from './problems/_id/model'
 
+const ProblemDetail = () => import('./problems/_id')
+
 export default (app) => {
   return [
     {
@@ -18,7 +20,7 @@ export default (app) => {
       path: '/problems/:id',
       exact: true,
       models: [ProblemsModel],
-      component: dynamicWrapper(() => import('./problems/_id'), app, () => [ProblemsDetailModel])
+      component: dynamicWrapper(ProblemDetail, app, () => [ProblemsDetailModel])
     }, {
       path: '/problems',
       exact: false,
@@ -32,6 +34,5 @@ export default (app) => {
       exact: true,
       component: NotFound
     }
-
   ]
 }

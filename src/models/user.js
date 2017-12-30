@@ -1,10 +1,8 @@
-import { modalModel } from 'utils/modelExtend'
-import modelExtend from 'dva-model-extend'
 import { check, login, logout } from 'services/user'
 import sleep from 'utils/sleep'
 import message from 'utils/message'
 
-export default modelExtend(modalModel, {
+export default {
   namespace: 'user',
   state: {
     role: '',
@@ -45,7 +43,7 @@ export default modelExtend(modalModel, {
           ...data,
           lastCheck: (new Date()).getTime()
         }
-        yield put({type: 'hideModal'})
+        yield put({type: 'utils/hideModal'})
         yield put({type: 'update', payload: data})
         message.success('登录成功')
       } catch (e) {
@@ -77,4 +75,4 @@ export default modelExtend(modalModel, {
       return user
     }
   }
-})
+}

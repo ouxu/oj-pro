@@ -14,7 +14,7 @@ const getProblems = (data) => request({
 const searchProblems = (data) => request({
   url: API.problemsSearch,
   method: 'get',
-  token: true,
+  token: 'option',
   data
 })
 

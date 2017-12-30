@@ -21,7 +21,7 @@ export default modelExtend(baseModel, loadingModel, inputModel, {
       yield put({type: 'getProblems', payload})
       yield put({type: 'getRecording', payload})
     },
-    * getProblems ({payload}, {put, call, select}) {
+    * getProblems ({payload}, {put, call}) {
       const {page = 1, size = 50, keyword} = payload
       const query = {
         page,

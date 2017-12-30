@@ -11,10 +11,10 @@ const FormItem = Form.Item
 const LoginModal = ({form, user, dispatch, location, utils}) => {
   const modalProps = {
     title: '登录NEUQ-OJ',
-    visible: user.modal,
+    visible: utils.modal,
     footer: false,
     width: 360,
-    onCancel: () => dispatch({type: 'user/hideModal'})
+    onCancel: () => dispatch({type: 'utils/hideModal'})
   }
   const handleSubmit = (e) => {
     e.preventDefault()

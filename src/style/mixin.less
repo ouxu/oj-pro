@@ -6,6 +6,37 @@
   }
 }
 
+.border-variant(@id: 1, @size: 1) {
+  .b-@{id} {
+    border: @size solid #e8e8e8;
+  }
+  .bb-@{id} {
+    border-bottom: @size solid #e8e8e8;
+
+  }
+  .bl-@{id} {
+    border-left: @size solid #e8e8e8;
+
+  }
+  .br-@{id} {
+    border-right: @size solid #e8e8e8;
+
+  }
+  .bt-@{id} {
+    border-top: @size solid #e8e8e8;
+
+  }
+  .bx-@{id} {
+    border-left: @size solid #e8e8e8;
+    border-right: @size solid #e8e8e8;
+
+  }
+  .by-@{id} {
+    border-bottom: @size solid #e8e8e8;
+    border-top: @size solid #e8e8e8;
+  }
+}
+
 // Margin utility mixin
 .margin-variant(@id: 1, @size: 1) {
   .m-@{id} {

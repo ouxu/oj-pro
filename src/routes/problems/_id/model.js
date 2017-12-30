@@ -9,7 +9,7 @@ const initState = {
   detail: {},
   layout: {
     left: 14,
-    right: 10
+    right: 10,
   },
   activeKey: 'description',
   editor: {
@@ -17,13 +17,7 @@ const initState = {
     value: '',
     privacy: false
   },
-  result: {
-    'result_code': 0,
-    'result_data': {
-      'Passed': [],
-      'UnPassed': []
-    }
-  }
+  solutionId: ''
 }
 export default modelExtend(baseModel, {
   namespace: 'problem',
@@ -49,13 +43,16 @@ export default modelExtend(baseModel, {
         source_code: editor.value,
         language: editor.language
       }
-      const result = yield call(submit, payload, body)
-      yield put({type: 'update', payload: {result}})
+      const {solutionId} = yield call(submit, payload, body)
+      yield put({type: 'update', payload: {solutionId}})
+    },
+    * queryResult ({payload}, {put, call, select}) {
+      const {result_code = ''} = payload
+      console.log(result_code)
     },
     * getStatus ({payload}, {put, call}) {
       const {result = ''} = payload
       const data = yield call(getStatus, result)
-      console.log(data)
     }
   },
   reducers: {
