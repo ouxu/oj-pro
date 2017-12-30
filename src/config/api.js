@@ -42,6 +42,7 @@ export default {
   solution: 'solution/',
   // Status
   status: 'status',
+  statusDetail: 'status/source-code/:id',
 
   // Contests
   contests: 'contests',

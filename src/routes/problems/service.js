@@ -6,15 +6,15 @@ import API from 'config/api'
 
 const getProblems = (data) => request({
   url: API.problems,
-  token: true,
+  token: 'option',
   method: 'get',
   data
 })
 
 const searchProblems = (data) => request({
   url: API.problemsSearch,
-  token: true,
   method: 'get',
+  token: true,
   data
 })
 

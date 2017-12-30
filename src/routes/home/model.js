@@ -53,7 +53,6 @@ export default modelExtend(baseModel, loadingModel, {
           size,
           keyword: 'A+B'
         }
-        yield put({type: 'app/showLoading'})
         try {
           const {problems, total_count} = yield call(getHotProblems, query)
           const hotProblems = {
@@ -70,7 +69,6 @@ export default modelExtend(baseModel, loadingModel, {
         } catch (e) {
           throw e
         }
-        yield put({type: 'app/hideLoading'})
       }
     },
     * getHomeNews ({}, {put, call, select}) {

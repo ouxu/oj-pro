@@ -32,5 +32,6 @@ export default (app) => {
       exact: true,
       component: NotFound
     }
+
   ]
 }

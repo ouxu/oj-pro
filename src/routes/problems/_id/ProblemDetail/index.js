@@ -18,7 +18,7 @@ const ProblemDetail = ({activeKey, dispatch, detail, result, problemsList}) => {
 
   return (
     <TweenOne
-      animation={[{blur: '5px', type: 'from'}]}
+      animation={[{y: '30px', type: 'from'}]}
       reverseDelay={10}
       className='problem-detail'
     >

@@ -26,20 +26,20 @@ class Home extends PureComponent {
     return (
       <div className='homepage m-16'>
         <Row gutter={12} type='flex'>
-          <Col className='left-content' xs={{span: 24, order: 1}} sm={{span: 18}}>
+          <Col className='left-content' xs={{span: 24, order: 2}} sm={{span: 18}}>
             <QueueAnim delay={100} interval={200}>
               <div key='home-banner'>
                 <HomeBanner />
               </div>
-              <Card bodyStyle={cardBodyStyle} key='problem-list' style={{marginBottom: 10}}>
+              <Card bodyStyle={cardBodyStyle} key='problem-list' className='mb-10'>
                 <HomeChart chartDate={chartDate} />
               </Card>
-              <Card bodyStyle={cardBodyStyle} key='home-chart' style={{marginBottom: 10}}>
+              <Card bodyStyle={cardBodyStyle} key='home-chart' className='mb-10'>
                 <ProblemItem {...problemItemProps} />
               </Card>
             </QueueAnim>
           </Col>
-          <Col className='right-content' xs={{span: 24, order: 2}} sm={{span: 6}}>
+          <Col className='right-content' xs={{span: 24, order: 1}} sm={{span: 6, order: 3}}>
             <QueueAnim delay={200} type='bottom'>
               <div key='status-panel' className='status-panel'>
                 <StatusPanel />

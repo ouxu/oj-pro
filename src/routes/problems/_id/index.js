@@ -7,20 +7,29 @@ import { connect } from 'dva'
 import ProblemEditor from './ProblemEditor'
 import './index.less'
 import ProblemDetail from './ProblemDetail'
+import qs from 'query-string'
 
 class ProblemPage extends Component {
   componentDidMount () {
-    const {dispatch, match} = this.props
+    console.log(1)
+    const {dispatch, match, location} = this.props
     dispatch({
       type: 'problem/init',
       payload: {
         id: match.params.id
       }
     })
+    const {s = ''} = qs.parse(location.search)
+    if (s) {
+      dispatch({type: 'problem/getStatus', payload: {result: s}}).catch(e => {
+
+      })
+    }
   }
 
   render () {
-    const {problems, problem, match, dispatch, user} = this.props
+    const {problems, problem, match, dispatch, user, location} = this.props
+
     const {detail, layout, editor, result, activeKey} = problem
     const {problemsList} = problems
     const {params} = match

@@ -37,7 +37,7 @@ const StatusPanel = () => {
   return (
     <TitleCard
       cardStyle={{height: 170, overflow: 'hidden'}}
-      header={<span>状态面板</span>} m nbzxc
+      header={<span>状态面板</span>}
     >
       <List {...tableProps} />
     </TitleCard>

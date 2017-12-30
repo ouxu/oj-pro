@@ -20,7 +20,7 @@ const Simple = ({detail}) => {
       <h4>
         <span>样例输入</span>
         <Tooltip title='复制'>
-          <Icon type='copy' onClick={onCopy} style={{marginLeft: 10}} />
+          <Icon type='copy' className='ml-8 hand' onClick={onCopy} />
         </Tooltip>
       </h4>
       <Card bodyStyle={{padding: 10}} className='keep-away'>

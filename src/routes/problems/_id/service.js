@@ -6,7 +6,6 @@ import API from 'config/api'
 
 const getProblem = (id) => request({
   url: API.problem.replace(':id', id),
-  token: true,
   method: 'get'
 })
 
@@ -17,4 +16,10 @@ const submit = (id, data) => request({
   data
 })
 
-export { getProblem, submit }
+const getStatus = (id) => request({
+  url: API.statusDetail.replace(':id', id),
+  token: true,
+  method: 'get'
+})
+
+export { getProblem, submit,getStatus}

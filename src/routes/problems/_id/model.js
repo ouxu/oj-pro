@@ -3,7 +3,7 @@
  */
 import { baseModel } from 'utils/modelExtend'
 import modelExtend from 'dva-model-extend'
-import { getProblem, submit } from './service'
+import { getProblem, getStatus, submit } from './service'
 
 const initState = {
   detail: {},
@@ -51,6 +51,11 @@ export default modelExtend(baseModel, {
       }
       const result = yield call(submit, payload, body)
       yield put({type: 'update', payload: {result}})
+    },
+    * getStatus ({payload}, {put, call}) {
+      const {result = ''} = payload
+      const data = yield call(getStatus, result)
+      console.log(data)
     }
   },
   reducers: {

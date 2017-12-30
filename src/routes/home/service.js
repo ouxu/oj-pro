@@ -6,7 +6,6 @@ import API from 'config/api'
 
 const getHotProblems = (data) => request({
   url: API.problemsSearch,
-  token: true,
   method: 'get',
   data
 })

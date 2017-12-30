@@ -3,6 +3,7 @@ import modelExtend from 'dva-model-extend'
 import { check, login, logout } from 'services/user'
 import sleep from 'utils/sleep'
 import message from 'utils/message'
+
 export default modelExtend(modalModel, {
   namespace: 'user',
   state: {

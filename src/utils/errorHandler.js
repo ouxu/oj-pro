@@ -2,8 +2,11 @@ import codeHelper from './codeHelper'
 import message from 'utils/message'
 
 export default (error, dispatch) => {
-  if (error.message >= 500) {
+  if (error.message >= 400) {
     switch (+error.message) {
+      case 1004:
+        dispatch({type: 'user/logout'})
+        break
       case 1013:
         dispatch({type: 'user/logout'})
         break

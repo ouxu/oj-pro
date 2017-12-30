@@ -1,21 +1,31 @@
 import axios from 'axios'
 
+const getToken = () => {
+  const {user: {token: ojToken = ''}} = {
+    user: {},
+    ...JSON.parse(window.localStorage.getItem('NEUQ-OJ'))
+  }
+  return ojToken
+}
+
 const fetch = options => {
   let {
     method = 'get',
     data,
     url,
-    token = false
+    token = false,
   } = options
+
   let config = {
     timeout: 30000,
-    baseURL: 'http://oj.marklux.cn/'
+    baseURL: 'http://112.126.70.205:8088/'
   }
 
   if (token) {
-    const {user: {token: ojToken = ''}} = {
-      user: {},
-      ...JSON.parse(window.localStorage.getItem('NEUQ-OJ'))
+    const ojToken = getToken()
+    if (!ojToken && token !== 'option') {
+      console.error(options)
+      throw new Error(400)
     }
     config = {
       ...config,
