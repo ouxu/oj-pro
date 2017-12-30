@@ -7,6 +7,7 @@ import { routerRedux } from 'dva/router'
 import { Button, Icon, Input, Table } from 'antd'
 import { problemsColumn } from 'config/tableConfig'
 import qs from 'query-string'
+import { randomNumBoth } from 'utils/numberAbout'
 import './index.less'
 
 const {Search} = Input
@@ -54,7 +55,9 @@ const ProblemTable = ({problemsList, loading, dispatch, location}) => {
           placeholder='题号/标题/作者/标签'
           onSearch={onSearch}
         />
-        <Button type='danger'> <Icon type='rocket' />帮我挑一题</Button>
+        <Button type='danger' onClick={() => dispatch(routerRedux.push('/problems/' + randomNumBoth(1000, 1888)))}>
+          <Icon type='rocket' />帮我挑一题
+        </Button>
       </div>
 
       <div className='table' key='table'>

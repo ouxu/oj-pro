@@ -5,10 +5,10 @@ import sleep from 'utils/sleep'
 import { randomNumBoth } from 'utils/numberAbout'
 
 const dataItem = (time = '') => {
-  const flag = Math.floor(Math.random() * ( 1000 + 1))
+  const flag = Math.floor(Math.random() * ( 10000 + 1))
   return {
     time,
-    submit: randomNumBoth(flag, 1000),
+    submit: randomNumBoth(flag, 10000),
     accept: randomNumBoth(0, flag)
   }
 }

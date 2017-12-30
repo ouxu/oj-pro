@@ -28,10 +28,11 @@ const resultBadge = [
 const columnsP = [
   {
     title: '结果',
+    key: 'result',
     render: record => (
       <span>
-      {resultBadge[record.Result + 1]}
-    </span>
+        {resultBadge[record.Result + 1]}
+      </span>
     ),
     width: 150,
     className: 'status-result-code'
@@ -95,7 +96,7 @@ class Result extends Component {
     const tableConfig = {
       bordered: false,
       size: 'small',
-      pagination: false,
+      pagination: false
     }
     const progressProps = {
       status: loading ? 'active' : 'normal',

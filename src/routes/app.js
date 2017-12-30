@@ -4,11 +4,13 @@ import registerModel from 'utils/registerModel'
 import dynamicWrapper from 'utils/dynamicWrapper'
 import Homepage from './home'
 import Problems from './problems'
+import Contests from './contests'
 import NotFound from './404'
 
 import homeModel from './home/model'
 import ProblemsModel from './problems/model'
 import ProblemsDetailModel from './problems/_id/model'
+import ContestsModel from './contests/model'
 
 const ProblemDetail = () => import('./problems/_id')
 const App = ({app}) => {
@@ -28,6 +30,11 @@ const App = ({app}) => {
       exact: false,
       models: [ProblemsModel],
       component: Problems
+    }, {
+      path: '/contests',
+      exact: false,
+      models: [ContestsModel],
+      component: Contests
     }, {
       path: '/admin',
       component: dynamicWrapper(() => import('routes/admin'))
@@ -53,8 +60,8 @@ const App = ({app}) => {
         )
       })}
       <Redirect exact from='/' to='/home' />
-    <Redirect from='*' to='/404' />
-  </Switch>
+     <Redirect from='*' to='/404' />
+   </Switch>
   )
 }
 

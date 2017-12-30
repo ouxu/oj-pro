@@ -2,9 +2,11 @@
  * Created by out_xu on 17/8/29.
  */
 import React from 'react'
-import { Card, Icon, message, Tooltip } from 'antd'
+import { Card, Icon, Tooltip } from 'antd'
 import copy from 'copy-to-clipboard'
+import message from 'utils/message'
 import Markdown from 'components/Markdown'
+
 const Simple = ({detail}) => {
   const style = {
     display: 'inline',

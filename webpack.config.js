@@ -6,9 +6,9 @@ const QiniuPlugin = require('qiniu-webpack-plugin')
 module.exports = function (webpackConfig, env) {
   if (env === 'production') {
     const qiniu = process.env.ci ? {
-      ACCESS_KEY: process.env.ACCESS_KEY,
-      SECRET_KEY: process.env.SECRET_KEY,
-      bucket: process.env.bucket,
+      ACCESS_KEY: process.env.ACCESS_KEY || '',
+      SECRET_KEY: process.env.SECRET_KEY || '',
+      bucket: process.env.qiniu_bucket || '',
       path: process.env.qiniu_path || ''
     } : require('./pushConfig').qiniu
     webpackConfig.plugins.push(new QiniuPlugin(qiniu))

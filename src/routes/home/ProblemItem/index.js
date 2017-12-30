@@ -6,6 +6,8 @@ import { Button, Icon, Table } from 'antd'
 import './index.less'
 import QueueAnim from 'rc-queue-anim'
 import { problemsColumn } from 'config/tableConfig'
+import { routerRedux } from 'dva/router'
+import { randomNumBoth } from 'utils/numberAbout'
 
 const ProblemItem = ({hotProblems, loading, dispatch}) => {
   const {page, size, count, data = []} = hotProblems
@@ -38,7 +40,9 @@ const ProblemItem = ({hotProblems, loading, dispatch}) => {
         <span>
           🔥 热门题目
         </span>
-        <Button type='danger'> <Icon type='rocket' />帮我挑一题</Button>
+        <Button type='danger' onClick={() => dispatch(routerRedux.push('/problems/' + randomNumBoth(1000, 1888)))}>
+          <Icon type='rocket' />帮我挑一题
+        </Button>
       </div>
       <div className='table' key='table'>
         <Table {...tableProps} />
