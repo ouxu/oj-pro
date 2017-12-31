@@ -10,6 +10,8 @@ before_install:
   -in .travis.enc -out ~/.ssh/id_rsa -d
 - chmod 600 ~/.ssh/id_rsa
 - echo -e "Host 123.206.55.207 \n\tStrictHostKeyChecking no\n" >> ~/.ssh/config
+before_install:
+- echo "install finished"
 script:
 - npm run build
 after_success:

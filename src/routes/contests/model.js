@@ -8,7 +8,7 @@ export default modelExtend(baseModel, loadingModel, inputModel, {
     contestsList: {
       data: [],
       page: 1,
-      size: 50,
+      size: 20,
       count: 10000,
       keyword: ''
     },
@@ -16,7 +16,7 @@ export default modelExtend(baseModel, loadingModel, inputModel, {
   },
   effects: {
     * init ({payload}, {put, call}) {
-      const {page = 1, size = 50, keyword} = payload
+      const {page = 1, size = 20, keyword} = payload
       const query = {
         page,
         size,
