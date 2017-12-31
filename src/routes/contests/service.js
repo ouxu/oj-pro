@@ -18,10 +18,5 @@ const searchContests = (data) => request({
   data
 })
 
-const getRecording = () => request({
-  url: API.status,
-  method: 'get',
-  token: true
-})
 
-export { getContests, getRecording, searchContests }
+export { getContests, searchContests }

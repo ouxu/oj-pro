@@ -11,8 +11,10 @@ import homeModel from './home/model'
 import ProblemsModel from './problems/model'
 import ProblemsDetailModel from './problems/_id/model'
 import ContestsModel from './contests/model'
+import ContestsDetailModel from './contests/_id/model'
 
 const ProblemDetail = () => import('./problems/_id')
+const ContestsDetail = () => import('./contests/_id')
 const App = ({app}) => {
   const routes = [
     {
@@ -23,13 +25,17 @@ const App = ({app}) => {
     }, {
       path: '/problems/:id',
       exact: true,
-      models: [ProblemsModel],
       component: dynamicWrapper(ProblemDetail, app, () => [ProblemsDetailModel])
     }, {
       path: '/problems',
       exact: false,
       models: [ProblemsModel],
       component: Problems
+    }, {
+      path: '/contests/:id',
+      exact: true,
+      models: [ContestsModel],
+      component: dynamicWrapper(ContestsDetail, app, () => [ContestsDetailModel])
     }, {
       path: '/contests',
       exact: false,

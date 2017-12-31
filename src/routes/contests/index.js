@@ -12,6 +12,9 @@ const Search = Input.Search
 const RadioGroup = Radio.Group
 const RadioButton = Radio.Button
 
+/**
+ * TODO 添加竞赛关联和用户关联
+ */
 @connect(({contests, user}) => ({contests, user}))
 class Contests extends PureComponent {
   constructor (props) {
@@ -36,31 +39,18 @@ class Contests extends PureComponent {
     }
   }
 
-  verifyPermission = async (record) => {
+  verifyPermission = (record) => {
+    const {user} = this.props
+    if (!user.token) {
+      return message.warning('请先登录')
+    }
     const presentTime = +Date.now()
-    try {
-      const startTime = newDate(record.start_time)
-      const startStatus = (presentTime > startTime)
-      if (startStatus) {
-        // if (record.private === 1) {
-        //   await this.props.tokenVerify()
-        //   await this.props.getContest(record.id)
-        // } else if (record.private === 2) {
-        //   await this.props.getContest(record.id)
-        // }
-        // goto(`/contests/${record.id}`)
-      } else {
-        message.warn('未开始')
-      }
-    } catch (e) {
-      if (e.message === '未登录') {
-        message.error(e.message)
-      } else if (e.message === '权限不足' && record.private === 1) {
-        this.setState({
-          contestId: record.id,
-          visible: true
-        })
-      }
+    const startTime = newDate(record.start_time)
+    const startStatus = (presentTime > startTime)
+    if (startStatus) {
+      this.props.dispatch(routerRedux.push('/contests/' + record.id))
+    } else {
+      message.warning('未开始')
     }
   }
 
@@ -101,7 +91,6 @@ class Contests extends PureComponent {
             percent={0}
             status='active'
             strokeWidth={5}
-            className='contests-status-progress'
           />
         </div>
       ),
@@ -123,7 +112,6 @@ class Contests extends PureComponent {
             percent={100}
             status='success'
             strokeWidth={5}
-            className='contests-status-progress'
           />
         </div>
       )
@@ -152,14 +140,14 @@ class Contests extends PureComponent {
                   <span style={{lineHeight: '48px'}}>{privatestatus[item.private]}</span>
                 </Avatar>
               )}
-              title={<Link to={item.id || ''}>{item.title}</Link>}
+              title={<div className='hand' onClick={() => this.verifyPermission(item)}>{item.title}</div>}
               description={(
                 <div>
                   <span><Icon type='user' className='mr-5' />创建者：{item.creator_name}</span>
                 </div>
               )}
             />
-            <div>
+            <div style={{width: 210}}>
               {startStatus && progress.unstart(start_time)}
               {(startStatus === false && endStatus === false) && progress.running(end_time, startTime, endTime)}
               {endStatus && progress.ended(end_time)}
@@ -171,25 +159,18 @@ class Contests extends PureComponent {
     return (
       <Card
         bordered={false}
-        className='m-16'
+        className='m-16 contests'
       >
-        <div className='flex-lol'>
-          <h3 className='text-bold text-large'>竞赛&作业列表</h3>
-          <div className='flex-lol'>
-            <RadioGroup defaultValue='all'>
-              <RadioButton value='all'>全部</RadioButton>
-              <RadioButton value='progress'>进行中</RadioButton>
-              <RadioButton value='waiting'>等待中</RadioButton>
-            </RadioGroup>
-            <Search
-              placeholder='竞赛名称'
-              className='ml-10'
-              style={{width: 200}}
-              onSearch={(value) => {
-                dispatch(routerRedux.push(pathname + '?' + qs.stringify({...query, keyword: value})))
-              }}
-            />
-          </div>
+        <div className='contests-header clearfix'>
+          <h3 className='text-bold text-large d-inline-block'>竞赛&作业列表</h3>
+          <Search
+            placeholder='竞赛名称'
+            style={{width: 200}}
+            className='float-right mr-10'
+            onSearch={(value) => {
+              dispatch(routerRedux.push(pathname + '?' + qs.stringify({...query, keyword: value})))
+            }}
+          />
         </div>
         <List {...listProps} />
       </Card>

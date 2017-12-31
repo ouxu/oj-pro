@@ -1,8 +1,8 @@
-import { baseModel, inputModel, loadingModel } from 'utils/modelExtend'
+import { baseModel } from 'utils/modelExtend'
 import modelExtend from 'dva-model-extend'
 import { getContests, searchContests } from './service'
 
-export default modelExtend(baseModel, loadingModel, inputModel, {
+export default modelExtend(baseModel, {
   namespace: 'contests',
   state: {
     contestsList: {

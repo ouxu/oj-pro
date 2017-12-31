@@ -47,7 +47,8 @@ export default {
   // Contests
   contests: 'contests',
   contestsSearch: 'contest/search',
-  contest: 'contest/',
+  contest: 'contest/:id',
+  joinContest: 'contest/:id/join',
   createContest: 'contest/create',
 
   contestsMine: 'contests/mine',

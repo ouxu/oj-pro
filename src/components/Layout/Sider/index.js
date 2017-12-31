@@ -27,7 +27,7 @@ class SiderContent extends Component {
         </div>
         <Menu
           theme='dark' mode='inline'
-          selectedKeys={[location.pathname]}
+          defaultSelectedKeys={[location.pathname]}
           onClick={({key}) => dispatch(routerRedux.push(key))}>
           {normal.map((item) => MenuRender(item))}
         </Menu>
