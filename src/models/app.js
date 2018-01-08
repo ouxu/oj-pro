@@ -1,5 +1,4 @@
 import siderConfig from 'config/sider'
-import sleep from 'utils/sleep'
 export default {
   namespace: 'root',
   state: {

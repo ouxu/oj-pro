@@ -6,5 +6,7 @@ const randomNumBoth = (Min, Max) => {
   let Rand = Math.random()
   return Min + Math.round(Rand * range)
 }
+
 const addZero = (n) => n >= 10 ? n : '0' + n
-export { randomNumBoth,addZero }
+
+export { randomNumBoth, addZero }

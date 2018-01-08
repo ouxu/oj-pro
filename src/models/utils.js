@@ -5,29 +5,29 @@ export default {
     modal: false
   },
   reducers: {
-    showLoading(state) {
+    showLoading (state) {
       return {
         ...state,
         loading: true
       }
     },
-    hideLoading(state) {
+    hideLoading (state) {
       return {
         ...state,
         loading: false
       }
     },
-    showModal(state) {
+    showModal (state) {
       return {
         ...state,
         modal: true
       }
     },
-    hideModal(state) {
+    hideModal (state) {
       return {
         ...state,
         modal: false
       }
-    },
+    }
   }
 }

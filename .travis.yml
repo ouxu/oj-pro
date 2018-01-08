@@ -8,15 +8,14 @@ before_install:
   - chmod 600 ~/.ssh/id_rsa
   - echo -e "Host 123.206.55.207 \n\tStrictHostKeyChecking no\n" >> ~/.ssh/config
 script:
-  - npm run build
+  - yarn build
 after_success:
   - cd ./dist
-  - tar -jcf newoj.tar.bz2 *
+  - tar -jcf newoj.tar.bz2 --exclude=stats.html *
   - scp newoj.tar.bz2 ubuntu@123.206.55.207:~/
-  - ssh ubuntu@123.206.55.207 'mkdir -p /usr/share/nginx/html/newoj && mv ~/newoj.tar.bz2
-    /usr/share/nginx/html/newoj'
-  - ssh ubuntu@123.206.55.207 'cd /usr/share/nginx/html/newoj && tar -jxf newoj.tar.bz2
-    && rm -rf newoj.tar.bz2'
+  - ssh ubuntu@123.206.55.207 'rm -rf /usr/share/nginx/html/newoj/fe'
+  - ssh ubuntu@123.206.55.207 'mkdir -p /usr/share/nginx/html/newoj/fe && mv ~/newoj.tar.bz2 /usr/share/nginx/html/newoj/fe'
+  - ssh ubuntu@123.206.55.207 'cd /usr/share/nginx/html/newoj/fe && tar -jxf newoj.tar.bz2 && rm -rf newoj.tar.bz2'
 branches:
   only:
      - master

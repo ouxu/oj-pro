@@ -1,4 +1,4 @@
-import { check, login, logout } from 'services/user'
+import { check, login } from 'services/user'
 import sleep from 'utils/sleep'
 import message from 'utils/message'
 
@@ -20,7 +20,7 @@ export default {
     }
   },
   effects: {
-    * check ({}, {select, call, put}) {
+    * check ({payload}, {select, call, put}) {
       const user = yield select(({user}) => user)
       const {token, lastCheck, interval} = user
       const now = (new Date()).getTime()
@@ -52,7 +52,7 @@ export default {
         yield put({type: 'utils/hideLoading'})
       }
     },
-    * logout ({}, {put}) {
+    * logout ({payload}, {put}) {
       const user = {
         role: 'student',
         token: '',

@@ -5,6 +5,7 @@ import React, { Component } from 'react'
 import { Alert, Badge, Icon, Progress, Table } from 'antd'
 import { queryResult } from '../../service'
 import globalConfig from 'config/app'
+import { randomNumBoth } from 'utils/numberAbout'
 
 const shutUp = [-3, -1, 2, 3, 4]
 const status = {
@@ -102,7 +103,7 @@ class Result extends Component {
       status: loading ? 'active' : 'normal',
       strokeWidth: 4,
       style: {width: '98%'},
-      percent: loading ? 30 : (percent || 0)
+      percent: loading ? randomNumBoth(20, 40) : (percent || 0)
     }
     return (
       <div className='problem-detail-result' key={this.props.solutionId}>

@@ -9,7 +9,7 @@ const initState = {
   detail: {},
   layout: {
     left: 14,
-    right: 10,
+    right: 10
   },
   activeKey: 'description',
   editor: {
