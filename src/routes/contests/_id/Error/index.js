@@ -27,7 +27,7 @@ class ErrorResult extends Component {
     Modal.confirm({
       title: '此竞赛私有，需要校验密码进入',
       content: (
-        <Input size='small' type='password' style={{width: 150}} onBlur={(e) => {
+        <Input size='small' type='password' style={{width: 200}} onBlur={(e) => {
           this.setState({password: e.target.value})
         }} />
       ),
@@ -55,7 +55,7 @@ class ErrorResult extends Component {
         actionText: '立即登录',
         action: () => dispatch({type: 'utils/showModal'})
       }, {
-        description: '如果决赛为加密竞赛，请尝试输入密码',
+        description: '如果竞赛为加密竞赛，请尝试输入密码',
         actionText: '加密竞赛加入',
         action: this.showModal
       }, {

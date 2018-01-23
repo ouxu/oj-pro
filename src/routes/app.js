@@ -6,6 +6,8 @@ import Homepage from './home'
 import Problems from './problems'
 import Contests from './contests'
 import NotFound from './404'
+import ProblemDetail from './problems/_id/route'
+import ContestsDetail from './contests/_id/route'
 
 import homeModel from './home/model'
 import ProblemsModel from './problems/model'
@@ -13,8 +15,6 @@ import ProblemsDetailModel from './problems/_id/model'
 import ContestsModel from './contests/model'
 import ContestsDetailModel from './contests/_id/model'
 
-const ProblemDetail = () => import('./problems/_id')
-const ContestsDetail = () => import('./contests/_id')
 const App = ({app}) => {
   const routes = [
     {
