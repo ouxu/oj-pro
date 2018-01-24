@@ -98,7 +98,7 @@ class CountDown extends Component {
 
     const result = format(lastTime)
 
-    return (<span {...rest}>{result}</span>)
+    return (<span>{result}</span>)
   }
 }
 

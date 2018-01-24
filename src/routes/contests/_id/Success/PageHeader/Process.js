@@ -5,10 +5,7 @@ import React from 'react'
 import { Progress } from 'antd'
 import { newDate } from 'utils/dateAbout'
 import CountDown from 'components/CountDown'
-
-const fixedZero = (val) => {
-  return val * 1 < 10 ? `0${val}` : val
-}
+import { addZero as fixedZero } from 'utils/numberAbout'
 
 class ContestProgress extends React.Component {
   constructor (props) {

@@ -18,9 +18,9 @@ class ProblemPage extends Component {
         id: match.params.id
       }
     })
-    const {s = ''} = qs.parse(location.search)
-    if (s) {
-      dispatch({type: 'problem/getStatus', payload: {result: s}}).catch(e => {})
+    const {solution = ''} = qs.parse(location.search)
+    if (solution) {
+      dispatch({type: 'problem/getStatus', payload: {result: solution}}).catch(e => {})
     }
   }
 

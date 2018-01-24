@@ -4,8 +4,9 @@
 import React from 'react'
 import { Badge, Icon, Tag, Tooltip } from 'antd'
 import { colorArr } from 'utils/theme'
-import { randomNumBoth } from 'utils/numberAbout'
+import { randomNumBoth, generateWord } from 'utils/numberAbout'
 import { Link } from 'dva/router'
+import qs from 'query-string'
 
 const difficultyArr = ['简单', '一般', '困难']
 
@@ -57,7 +58,7 @@ const problemsColumn = [{
               </span>
             )}
             {record.source && (
-              <Tooltip placement='bottom' title={record.source}>
+              <Tooltip placement='top' title={record.source}>
                 <Icon type='environment' className='icon' />
               </Tooltip>
             )}
@@ -71,17 +72,81 @@ const problemsColumn = [{
               }
             })()}
           </div>
-          <Tag color='blue' className='tag'> {~~(100 * record.accepted / record.submit)}%</Tag>
+          <Tooltip placement='top' title={record.accepted + ' / ' + record.submit}>
+            <Tag color='blue' className='tag'> {~~(100 * record.accepted / record.submit)}%</Tag>
+          </Tooltip>
         </span>
       </div>
     )
   }
 }]
+
+const contestProblemColumn = (config) => [{
+  dataIndex: 'user_status',
+  title: '内容',
+  render: (value, record) => {
+    return (
+      <div className='content flex-lol'>
+        <div>
+          <Tag style={{minWidth: 36, textAlign: 'center'}} color={colorArr['1']}>
+            {generateWord(record.pnum + 1)}
+          </Tag>
+          <Link style={{color: '#666'}} to={'/problems/' + record.pid + '?' + qs.stringify({
+            from: 'contest',
+            cid: config.cid,
+            pnum: record.pnum
+          })}>
+             {record.pid}. {record.title}
+          </Link>
+        </div>
+        <span>
+          <div className='item-detail'>
+            {record.tags && (
+              <span>
+                {
+                  record.tags.length > 0 && (record.tags.map((value, index) => (
+                    <Tag
+                      color={colorArr[randomNumBoth(0, 5)]} key={index + 400}
+                      className='problem-title-tags'
+                    >
+                      {value.tag_title}
+                    </Tag>
+                  )))}
+              </span>
+            )}
+            {record.source && (
+              <Tooltip placement='top' title={record.source}>
+                <Icon type='environment' className='icon' />
+              </Tooltip>
+            )}
+
+          </div>
+          {(() => {
+            if (!value) {
+              return <Icon className='status-yes status-icon' style={{color: 'transparent'}} type='check-circle' />
+            } else if (value === 'Y') {
+              return <Icon className='status-yes status-icon' type='check-circle' />
+            } else if (value === 'N') {
+              return <Icon className='status-no status-icon' type='close-circle' />
+            }
+          })()}
+          <Tooltip placement='top' title={record.accepted + '/' + record.submit}>
+            <Tag color='blue' className='tag'> {~~(100 * record.accepted / record.submit)}%</Tag>
+          </Tooltip>
+        </span>
+      </div>
+    )
+  }
+}]
+
 const recordingColumn = [{
   key: 'id',
   render: (record, dates, index) => (
     <div className='content flex-lol'>
-      <Link style={{color: '#666'}} to={'/problems/' + record.problem_id}>
+      <Link style={{color: '#666'}} to={'/problems/' + record.problem_id + '?' + qs.stringify({
+        solution: record.id,
+        from: 'recent'
+      })}>
         <Tag color={colorArr[record.language % 6]}>{language[record.language]}</Tag> # {`${record.problem_id}`}.
       </Link>
       <span>
@@ -91,4 +156,4 @@ const recordingColumn = [{
   )
 }]
 
-export { problemsColumn, recordingColumn }
+export { problemsColumn, recordingColumn, contestProblemColumn }

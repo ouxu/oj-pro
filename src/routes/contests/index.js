@@ -1,5 +1,5 @@
 import React, { PureComponent } from 'react'
-import { Avatar, Card, Icon, Input, List, Progress, Radio,Divider } from 'antd'
+import { Avatar, Card, Icon, Input, List, Progress} from 'antd'
 import message from 'utils/message'
 import qs from 'query-string'
 import { connect } from 'dva'
@@ -9,8 +9,6 @@ import { newDate } from 'utils/dateAbout'
 import { color } from 'utils/theme'
 
 const Search = Input.Search
-const RadioGroup = Radio.Group
-const RadioButton = Radio.Button
 
 /**
  * TODO 添加竞赛关联和用户关联
@@ -164,6 +162,7 @@ class Contests extends PureComponent {
         <div className='contests-header clearfix'>
           <h3 className='text-bold text-large d-inline-block'>竞赛&作业列表</h3>
           <Search
+            enterButton
             placeholder='竞赛名称'
             style={{width: 200}}
             className='float-right mr-10'

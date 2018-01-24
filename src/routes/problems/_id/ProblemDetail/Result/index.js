@@ -59,9 +59,9 @@ class Result extends Component {
     }
   }
 
-  getResult = async (solutionId) => {
-    const data = await queryResult(solutionId)
-    this.setState({...data})
+  getResult = (solutionId) => {
+    queryResult(solutionId)
+      .then(data => this.setState({...data}))
   }
 
   componentWillReceiveProps (nextProps, nextContext) {
@@ -78,14 +78,12 @@ class Result extends Component {
     if (nextState.loading) {
       if (!shutUp.includes(nextState.result_code)) {
         setTimeout(() => this.getResult(nextProps.solutionId), globalConfig.resultQueryTime)
-        return false
       } else {
         this.setState({
           loading: false
         })
       }
     }
-    return true
   }
 
   render () {

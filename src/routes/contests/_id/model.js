@@ -12,7 +12,7 @@ export default modelExtend(baseModel, {
   namespace: 'contest',
   state: {
     contest_info: {},
-    problem_info: {},
+    problem_info: [],
     ...initError
   },
   effects: {

@@ -48,6 +48,8 @@ export default {
   contests: 'contests',
   contestsSearch: 'contest/search',
   contest: 'contest/:id',
+  contestRankList: 'contest/:id/ranklist',
+  contestSubmit: 'contest/:cid/problem/:pnum/submit',
   joinContest: 'contest/:id/join',
   createContest: 'contest/create',
 

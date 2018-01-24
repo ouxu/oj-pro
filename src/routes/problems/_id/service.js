@@ -16,6 +16,13 @@ const submit = (id, data) => request({
   data
 })
 
+const submitContest = (cid, pnum, data) => ({
+  url: API.contestSubmit.replace(':cid', cid).replace(':pnum', pnum),
+  token: true,
+  method: 'post',
+  data
+})
+
 const getStatus = (id) => request({
   url: API.statusDetail.replace(':id', id),
   token: true,
@@ -28,4 +35,4 @@ const queryResult = (id) => request({
   method: 'get'
 })
 
-export { getProblem, submit, getStatus, queryResult }
+export { getProblem, submit, submitContest, getStatus, queryResult }

@@ -1,4 +1,6 @@
 import React, { Component } from 'react'
+import QueueAnim from 'rc-queue-anim'
+
 import Result from 'components/Result'
 import { Button, Icon, Input, Modal } from 'antd'
 import { Link } from 'dva/router'
@@ -56,7 +58,7 @@ class ErrorResult extends Component {
         action: () => dispatch({type: 'utils/showModal'})
       }, {
         description: '如果竞赛为加密竞赛，请尝试输入密码',
-        actionText: '加密竞赛加入',
+        actionText: '加密竞赛进入',
         action: this.showModal
       }, {
         description: '若该竞赛为私有竞赛，请联系管理员或者竞赛创建者'
@@ -81,15 +83,16 @@ class ErrorResult extends Component {
       </div>
     )
     return (
-      <div className='mt-20 pt-20'>
+      <QueueAnim delay={200} type='bottom' className='mt-20 pt-20'>
         <Result
+          key='error'
           type='error'
           title='竞赛获取失败'
           extra={extra}
           description={err}
           actions={actions}
         />
-      </div>
+      </QueueAnim>
     )
   }
 }

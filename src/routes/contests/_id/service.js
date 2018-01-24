@@ -17,4 +17,9 @@ const joinContest = (id, data) => request({
   data
 })
 
-export { getContest, joinContest }
+const getRank = (id) => request({
+  url: API.contestRankList.replace(':id', id),
+  method: 'get'
+})
+
+export { getContest, joinContest, getRank }
