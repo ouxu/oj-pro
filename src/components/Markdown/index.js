@@ -5,9 +5,10 @@ import React from 'react'
 import PropType from 'prop-types'
 import Markdown from 'react-markdown'
 import './index.less'
-const MarkdownArea = ({content = ''}) => {
+
+const MarkdownArea = ({content = '', className = ''}) => {
   return (
-    <div>
+    <div className={className}>
       <Markdown className='markdown-body' escapeHtml={false} source={content} />
     </div>
   )

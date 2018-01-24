@@ -8,6 +8,7 @@ import Contests from './contests'
 import NotFound from './404'
 import ProblemDetail from './problems/_id/route'
 import ContestsDetail from './contests/_id/route'
+import Admin from './admin/route'
 
 import homeModel from './home/model'
 import ProblemsModel from './problems/model'
@@ -25,7 +26,7 @@ const App = ({app}) => {
     }, {
       path: '/problems/:id',
       exact: true,
-      component: dynamicWrapper(ProblemDetail, app, () => [ProblemsDetailModel])
+      component: dynamicWrapper(ProblemDetail, app, [ProblemsDetailModel])
     }, {
       path: '/problems',
       exact: false,
@@ -35,7 +36,7 @@ const App = ({app}) => {
       path: '/contests/:id',
       exact: true,
       models: [ContestsModel],
-      component: dynamicWrapper(ContestsDetail, app, () => [ContestsDetailModel])
+      component: dynamicWrapper(ContestsDetail, app, [ContestsDetailModel])
     }, {
       path: '/contests',
       exact: false,
@@ -43,7 +44,7 @@ const App = ({app}) => {
       component: Contests
     }, {
       path: '/admin',
-      component: dynamicWrapper(() => import('routes/admin'))
+      component: Admin
     }, {
       path: '/404',
       exact: true,

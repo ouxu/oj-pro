@@ -7,10 +7,12 @@ import Layout from 'components/Layout'
 import dynamic from 'dva/dynamic'
 
 dynamic.setDefaultLoadingComponent(() => {
-  return <Spin size='large' style={{
-    width: '100%',
-    margin: '60px auto'
-  }} />
+  return (
+    <Spin size='large' style={{
+      width: '100%',
+      margin: '60px auto'
+    }} />
+  )
 })
 
 export default ({history, app}) => {

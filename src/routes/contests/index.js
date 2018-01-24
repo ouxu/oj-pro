@@ -1,5 +1,5 @@
 import React, { PureComponent } from 'react'
-import { Avatar, Card, Icon, Input, List, Progress, Radio } from 'antd'
+import { Avatar, Card, Icon, Input, List, Progress, Radio,Divider } from 'antd'
 import message from 'utils/message'
 import qs from 'query-string'
 import { connect } from 'dva'

@@ -1,11 +1,15 @@
 import React, { Component } from 'react'
-
+import PageHeader from './PageHeader/index'
+import qs from 'query-string'
 class Success extends Component {
   render () {
-    console.log(this.props)
+    const {contests = {}, contest = {}} = this.props
+    const {contest_info: contestInfo = {}, problem_info: problemInfo = []} = contest
+    const {contestsList: {page = '', size = '', keyword = ''}} = contests
+    const contestsQuery = qs.stringify({page, size, keyword})
     return (
-      <div>
-        123
+      <div className='contest-wrap'>
+        <PageHeader contestsQuery={contestsQuery} contestInfo={contestInfo} />
       </div>
     )
   }

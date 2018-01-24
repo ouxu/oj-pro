@@ -1,0 +1,47 @@
+@import "~antd/lib/style/themes/default.less";
+
+.contest-wrap {
+  .page-header {
+    background: #fff;
+    padding: 16px 32px 0;
+    border-bottom: 1px solid #e8e8e8;
+    &-title {
+      font-size: 24px;
+      line-height: 40px;
+      font-weight: 300;
+      &-sub {
+        font-weight: 400;
+        font-size: 90%;
+        margin-left: 12px;
+      }
+    }
+    &-description {
+      border-top: 1px dashed #e8e8e8;
+      border-bottom: 1px dashed #e8e8e8;
+      margin-top: 8px;
+      padding: 12px 0;
+    }
+    .contest-info-progress {
+      display: flex;
+
+      line-height: 30px;
+      &-item {
+        flex-grow: 1;
+      }
+      &-time {
+        text-align: right;
+        margin: 0 10px;
+        span {
+          font-size: 20px;
+          font-weight: 300;
+        }
+      }
+    }
+    .tabs {
+      margin-bottom: -17px;
+      .ant-tabs-bar {
+        border-bottom: @border-width-base @border-style-base @border-color-split;
+      }
+    }
+  }
+}
