@@ -1,59 +1,11 @@
 import React, { Component } from 'react'
 import { Redirect, Route, Switch } from 'dva/router'
 import registerModel from 'utils/registerModel'
-import dynamicWrapper from 'utils/dynamicWrapper'
-import Homepage from './home'
-import Problems from './problems'
-import Contests from './contests'
-import NotFound from './404'
-import ProblemDetail from './problems/_id/route'
-import ContestsDetail from './contests/_id/route'
-import Admin from './admin/route'
 
-import homeModel from './home/model'
-import ProblemsModel from './problems/model'
-import ProblemsDetailModel from './problems/_id/model'
-import ContestsModel from './contests/model'
-import ContestsDetailModel from './contests/_id/model'
-
-const App = ({app}) => {
-  const routes = [
-    {
-      path: '/home',
-      exact: true,
-      models: [homeModel],
-      component: Homepage
-    }, {
-      path: '/problems/:id',
-      exact: true,
-      component: dynamicWrapper(ProblemDetail, app, [ProblemsDetailModel])
-    }, {
-      path: '/problems',
-      exact: false,
-      models: [ProblemsModel],
-      component: Problems
-    }, {
-      path: '/contests/:id',
-      exact: true,
-      models: [ContestsModel],
-      component: dynamicWrapper(ContestsDetail, app, [ContestsDetailModel])
-    }, {
-      path: '/contests',
-      exact: false,
-      models: [ContestsModel],
-      component: Contests
-    }, {
-      path: '/admin',
-      component: Admin
-    }, {
-      path: '/404',
-      exact: true,
-      component: NotFound
-    }
-  ]
+const App = ({app, routerDate}) => {
   return (
     <Switch>
-      {routes.map(item => {
+      {routerDate.map(item => {
         if (item.models) {
           item.models.forEach(e => registerModel(app, e))
         }
@@ -67,8 +19,8 @@ const App = ({app}) => {
         )
       })}
       <Redirect exact from='/' to='/home' />
-     <Redirect from='*' to='/404' />
-   </Switch>
+      <Redirect from='*' to='/404' />
+    </Switch>
   )
 }
 
