@@ -16,7 +16,11 @@ export default modelExtend(baseModel, {
     ...initError
   },
   effects: {
-    * init ({payload}, {put, call}) {
+    * init ({payload}, {put, call, select}) {
+      const {contest_info} = yield select(({contest}) => (contest))
+      if (+contest_info.id === +payload) {
+        return
+      }
       try {
         const data = yield call(getContest, payload)
         yield put({

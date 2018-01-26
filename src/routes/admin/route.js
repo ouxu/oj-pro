@@ -1,1 +1,1 @@
-export default () => System.import('./')
+export default () => import('./index')

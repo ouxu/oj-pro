@@ -1,6 +1,5 @@
 import React, { Component } from 'react'
 import { Card, Tabs } from 'antd'
-import QueueAnim from 'rc-queue-anim'
 import { routerRedux } from 'dva/router'
 import PageHeader from './PageHeader'
 import qs from 'query-string'
@@ -9,21 +8,23 @@ import RankList from './RankList'
 import './index.less'
 
 class Success extends Component {
+  constructor (props) {
+    super(props)
+    this.state = {
+      tab: 'problem'
+    }
+  }
+
   tabChange = (value) => {
-    const {location} = this.props
-    const {search, pathname} = location
-    this.props.dispatch(routerRedux.push(pathname + '?' + qs.stringify({
-      ...qs.parse(search),
-      tab: value
-    })))
+    this.setState({tab: value})
   }
 
   render () {
-    const {contests = {}, contest = {}, dispatch, location, id} = this.props
+    const {contests = {}, contest = {}, dispatch, id} = this.props
+    const {tab} = this.state
     const {contest_info: contestInfo = {}, problem_info: problemInfo = []} = contest
     const {contestsList: {page = '', size = '', keyword = ''}} = contests
     const contestsQuery = qs.stringify({page, size, keyword})
-    const {tab = 'problem'} = qs.parse(location.search)
 
     return (
       <div className='contest-wrap'>
@@ -46,7 +47,8 @@ class Success extends Component {
                   endTime={contestInfo.end_time}
                   contestInfo={contestInfo}
                   id={id}
-                  scroll={{x: 960}} />
+                  scroll={{x: 960}}
+                />
               </div>
             </Tabs.TabPane>
           </Tabs>
