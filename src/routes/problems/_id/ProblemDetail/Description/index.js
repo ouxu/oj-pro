@@ -15,15 +15,15 @@ const Description = ({detail = {tags: []}}) => {
       <Card bodyStyle={{padding: 10}} className='mb-10'>
         <Markdown content={detail.description} />
       </Card>
-      <h3>输入</h3>
+      <h3>输入描述</h3>
       <Card bodyStyle={{padding: 10}} className='mb-10'>
         <Markdown content={detail.input} />
       </Card>
-      <h3>输出</h3>
+      <h3>输出描述</h3>
       <Card bodyStyle={{padding: 10}} className='mb-10'>
         <Markdown content={detail.output} />
       </Card>
-      {detail.tags && (
+      {detail.tags.length > 0  && (
         <div className='mb-10'>
           <h3>标签</h3>
           {

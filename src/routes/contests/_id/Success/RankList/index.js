@@ -15,7 +15,7 @@ class RankList extends Component {
   constructor (props) {
     super(props)
 
-    this.interval = 30000
+    this.interval = 60000
 
     this.state = {
       loading: false,
@@ -27,11 +27,11 @@ class RankList extends Component {
     this.getRankList(this.props.id)
 
     this.timer = setInterval(() => {
-      this.getRankList(this.props.id)
       const end = +newDate(this.props.endTime)
       if (+Date.now() > end) {
-        clearInterval(this.timer)
+        return clearInterval(this.timer)
       }
+      this.getRankList(this.props.id)
     }, this.interval)
   }
 
@@ -53,19 +53,13 @@ class RankList extends Component {
 
   render () {
     const {countNum, isFullscreen, toggleFullscreen, contestInfo} = this.props
-    let {rankData: {rank_data: rankData = [], first_ac = []}, loading} = this.state
-    // 给rankData添加索引
-    rankData = rankData.map((t = {}, i) => {
-      return {
-        ...t,
-        id: i + 1
-      }
-    })
+    const {rankData: {rank_data: rankData = [], first_ac = []}, loading} = this.state
     const columns = [{
       title: '排名',
       width: 50,
-      dataIndex: 'id',
+      render: (text, record, index) => index + 1,
       key: 'contest-info-rank',
+      fixed: 'left',
       className: 'contest-info-rank'
     }, {
       title: '用户',
@@ -75,17 +69,17 @@ class RankList extends Component {
         </span>
       ),
       key: 'contest-info-user',
+      fixed: 'left',
       className: 'contest-info-user',
       width: 100
     }, {
       title: '解决',
       dataIndex: 'solved',
-      width: 35,
+      width: 50,
       key: 'contest-info-solved',
       className: 'contest-info-solved'
     }, {
       title: '用时',
-      width: 100,
       render: (record) => {
         return <span>{sec2Str(record.time)}</span>
       },
@@ -106,9 +100,9 @@ class RankList extends Component {
     return (
       <Table
         columns={columns}
-        rowKey={record => `contest-info-${record.id}`}
+        rowKey={record => `contest-info-${record.user_id}`}
         dataSource={rankData}
-        scroll={{x: countNum * 90 + 1000, y: window.screen.availHeight - 135}}
+        scroll={{x: countNum * 90 + 300, y: window.screen.availHeight - 155}}
         bordered
         pagination={false}
         loading={loading}

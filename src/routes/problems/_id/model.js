@@ -6,7 +6,9 @@ import modelExtend from 'dva-model-extend'
 import { getProblem, getStatus, submit } from './service'
 
 const initState = {
-  detail: {},
+  detail: {
+    tags: []
+  },
   layout: {
     left: 14,
     right: 10
