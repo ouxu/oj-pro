@@ -1,10 +1,10 @@
 import React, { PureComponent } from 'react'
-import { Avatar, Card, Icon, Input, List, Progress} from 'antd'
+import { Avatar, Card, Icon, Input, List, Progress } from 'antd'
 import message from 'utils/message'
 import qs from 'query-string'
 import { connect } from 'dva'
 import windowScroll from 'utils/scrollToAnchor'
-import { Link, routerRedux } from 'dva/router'
+import { routerRedux } from 'dva/router'
 import { newDate } from 'utils/dateAbout'
 import { color } from 'utils/theme'
 
@@ -121,7 +121,7 @@ class Contests extends PureComponent {
       rowKey: 'id',
       pagination,
       renderItem: item => {
-        const {creator_id, creator_name, start_time, end_time} = item
+        const {start_time, end_time} = item
         const startTime = newDate(start_time)
         const endTime = newDate(end_time)
         const startStatus = (this.state.presentTime < startTime)

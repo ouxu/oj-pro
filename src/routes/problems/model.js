@@ -10,7 +10,7 @@ export default modelExtend(baseModel, loadingModel, inputModel, {
       page: 1,
       size: 50,
       keyword: '',
-      count: 10000
+      count: 0
     },
     selectProblem: {},
     statusList: [],

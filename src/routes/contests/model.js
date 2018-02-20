@@ -9,7 +9,7 @@ export default modelExtend(baseModel, {
       data: [],
       page: 1,
       size: 20,
-      count: 10000,
+      count: 0,
       keyword: ''
     },
     selectContest: {}

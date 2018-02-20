@@ -13,12 +13,12 @@ const fetch = options => {
     method = 'get',
     data,
     url,
-    token = false,
+    token = false
   } = options
 
   let config = {
     timeout: 30000,
-    baseURL: 'http://112.126.70.205:8088/'
+    baseURL: 'http://140.143.222.61:8088/'
   }
 
   if (token) {

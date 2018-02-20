@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React from 'react'
 import { Redirect, Route, Switch } from 'dva/router'
 import registerModel from 'utils/registerModel'
 

@@ -11,7 +11,7 @@ class CountDown extends Component {
     const {lastTime} = this.initTime(props)
 
     this.state = {
-      lastTime,
+      lastTime
     }
   }
 
@@ -24,7 +24,7 @@ class CountDown extends Component {
       clearTimeout(this.timer)
       const {lastTime} = this.initTime(nextProps)
       this.setState({
-        lastTime,
+        lastTime
       }, () => {
         this.tick()
       })
@@ -53,7 +53,7 @@ class CountDown extends Component {
     lastTime = targetTime - new Date().getTime()
 
     return {
-      lastTime,
+      lastTime
     }
   }
   defaultFormat = (time) => {
@@ -75,7 +75,7 @@ class CountDown extends Component {
       if (lastTime < this.interval) {
         clearTimeout(this.timer)
         this.setState({
-          lastTime: 0,
+          lastTime: 0
         }, () => {
           if (onEnd) {
             onEnd()
@@ -84,7 +84,7 @@ class CountDown extends Component {
       } else {
         lastTime -= this.interval
         this.setState({
-          lastTime,
+          lastTime
         }, () => {
           this.tick()
         })
@@ -93,7 +93,7 @@ class CountDown extends Component {
   }
 
   render () {
-    const {format = this.defaultFormat, ...rest} = this.props
+    const {format = this.defaultFormat} = this.props
     const {lastTime} = this.state
 
     const result = format(lastTime)

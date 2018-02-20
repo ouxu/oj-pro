@@ -35,7 +35,7 @@ export default {
 
     },
     'production': {
-      'publicPath': 'http://ohtk9ocqw.bkt.clouddn.com/oj/',
+      'publicPath': 'http://p0y3d4gdq.bkt.clouddn.com/new/',
       'extraBabelPlugins': baseBabelPlugin
     }
   }
