@@ -1,7 +1,7 @@
 src/**/*-test.js
 dist/
 public/
-.roadhogrc.js
+.webpackrc.js
 .roadhogrc.mock.js
 dist/*
 pushConfig

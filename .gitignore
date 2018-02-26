@@ -1,7 +1,20 @@
-dist
-node_modules
-npm-debug.log
+# idea
 .idea/
-.DS_Store
-package-lock.json
+
+# config
 pushConfig.js
+
+# dependencies
+/node_modules
+package-lock.json
+
+# production
+/dist
+
+# misc
+.DS_Store
+npm-debug.log*
+
+# umi
+.umi
+.umi-production

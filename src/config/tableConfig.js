@@ -5,7 +5,7 @@ import React from 'react'
 import { Badge, Icon, Tag, Tooltip } from 'antd'
 import { colorArr } from 'utils/theme'
 import { randomNumBoth, generateWord } from 'utils/numberAbout'
-import { Link } from 'dva/router'
+import Link from 'umi/link'
 import qs from 'query-string'
 
 const difficultyArr = ['简单', '一般', '困难']
