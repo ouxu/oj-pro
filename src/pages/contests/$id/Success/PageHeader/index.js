@@ -5,7 +5,6 @@ import Markdown from 'components/plugins/Markdown'
 import './index.less'
 
 class PageHeader extends Component {
-
   render () {
     const {contestsQuery = '', contestInfo = {}} = this.props
     const {id = '', title = '', description = ''} = contestInfo

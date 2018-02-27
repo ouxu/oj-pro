@@ -2,6 +2,7 @@ import codeHelper from './codeHelper'
 import message from 'utils/message'
 
 export default (error, dispatch) => {
+  error.preventDefault()
   if (error.message >= 400) {
     switch (+error.message) {
       case 1004:

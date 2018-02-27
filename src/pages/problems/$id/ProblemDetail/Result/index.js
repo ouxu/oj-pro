@@ -125,24 +125,24 @@ class Result extends Component {
         {(resultCode === 3 || resultCode === 4) && Passed.length > 0 && (
           <div className='mt-16'>
           通过的数据：
-          <Table
-            {...tableConfig}
-            columns={columnsP}
-            dataSource={Passed}
-            className='b-1'
-            rowKey={(record, index) => 'Passed' + index}
-          />
+            <Table
+              {...tableConfig}
+              columns={columnsP}
+              dataSource={Passed}
+              className='b-1'
+              rowKey={(record, index) => 'Passed' + index}
+            />
           </div>
         )}
         {(resultCode === 3 || resultCode === 4) && UnPassed.length > 0 && (
           <div className='mt-16'>
           未通过的数据:
-          <Table
-            {...tableConfig}
-            columns={columnsP}
-            dataSource={UnPassed}
-            rowKey={(record, index) => 'unPassed' + index}
-          />
+            <Table
+              {...tableConfig}
+              columns={columnsP}
+              dataSource={UnPassed}
+              rowKey={(record, index) => 'unPassed' + index}
+            />
           </div>
         )}
       </div>

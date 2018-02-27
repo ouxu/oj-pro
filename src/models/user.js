@@ -2,15 +2,17 @@ import { check, login } from 'services/user'
 import sleep from 'utils/sleep'
 import message from 'utils/message'
 
+const userState = {
+  role: '',
+  token: '',
+  user: {},
+  lastCheck: '',
+  interval: 600000,
+  ...JSON.parse(window.localStorage.getItem('NEUQ-OJ'))
+}
 export default {
   namespace: 'user',
-  state: {
-    role: '',
-    token: '',
-    user: {},
-    lastCheck: '',
-    interval: 600000
-  },
+  state: userState,
   subscriptions: {
     userSubscriber ({dispatch, history}) {
       return history.listen(() => {
@@ -71,7 +73,7 @@ export default {
         ...state,
         ...payload
       }
-      localStorage.setItem('NEUQ-OJ', JSON.stringify({user}))
+      localStorage.setItem('NEUQ-OJ', JSON.stringify(user))
       return user
     }
   }

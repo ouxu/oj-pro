@@ -1,8 +1,7 @@
 import axios from 'axios'
-import errorHandler from './errorHandler'
+
 const getToken = () => {
-  const {user: {token: ojToken = ''}} = {
-    user: {},
+  const {token: ojToken = ''} = {
     ...JSON.parse(window.localStorage.getItem('NEUQ-OJ'))
   }
   return ojToken
@@ -77,18 +76,14 @@ const downFile = (blob, fileName) => {
  * @returns {Promise.<*>}
  */
 export default async options => {
-  try {
-    const res = await fetch(options)
-    if (options.method === 'export') {
-      downFile(res.data, options.filename)
-      return true
-    }
-    const {data} = res
-    if (data.code !== 0) {
-      throw new Error(data.code)
-    }
-    return data.data
-  } catch (e) {
-    errorHandler(e)
+  const res = await fetch(options)
+  if (options.method === 'export') {
+    downFile(res.data, options.filename)
+    return true
   }
+  const {data} = res
+  if (data.code !== 0) {
+    throw new Error(data.code)
+  }
+  return data.data
 }

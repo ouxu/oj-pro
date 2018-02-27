@@ -24,7 +24,7 @@ const RecentSubmit = ({statusList}) => {
         <Link to='/status' className='white-text'>More</Link>
       </span>
     )}>
-      <Table {...tableProps}/>
+      <Table {...tableProps} />
     </TitleCard>
   )
 }

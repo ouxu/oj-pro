@@ -23,7 +23,7 @@ const Description = ({detail = {tags: []}}) => {
       <Card bodyStyle={{padding: 10}} className='mb-10'>
         <Markdown content={detail.output} />
       </Card>
-      {detail.tags.length > 0  && (
+      {detail.tags.length > 0 && (
         <div className='mb-10'>
           <h3>标签</h3>
           {

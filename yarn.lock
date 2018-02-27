@@ -718,9 +718,9 @@ address@1.0.3, address@^1.0.1, address@^1.0.3:
   version "1.0.3"
   resolved "http://registry.npm.taobao.org/address/download/address-1.0.3.tgz#b5f50631f8d6cec8bd20c963963afb55e06cbce9"
 
-af-webpack@^0.17.1:
-  version "0.17.1"
-  resolved "http://registry.npm.taobao.org/af-webpack/download/af-webpack-0.17.1.tgz#25925f2f3477c321ed393d6710b4ff36ca42e47a"
+af-webpack@^0.17.2:
+  version "0.17.2"
+  resolved "http://registry.npm.taobao.org/af-webpack/download/af-webpack-0.17.2.tgz#c70bf7ecf17e09b5d3cb569c4da005b8d7998903"
   dependencies:
     "@babel/core" "^7.0.0-beta.31"
     "@babel/plugin-transform-modules-commonjs" "^7.0.0-beta.31"
@@ -2435,6 +2435,13 @@ create-react-class@15.x, create-react-class@^15.5.2, create-react-class@^15.5.3,
     fbjs "^0.8.9"
     loose-envify "^1.3.1"
     object-assign "^4.1.1"
+
+cross-env@^5.1.3:
+  version "5.1.3"
+  resolved "http://registry.npm.taobao.org/cross-env/download/cross-env-5.1.3.tgz#f8ae18faac87692b0a8b4d2f7000d4ec3a85dfd7"
+  dependencies:
+    cross-spawn "^5.1.0"
+    is-windows "^1.0.0"
 
 cross-spawn@5.1.0, cross-spawn@^5.0.1, cross-spawn@^5.1.0:
   version "5.1.0"
@@ -5109,7 +5116,7 @@ is-whitespace-character@^1.0.0:
   version "1.0.1"
   resolved "http://registry.npm.taobao.org/is-whitespace-character/download/is-whitespace-character-1.0.1.tgz#9ae0176f3282b65457a1992cdb084f8a5f833e3b"
 
-is-windows@^1.0.1:
+is-windows@^1.0.0, is-windows@^1.0.1:
   version "1.0.2"
   resolved "http://registry.npm.taobao.org/is-windows/download/is-windows-1.0.2.tgz#d1850eb9791ecd18e6182ce12a30f396634bb19d"
 
@@ -9811,13 +9818,13 @@ uid-number@^0.0.6:
   version "0.0.6"
   resolved "http://registry.npm.taobao.org/uid-number/download/uid-number-0.0.6.tgz#0ea10e8035e8eb5b8e4449f06da1c730663baa81"
 
-umi-build-dev@^0.10.3:
-  version "0.10.3"
-  resolved "http://registry.npm.taobao.org/umi-build-dev/download/umi-build-dev-0.10.3.tgz#f61e05f84b8187066238efaf6b38e1761df7a511"
+umi-build-dev@^0.10.4:
+  version "0.10.4"
+  resolved "http://registry.npm.taobao.org/umi-build-dev/download/umi-build-dev-0.10.4.tgz#d72ea9936d26be98d020b1fee9d64f7af39104dc"
   dependencies:
     "@babel/runtime" "^7.0.0-beta.31"
     address "^1.0.3"
-    af-webpack "^0.17.1"
+    af-webpack "^0.17.2"
     antd "^3.0.0"
     antd-mobile "^2.0.0"
     body-parser "^1.18.2"
@@ -9855,9 +9862,9 @@ umi-history@^0.1.0:
     value-equal "^0.4.0"
     warning "^3.0.0"
 
-umi-plugin-dva@^0.1.5:
-  version "0.1.5"
-  resolved "http://registry.npm.taobao.org/umi-plugin-dva/download/umi-plugin-dva-0.1.5.tgz#82e90656debf269d925b76464491fb438ddfeb4e"
+umi-plugin-dva@^0.1.6:
+  version "0.1.6"
+  resolved "http://registry.npm.taobao.org/umi-plugin-dva/download/umi-plugin-dva-0.1.6.tgz#c3f92c0b51f8cbb378882f0d57fbc32e7f2044e4"
   dependencies:
     dva "^2.1.0"
     dva-loading "^1.0.4"
@@ -9884,9 +9891,9 @@ umi-test@^0.4.3:
     ts-jest-babel-7 "^22.0.6"
     typescript "^2.6.2"
 
-umi@^1.0.0:
-  version "1.0.0"
-  resolved "http://registry.npm.taobao.org/umi/download/umi-1.0.0.tgz#7636813a58b7597b42897a26ab3a2b17bc931fa9"
+umi@^1.0.1:
+  version "1.0.1"
+  resolved "http://registry.npm.taobao.org/umi/download/umi-1.0.1.tgz#03017ac62146dc0287ee941c5c241c4af74fdea8"
   dependencies:
     "@babel/runtime" "^7.0.0-beta.31"
     "@types/react" "^16.0.27"
@@ -9897,7 +9904,7 @@ umi@^1.0.0:
     cross-spawn "^5.1.0"
     ejs "^2.5.7"
     query-string "^5.0.0"
-    umi-build-dev "^0.10.3"
+    umi-build-dev "^0.10.4"
     umi-test "^0.4.3"
     update-notifier "^2.3.0"
     uppercamelcase "^3.0.0"

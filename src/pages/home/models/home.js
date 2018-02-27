@@ -5,7 +5,7 @@ import sleep from 'utils/sleep'
 import { randomNumBoth } from 'utils/numberAbout'
 
 const dataItem = (time = '') => {
-  const flag = Math.floor(Math.random() * ( 10000 + 1))
+  const flag = Math.floor(Math.random() * (10000 + 1))
   return {
     time,
     submit: randomNumBoth(flag, 10000),
@@ -46,7 +46,7 @@ export default modelExtend(baseModel, loadingModel, {
     * getHotProblems ({payload = {}}, {put, call, select}) {
       const {data = [], page = 1, size = 20, count = 10000} = payload
       if ((page - 1) * size > count) {
-        return
+
       } else {
         const query = {
           page,

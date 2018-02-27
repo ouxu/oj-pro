@@ -8,7 +8,6 @@ const {Content} = Layout
 class SiderContent extends Component {
   render () {
     const {sider, dispatch, location} = this.props
-    console.log(location)
     const {normal = []} = sider
     const MenuRender = (config) => {
       return (

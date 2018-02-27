@@ -25,6 +25,7 @@
     "scroll-into-view": "^1.9.1"
   },
   "devDependencies": {
+    "cross-env": "^5.1.3",
     "eslint": "^4.14.0",
     "eslint-config-standard": "^10.2.1",
     "eslint-config-standard-jsx": "^4.0.2",
@@ -35,15 +36,15 @@
     "eslint-plugin-standard": "^3.0.1",
     "prop-types": "^15.6.0",
     "qiniu-webpack-plugin": "^0.4.2",
-    "umi": "^1.0.0",
-    "umi-plugin-dva": "^0.1.5"
+    "umi": "^1.0.1",
+    "umi-plugin-dva": "^0.1.6"
   },
   "pre-commit": [
     "lint"
   ],
   "scripts": {
-    "dev": "COMPILE_ON_DEMAND=none PORT=8089 ESLINT=none umi dev",
-    "build": "ESLINT=none umi build",
+    "start": "cross-env COMPILE_ON_DEMAND=none PORT=8089 ESLINT=none umi dev",
+    "build": "cross-env ESLINT=none umi build",
     "lint": "eslint --fix --ext .js src"
   }
 }

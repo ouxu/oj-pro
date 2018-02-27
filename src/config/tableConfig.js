@@ -96,7 +96,7 @@ const contestProblemColumn = (config) => [{
             cid: config.cid,
             pnum: record.pnum
           })}>
-             {record.pid}. {record.title}
+            {record.pid}. {record.title}
           </Link>
         </div>
         <span>

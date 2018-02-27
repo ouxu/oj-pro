@@ -7,7 +7,6 @@ import SuccessResult from './Success'
 
 @connect(({contest, contests}) => ({contest, contests}))
 class ContestDetail extends PureComponent {
-
   componentDidMount () {
     const {id} = this.props.match.params
     this.props.dispatch({type: 'contest/init', payload: id})

@@ -1,6 +1,4 @@
-import router from 'umi/router'
+import React from 'react'
+import Redirect from 'umi/redirect'
 
-export default () => {
-  router.replace('/home')
-  return ''
-}
+export default () => <Redirect to='/home' />
