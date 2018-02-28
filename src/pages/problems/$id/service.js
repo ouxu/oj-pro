@@ -6,7 +6,8 @@ import API from 'config/api'
 
 const getProblem = (id) => request({
   url: API.problem.replace(':id', id),
-  method: 'get'
+  method: 'get',
+  token: 'option'
 })
 
 const submit = (id, data) => request({
@@ -16,7 +17,7 @@ const submit = (id, data) => request({
   data
 })
 
-const submitContest = (cid, pnum, data) => ({
+const submitContest = (cid, pnum, data) => request({
   url: API.contestSubmit.replace(':cid', cid).replace(':pnum', pnum),
   token: true,
   method: 'post',

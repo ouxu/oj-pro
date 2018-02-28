@@ -18,10 +18,11 @@ const searchProblems = (data) => request({
   data
 })
 
-const getRecording = () => request({
+const getRecording = (data) => request({
   url: API.status,
   method: 'get',
-  token: true
+  token: true,
+  data
 })
 
 export { getProblems, getRecording, searchProblems }

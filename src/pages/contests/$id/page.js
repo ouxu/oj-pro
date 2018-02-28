@@ -1,6 +1,5 @@
 import React, { PureComponent } from 'react'
 import { connect } from 'dva'
-import QueueAnim from 'rc-queue-anim'
 
 import ErrorResult from './Error'
 import SuccessResult from './Success'

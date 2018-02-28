@@ -30,7 +30,7 @@ const languageArr = [
   'Java',
   'Python'
 ]
-const ProblemEditor = ({language, value, dispatch, params, user}) => {
+const ProblemEditor = ({language, value, dispatch, params, user, location}) => {
   const onRefresh = () => {
     Modal.confirm({
       title: '重置编辑区',
@@ -52,7 +52,13 @@ const ProblemEditor = ({language, value, dispatch, params, user}) => {
       title: '提交确认',
       content: '是否确认提交代码？',
       onOk: () => {
-        dispatch({type: 'problem/submit', payload: params.id})
+        dispatch({
+          type: 'problem/submit',
+          payload: {
+            id: params.id,
+            query: location.query
+          }
+        })
       }
     })
   }

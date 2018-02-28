@@ -1,6 +1,7 @@
 /**
  * Created by out_xu on 17/7/17.
  */
+const path = require('path')
 const QiniuPlugin = require('qiniu-webpack-plugin')
 module.exports = function (webpackConfig) {
   if (process.env.NODE_ENV === 'production') {

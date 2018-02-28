@@ -15,7 +15,7 @@ class RankList extends Component {
   constructor (props) {
     super(props)
 
-    this.interval = 60000
+    this.interval = 600000
 
     this.state = {
       loading: false,

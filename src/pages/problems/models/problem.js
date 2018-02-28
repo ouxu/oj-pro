@@ -43,9 +43,9 @@ export default modelExtend(baseModel, loadingModel, inputModel, {
       }
     },
     * getRecording ({payload}, {put, call, select}) {
-      const {token} = yield select(({user}) => user)
+      const {token, user: {id}} = yield select(({user}) => user)
       if (token) {
-        const statusList = yield call(getRecording)
+        const statusList = yield call(getRecording, {user_id: id})
         yield put({type: 'update', payload: {statusList: statusList.slice(0, 10)}})
       }
     }

@@ -15,7 +15,8 @@ class ProblemPage extends Component {
     dispatch({
       type: 'problem/init',
       payload: {
-        id: match.params.id
+        id: match.params.id,
+        query: location.query
       }
     })
     const {solution = ''} = qs.parse(location.search)
@@ -25,11 +26,11 @@ class ProblemPage extends Component {
   }
 
   render () {
-    const {problems, problem, match, dispatch, user} = this.props
+    const {problems, problem, match, dispatch, user, location} = this.props
     const {detail, layout, editor, activeKey, solutionId} = problem
     const {problemsList} = problems
     const {params} = match
-    const editorProps = {dispatch, params, user, ...editor}
+    const editorProps = {dispatch, params, user, location, ...editor}
     const detailProps = {activeKey, dispatch, detail, solutionId, problemsList}
     return (
       <Row type='flex' className='problem-page'>

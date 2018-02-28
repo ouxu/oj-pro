@@ -3,7 +3,7 @@
  */
 import { baseModel } from 'utils/modelExtend'
 import modelExtend from 'dva-model-extend'
-import { getProblem, getStatus, submit } from '../service'
+import { getProblem, getStatus, submit, submitContest } from '../service'
 
 const initState = {
   detail: {
@@ -26,16 +26,14 @@ export default modelExtend(baseModel, {
   state: initState,
   effects: {
     * init ({payload}, {put, select}) {
-      const {detail} = yield select(({problem}) => problem)
-      if (+detail.id !== +payload.id) {
-        yield put({type: 'getProblem', payload: payload.id})
-      }
+      yield put({type: 'getProblem', payload: payload.id})
     },
     * getProblem ({payload}, {put, call}) {
       const detail = yield call(getProblem, payload)
       yield put({type: 'update', payload: {detail}})
     },
     * submit ({payload}, {put, call, select}) {
+      const {id, query: {from = '', cid = '', pnum = ''}} = payload
       const {editor, activeKey} = yield select(({problem}) => problem)
       if (activeKey !== 'submit') {
         yield put({type: 'update', payload: {activeKey: 'submit'}})
@@ -45,8 +43,14 @@ export default modelExtend(baseModel, {
         source_code: editor.value,
         language: editor.language
       }
-      const {solutionId} = yield call(submit, payload, body)
-      yield put({type: 'update', payload: {solutionId}})
+
+      if (from === 'contest' && cid && +pnum >= 0) {
+        const {solutionId} = yield call(submitContest, cid, pnum, body)
+        yield put({type: 'update', payload: {solutionId}})
+      } else {
+        const {solutionId} = yield call(submit, id, body)
+        yield put({type: 'update', payload: {solutionId}})
+      }
     },
     * getStatus ({payload}, {put, call}) {
       const {result = ''} = payload
