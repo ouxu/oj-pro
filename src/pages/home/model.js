@@ -1,6 +1,6 @@
 import modelExtend from 'dva-model-extend'
 import { baseModel, loadingModel } from 'utils/modelExtend'
-import { getHomeNews, getHotProblems } from '../service'
+import { getHomeNews, getHotProblems } from './service'
 import sleep from 'utils/sleep'
 import { randomNumBoth } from 'utils/numberAbout'
 

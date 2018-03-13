@@ -1,16 +1,13 @@
 import { baseModel, inputModel, loadingModel } from 'utils/modelExtend'
 import modelExtend from 'dva-model-extend'
-import { getProblems, getRecording, searchProblems } from '../service'
+import { getProblems, getRecording, searchProblems } from 'services/problems'
 
 export default modelExtend(baseModel, loadingModel, inputModel, {
   namespace: 'problems',
   state: {
     problemsList: {
       data: [],
-      page: 1,
-      size: 50,
-      keyword: '',
-      count: 0
+      count: 0,
     },
     selectProblem: {},
     statusList: [],
@@ -33,9 +30,6 @@ export default modelExtend(baseModel, loadingModel, inputModel, {
         const problemsList = {
           data: problems,
           count: total_count,
-          keyword,
-          page,
-          size
         }
         yield put({type: 'update', payload: {problemsList}})
       } catch (e) {

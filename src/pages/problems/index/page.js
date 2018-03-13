@@ -5,24 +5,23 @@ import React, { PureComponent } from 'react'
 import { connect } from 'dva'
 import { Card, Col, Row } from 'antd'
 import QueueAnim from 'rc-queue-anim'
-import UserStatus from './components/UserStatus'
-import ProblemTable from './components/ProblemTable'
-import RecentSubmit from './components/RecentSubmit'
-import qs from 'query-string'
+import UserStatus from './UserStatus'
+import ProblemTable from './ProblemTable'
+import RecentSubmit from './RecentSubmit'
 import './index.less'
 import windowScroll from 'utils/scrollToAnchor'
 
 class ProblemsList extends PureComponent {
   componentDidMount () {
     const {dispatch, location} = this.props
-    const query = qs.parse(location.search)
+    const query = location.query
     dispatch({type: 'problems/init', payload: query})
   }
 
   componentWillReceiveProps (nextProps) {
     if (nextProps.location.search !== this.props.location.search) {
       const {dispatch} = this.props
-      const query = qs.parse(nextProps.location.search)
+      const query = nextProps.location.query
       dispatch({type: 'problems/init', payload: query})
       windowScroll('navigation')
     }

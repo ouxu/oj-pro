@@ -7,15 +7,12 @@ import Link from 'umi/link'
 import Description from './Description'
 import Simple from './Simple'
 import Result from './Result'
-import qs from 'query-string'
 import './index.less'
 import TweenOne from 'rc-tween-one'
 
 const {TabPane} = Tabs
 
-const ProblemDetail = ({activeKey, dispatch, detail, solutionId, problemsList}) => {
-  const {page, size, keyword} = problemsList
-
+const ProblemDetail = ({activeKey, dispatch, detail, solutionId}) => {
   return (
     <TweenOne
       animation={[{y: '30px', type: 'from'}]}
@@ -23,7 +20,7 @@ const ProblemDetail = ({activeKey, dispatch, detail, solutionId, problemsList}) 
       className='problem-detail'
     >
       <h2 className='header'>
-        <Link to={'/problems?' + qs.stringify({page, size, keyword})}>#</Link>{` ${detail.id}. ${detail.title}`}
+        <Link to='/problems'>#</Link>{` ${detail.id}. ${detail.title}`}
       </h2>
       <div className='content'>
         <Tabs

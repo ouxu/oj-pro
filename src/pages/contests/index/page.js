@@ -24,14 +24,14 @@ class Contests extends PureComponent {
 
   componentDidMount () {
     const {dispatch, location} = this.props
-    const query = qs.parse(location.search)
+    const query = location.query
     dispatch({type: 'contests/init', payload: query})
   }
 
   componentWillReceiveProps (nextProps) {
     if (nextProps.location.search !== this.props.location.search) {
       const {dispatch} = this.props
-      const query = qs.parse(nextProps.location.search)
+      const query = nextProps.location.query
       dispatch({type: 'contests/init', payload: query})
       windowScroll('navigation')
     }
@@ -54,10 +54,9 @@ class Contests extends PureComponent {
 
   render () {
     const {contests: {contestsList = {}}, location, dispatch} = this.props
-    const {page, size, count, data = []} = contestsList
-    const {pathname, search} = location
-    const query = qs.parse(search)
-
+    const {count, data = []} = contestsList
+    const {pathname, query} = location
+    const {page, size} = query
     const pagination = {
       pageSize: +size || 20,
       current: +page || 1,

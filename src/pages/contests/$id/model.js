@@ -1,6 +1,6 @@
 import { baseModel } from 'utils/modelExtend'
 import modelExtend from 'dva-model-extend'
-import { getContest, joinContest } from '../service'
+import { getContest, joinContest } from './service'
 import codeHelper from 'utils/codeHelper'
 
 const initError = {

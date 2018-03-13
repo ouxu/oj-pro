@@ -36,8 +36,8 @@
     "eslint-plugin-standard": "^3.0.1",
     "prop-types": "^15.6.0",
     "qiniu-webpack-plugin": "^0.4.2",
-    "umi": "^1.0.1",
-    "umi-plugin-dva": "^0.1.6"
+    "umi": "^1.0.6",
+    "umi-plugin-dva": "^0.3.0"
   },
   "pre-commit": [
     "lint"

@@ -6,12 +6,12 @@ import './index.less'
 
 class PageHeader extends Component {
   render () {
-    const {contestsQuery = '', contestInfo = {}} = this.props
+    const {contestInfo = {}} = this.props
     const {id = '', title = '', description = ''} = contestInfo
     return (
       <div className='page-header'>
         <h1 className='page-header-title my-8'>
-          <Link to={'/contests?' + contestsQuery}>
+          <Link to='/contests'>
             <span> # Contest-</span>
           </Link>
           {id}

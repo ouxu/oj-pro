@@ -13,9 +13,9 @@ import './index.less'
 const {Search} = Input
 
 const ProblemTable = ({problemsList, loading, dispatch, location}) => {
-  const {page, size, count, data = []} = problemsList
-  const {pathname, search} = location
-  const query = qs.parse(search)
+  const {count, data = []} = problemsList
+  const {pathname, query} = location
+  const {page, size} = query
   const pagination = {
     pageSize: +size || 50,
     current: +page || 1,

@@ -4,7 +4,7 @@ import { connect } from 'dva'
 import ErrorResult from './Error'
 import SuccessResult from './Success'
 
-@connect(({contest, contests}) => ({contest, contests}))
+@connect(({contest}) => ({contest}))
 class ContestDetail extends PureComponent {
   componentDidMount () {
     const {id} = this.props.match.params
@@ -12,7 +12,7 @@ class ContestDetail extends PureComponent {
   }
 
   render () {
-    const {contest, dispatch, contests} = this.props
+    const {contest, dispatch} = this.props
     const {id} = this.props.match.params
     const {error, errorMsg, errorCode} = contest
     return (

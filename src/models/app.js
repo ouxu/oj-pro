@@ -1,4 +1,8 @@
 import siderConfig from 'config/sider'
+import router from 'umi/router'
+
+const enQuery = ['/problems', '/contests']
+
 export default {
   namespace: 'root',
   state: {
@@ -6,12 +10,35 @@ export default {
       nobg: [],
       collapsed: true,
       sider: siderConfig
+    },
+    query: {}
+  },
+  subscriptions: {
+    querySubscriber ({dispatch, history}) {
+      return history.listen(({pathname, query}) => {
+        if (enQuery.includes(pathname)) {
+          dispatch({type: 'handleQuerys', payload: {pathname, query}})
+        }
+      })
     }
   },
-  subscriptions: {},
   effects: {
     * onCollapse ({payload: {type, collapsed}}, {put}) {
       yield put({type: 'updateLayout', payload: {collapsed}})
+    },
+    * handleQuerys ({payload}, {put, select}) {
+      const {pathname, query} = payload
+      if (JSON.stringify(query) !== '{}') {
+        yield put({type: 'updateQuerys', payload})
+      } else {
+        const {query: savedQuery} = yield select(({root}) => root)
+        if (savedQuery[pathname]) {
+          router.replace({
+            pathname,
+            query: savedQuery[pathname]
+          })
+        }
+      }
     }
   },
   reducers: {
@@ -23,6 +50,16 @@ export default {
       return {
         ...state,
         layout
+      }
+    },
+    updateQuerys (state, {payload}) {
+      const {pathname, query} = payload
+      return {
+        ...state,
+        query: {
+          ...state.query,
+          [pathname]: query
+        }
       }
     }
   }
