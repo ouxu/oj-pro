@@ -1,0 +1,41 @@
+@import "~antd/lib/style/themes/default.less";
+
+.ranklist {
+  .page-header {
+    background: #fff;
+    padding: 16px 32px 0;
+    &-title {
+      font-size: 24px;
+      line-height: 40px;
+      font-weight: 300;
+      &-sub {
+        font-weight: 400;
+        font-size: 90%;
+      }
+    }
+    &-description {
+      border-top: 1px dashed #e8e8e8;
+      border-bottom: 1px dashed #e8e8e8;
+      margin-top: 8px;
+      padding: 12px 0;
+    }
+  }
+  .page-header-extra {
+    .tabs {
+      margin-bottom: -17px;
+      .ant-tabs-bar {
+        background: #fff;
+        padding: 0 32px;
+        margin-bottom: 0;
+        border-bottom: @border-width-base @border-style-base @border-color-split;
+      }
+    }
+  }
+  .rank-tag {
+    min-width: 40px;
+    text-align: center;
+  }
+  .ranklist-content {
+    margin-top: 30px;
+  }
+}

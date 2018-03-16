@@ -61,12 +61,13 @@ class HeaderContent extends Component {
           <div className='user-login-warp' style={{marginLeft: 12}}>
             <ButtonGroup>
               <Button
+                className='user-login-btn'
                 type='primary' size='small'
                 onClick={() => dispatch({type: 'utils/showModal'})}
               >
                 登录
               </Button>
-              <Button type='primary' size='small' ghost> 注册</Button>
+              <Button className='user-login-btn' type='primary' size='small' ghost> 注册</Button>
             </ButtonGroup>
           </div>
         )}
