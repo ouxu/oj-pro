@@ -4,7 +4,7 @@
 
 import React from 'react'
 import { Button, Checkbox, Divider, Icon, Modal, Select, Tooltip } from 'antd'
-import Link from 'umi/link'
+import { Link } from 'dva/router'
 import AceEditor from 'react-ace'
 import 'brace/theme/tomorrow'
 import copy from 'copy-to-clipboard'

@@ -7,9 +7,20 @@ import { connect } from 'dva'
 import ProblemEditor from './ProblemEditor'
 import './index.less'
 import ProblemDetail from './ProblemDetail'
-import qs from 'query-string'
 
 class ProblemPage extends Component {
+  componentWillReceiveProps (nextProps) {
+    const {dispatch, match} = this.props
+    if (match.params.id !== nextProps.match.params.id) {
+      dispatch({
+        type: 'problem/init',
+        payload: {
+          id: nextProps.match.params.id,
+          query: location.query
+        }
+      })
+    }
+  }
   componentDidMount () {
     const {dispatch, match, location} = this.props
     dispatch({
@@ -19,19 +30,19 @@ class ProblemPage extends Component {
         query: location.query
       }
     })
-    const {solution = ''} = qs.parse(location.search)
+    const {solution = ''} = location.query
     if (solution) {
-      dispatch({type: 'problem/getStatus', payload: {result: solution}}).catch(e => {})
+      dispatch({type: 'problem/getStatus', payload: {result: solution}})
     }
   }
 
   render () {
-    const {problems, problem, match, dispatch, user, location} = this.props
+    const {problems, problem, match, dispatch, user, location, contest} = this.props
     const {detail, layout, editor, activeKey, solutionId} = problem
     const {problemsList} = problems
     const {params} = match
     const editorProps = {dispatch, params, user, location, ...editor}
-    const detailProps = {activeKey, dispatch, detail, solutionId, problemsList}
+    const detailProps = {activeKey, dispatch, location, detail, solutionId, problemsList, contest}
     return (
       <Row type='flex' className='problem-page'>
         <Col xs={24} sm={layout.left} className='left pl-10'>
@@ -48,4 +59,4 @@ class ProblemPage extends Component {
   }
 }
 
-export default connect(({user, problems, problem}) => ({user, problems, problem}))(ProblemPage)
+export default connect(({user, problems, problem, contest}) => ({user, problems, problem, contest}))(ProblemPage)

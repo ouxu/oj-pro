@@ -1,5 +1,6 @@
 import React, { PureComponent } from 'react'
 import { Avatar, Card, Icon, Input, List, Progress } from 'antd'
+import Ellipsis from 'components/plugins/Ellipsis'
 import message from 'utils/message'
 import qs from 'query-string'
 import { connect } from 'dva'
@@ -7,6 +8,7 @@ import windowScroll from 'utils/scrollToAnchor'
 import { routerRedux } from 'dva/router'
 import { newDate } from 'utils/dateAbout'
 import { color } from 'utils/theme'
+import './index.less'
 
 const Search = Input.Search
 
@@ -126,9 +128,7 @@ class Contests extends PureComponent {
         const startStatus = (this.state.presentTime < startTime)
         const endStatus = (this.state.presentTime > endTime)
         return (
-          <List.Item
-            // actions={[<a>编辑</a>]}
-          >
+          <List.Item>
             <List.Item.Meta
               avatar={(
                 <Avatar
@@ -137,14 +137,16 @@ class Contests extends PureComponent {
                   <span style={{lineHeight: '48px'}}>{privatestatus[item.private]}</span>
                 </Avatar>
               )}
-              title={<div className='hand' onClick={() => this.verifyPermission(item)}>{item.title}</div>}
-              description={(
-                <div>
-                  <span><Icon type='user' className='mr-5' />创建者：{item.creator_name}</span>
+              title={(
+                <div className='hand' onClick={() => this.verifyPermission(item)}>
+                  <Ellipsis lines={1}>{item.title}</Ellipsis>
                 </div>
               )}
+              description={(
+                <span><Icon type='user' className='mr-5' />创建者：{item.creator_name}</span>
+              )}
             />
-            <div style={{width: 210}}>
+            <div className='contests-item-process'>
               {startStatus && progress.unstart(start_time)}
               {(startStatus === false && endStatus === false) && progress.running(end_time, startTime, endTime)}
               {endStatus && progress.ended(end_time)}

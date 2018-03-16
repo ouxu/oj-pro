@@ -905,7 +905,7 @@ antd-mobile@^2.0.0:
     rmc-tooltip "~1.0.0"
     rn-topview "^0.1.6"
 
-antd@^3.0.0, antd@^3.2.2:
+antd@^3.0.0:
   version "3.2.2"
   resolved "http://registry.npm.taobao.org/antd/download/antd-3.2.2.tgz#522abfee52d3ba1194cf394e4b857f208c5c3c9a"
   dependencies:
@@ -950,6 +950,53 @@ antd@^3.0.0, antd@^3.2.2:
     rc-util "^4.0.4"
     react-lazy-load "^3.0.12"
     react-slick "~0.17.0"
+    shallowequal "^1.0.1"
+    warning "~3.0.0"
+
+antd@^3.3.0:
+  version "3.3.0"
+  resolved "http://registry.npm.taobao.org/antd/download/antd-3.3.0.tgz#a7d767e8f7c2f7689efa61113a1ac4dd8ce67f80"
+  dependencies:
+    array-tree-filter "^2.0.0"
+    babel-runtime "6.x"
+    classnames "~2.2.0"
+    create-react-class "^15.6.0"
+    css-animation "^1.2.5"
+    dom-closest "^0.2.0"
+    enquire.js "^2.1.1"
+    lodash "^4.17.5"
+    moment "^2.19.3"
+    omit.js "^1.0.0"
+    prop-types "^15.5.7"
+    rc-animate "^2.4.1"
+    rc-calendar "~9.6.0"
+    rc-cascader "~0.12.0"
+    rc-checkbox "~2.1.5"
+    rc-collapse "~1.8.0"
+    rc-dialog "~7.1.0"
+    rc-dropdown "~2.1.0"
+    rc-editor-mention "^1.0.2"
+    rc-form "^2.1.0"
+    rc-input-number "~4.0.0"
+    rc-menu "~6.2.0"
+    rc-notification "~3.0.0"
+    rc-pagination "~1.15.0"
+    rc-progress "~2.2.2"
+    rc-rate "~2.4.0"
+    rc-select "~7.7.0"
+    rc-slider "~8.6.0"
+    rc-steps "~3.1.0"
+    rc-switch "~1.6.0"
+    rc-table "~6.1.0"
+    rc-tabs "~9.2.0"
+    rc-time-picker "~3.3.0"
+    rc-tooltip "~3.7.0"
+    rc-tree "~1.7.11"
+    rc-tree-select "~1.12.0"
+    rc-upload "~2.4.0"
+    rc-util "^4.0.4"
+    react-lazy-load "^3.0.12"
+    react-slick "~0.20.0"
     shallowequal "^1.0.1"
     warning "~3.0.0"
 
@@ -7568,6 +7615,18 @@ rc-calendar@~9.5.0:
     rc-trigger "^2.2.0"
     rc-util "^4.1.1"
 
+rc-calendar@~9.6.0:
+  version "9.6.0"
+  resolved "http://registry.npm.taobao.org/rc-calendar/download/rc-calendar-9.6.0.tgz#666fbbbd4b5558e933e655a8033807bc6742b4b0"
+  dependencies:
+    babel-runtime "6.x"
+    classnames "2.x"
+    create-react-class "^15.5.2"
+    moment "2.x"
+    prop-types "^15.5.8"
+    rc-trigger "^2.2.0"
+    rc-util "^4.1.1"
+
 rc-cascader@~0.12.0:
   version "0.12.1"
   resolved "http://registry.npm.taobao.org/rc-cascader/download/rc-cascader-0.12.1.tgz#0148514a8dd747c2335527c172ea0cf44180f940"
@@ -7590,6 +7649,15 @@ rc-checkbox@~2.0.0:
 rc-checkbox@~2.1.1:
   version "2.1.1"
   resolved "http://registry.npm.taobao.org/rc-checkbox/download/rc-checkbox-2.1.1.tgz#7b2d3632285eaad9cad78612a6643d7d34589e72"
+  dependencies:
+    babel-runtime "^6.23.0"
+    classnames "2.x"
+    prop-types "15.x"
+    rc-util "^4.0.4"
+
+rc-checkbox@~2.1.5:
+  version "2.1.5"
+  resolved "http://registry.npm.taobao.org/rc-checkbox/download/rc-checkbox-2.1.5.tgz#411858448c0ee2a797ef8544dac63bcaeef722ef"
   dependencies:
     babel-runtime "^6.23.0"
     classnames "2.x"
@@ -7854,6 +7922,16 @@ rc-time-picker@~3.2.1:
     prop-types "^15.5.8"
     rc-trigger "^2.2.0"
 
+rc-time-picker@~3.3.0:
+  version "3.3.1"
+  resolved "http://registry.npm.taobao.org/rc-time-picker/download/rc-time-picker-3.3.1.tgz#94f8bbd51e6b93de1f01e78064aef1e6d765b367"
+  dependencies:
+    babel-runtime "6.x"
+    classnames "2.x"
+    moment "2.x"
+    prop-types "^15.5.8"
+    rc-trigger "^2.2.0"
+
 rc-tooltip@^3.4.2, rc-tooltip@^3.7.0, rc-tooltip@~3.7.0:
   version "3.7.0"
   resolved "http://registry.npm.taobao.org/rc-tooltip/download/rc-tooltip-3.7.0.tgz#3afbf109865f7cdcfe43752f3f3f501f7be37aaa"
@@ -7878,6 +7956,17 @@ rc-tree-select@~1.12.0:
 rc-tree@~1.7.0, rc-tree@~1.7.1:
   version "1.7.10"
   resolved "http://registry.npm.taobao.org/rc-tree/download/rc-tree-1.7.10.tgz#8d93d73fa3a91ebf6dde4ebaa98e750a9c8fe154"
+  dependencies:
+    babel-runtime "^6.23.0"
+    classnames "2.x"
+    prop-types "^15.5.8"
+    rc-animate "2.x"
+    rc-util "^4.0.4"
+    warning "^3.0.0"
+
+rc-tree@~1.7.11:
+  version "1.7.11"
+  resolved "http://registry.npm.taobao.org/rc-tree/download/rc-tree-1.7.11.tgz#349de6383fc7d22bf4c13b0751794111022adddf"
   dependencies:
     babel-runtime "^6.23.0"
     classnames "2.x"
@@ -8175,6 +8264,17 @@ react-slick@~0.17.0:
     json2mq "^0.2.0"
     object-assign "^4.1.0"
     opencollective "^1.0.3"
+
+react-slick@~0.20.0:
+  version "0.20.0"
+  resolved "http://registry.npm.taobao.org/react-slick/download/react-slick-0.20.0.tgz#43fcdba635eb31f0f88d871ff81fb17d309a2315"
+  dependencies:
+    can-use-dom "^0.1.0"
+    classnames "^2.2.5"
+    create-react-class "^15.5.2"
+    enquire.js "^2.1.6"
+    json2mq "^0.2.0"
+    object-assign "^4.1.0"
 
 react-smooth@1.0.0:
   version "1.0.0"
