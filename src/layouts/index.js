@@ -1,5 +1,5 @@
 import React from 'react'
-import { LocaleProvider, Spin } from 'antd'
+import { LocaleProvider } from 'antd'
 import zhCN from 'antd/lib/locale-provider/zh_CN'
 import Layout from './layout'
 

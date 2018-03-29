@@ -11,13 +11,18 @@ export default {
     key: '/contests',
     icon: 'smile',
     value: '竞赛&作业'
-  }, {
-    key: '/group',
-    icon: 'usergroup-add',
-    value: '用户组'
-  }, {
+  },
+  // {
+  //   key: '/group',
+  //   icon: 'usergroup-add',
+  //   value: '用户组'
+  // },
+  {
     key: '/ranklist',
     icon: 'area-chart',
     value: '排名'
+  }],
+  admin: [{
+
   }]
 }

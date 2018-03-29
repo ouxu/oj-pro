@@ -1,5 +1,6 @@
 # idea
 .idea/
+.vscode/
 
 # config
 pushConfig.js

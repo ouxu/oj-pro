@@ -31,7 +31,7 @@ class HeaderContent extends Component {
         {
           user.role === 'admin' && (
             <Menu.Item>
-              <a>进入后台</a>
+              <Link to='admin'>进入后台</Link>
             </Menu.Item>
           )
         }

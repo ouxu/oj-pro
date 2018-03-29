@@ -59,6 +59,9 @@ export default {
   ranklist: 'user/ranklist',
   test: 'test',
 
+  // Home
+  homeChart: 'status/statistics',
+
   // News
   news: 'news',
   createNews: 'news/create',

@@ -19,7 +19,7 @@ class Home extends PureComponent {
 
   render () {
     const {home, dispatch, utils} = this.props
-    const {hotProblems, news, chartDate} = home
+    const {hotProblems, news, chartData} = home
     const {loading} = utils
     const problemItemProps = {hotProblems, loading, dispatch}
     const cardBodyStyle = {padding: 0}
@@ -32,7 +32,7 @@ class Home extends PureComponent {
                 <HomeBanner />
               </div>
               <Card bodyStyle={cardBodyStyle} style={{marginBottom: 10}} key='home-chart'>
-                <HomeChart chartDate={chartDate} />
+                <HomeChart chartDate={chartData} />
               </Card>
               <Card bodyStyle={cardBodyStyle} key='problem-list' className='mb-10'>
                 <ProblemItem {...problemItemProps} />

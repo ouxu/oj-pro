@@ -6,14 +6,21 @@ import Media from 'react-media'
 import { connect } from 'dva'
 import withRouter from 'umi/withRouter'
 import { Layout } from 'antd'
+import QueueAnim from 'rc-queue-anim'
 import SiderContent from './Sider'
 import HeaderContent from './Header'
 import './index.less'
 
-const {Content, Sider} = Layout
-const LayoutContent = (props) => {
-  const {root, dispatch, location, user, utils} = props
-  const {layout} = root
+const { Content, Sider } = Layout
+
+function LayoutContent(props) {
+  const { root, dispatch, location, user, utils } = props
+
+  if (location.pathname.indexOf('admin') !== -1) {
+    return props.children
+  }
+
+  const { layout } = root
   const headerProps = {
     user, dispatch, location, utils
   }
@@ -22,14 +29,14 @@ const LayoutContent = (props) => {
     collapsed: layout.collapsed,
     width: 180,
     onCollapse: (collapsed, type) => {
-      dispatch({type: 'root/onCollapse', payload: {collapsed, type}})
+      dispatch({ type: 'root/onCollapse', payload: { collapsed, type } })
     },
     breakpoint: 'xs'
   }
   let layoutClass = 'layout-content' + (layout.collapsed ? ' collapsed' : '')
 
   return (
-    <Media query={{maxWidth: 575}}>
+    <Media query={{ maxWidth: 575 }}>
       {matches => {
         if (matches) {
           siderProps = {
@@ -38,7 +45,7 @@ const LayoutContent = (props) => {
             collapsedWidth: '0'
           }
         } else {
-          siderProps = {...siderProps}
+          siderProps = { ...siderProps }
         }
         return (
           <Layout className='layout'>
@@ -58,5 +65,5 @@ const LayoutContent = (props) => {
   )
 }
 
-const mapStateToProps = ({user, root, utils}) => ({root, user, utils})
+const mapStateToProps = ({ user, root, utils }) => ({ root, user, utils })
 export default withRouter(connect(mapStateToProps)(LayoutContent))

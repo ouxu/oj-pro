@@ -9,9 +9,16 @@ const getHotProblems = (data) => request({
   method: 'get',
   data
 })
+
 const getHomeNews = () => request({
   url: API.newsIndex,
   method: 'get'
 })
 
-export { getHotProblems, getHomeNews }
+const getChartData = (data = { days: 12 }) => request({
+  url: API.homeChart,
+  method: 'get',
+  data
+})
+
+export { getHotProblems, getHomeNews, getChartData }

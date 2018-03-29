@@ -22,7 +22,6 @@
     "react-markdown": "^3.1.3",
     "react-media": "^1.6.1",
     "recharts": "^1.0.0-beta.7",
-    "run-sequence": "^2.1.0",
     "scroll-into-view": "^1.9.1"
   },
   "devDependencies": {
@@ -37,15 +36,17 @@
     "eslint-plugin-standard": "^3.0.1",
     "prop-types": "^15.6.0",
     "qiniu-webpack-plugin": "^0.4.2",
-    "umi": "^1.0.6",
-    "umi-plugin-dva": "^0.3.0"
+    "umi": "^1.1.3",
+    "umi-plugin-dll": "^0.1.0",
+    "umi-plugin-dva": "^0.4.0"
   },
   "pre-commit": [
     "lint"
   ],
   "scripts": {
-    "start": "cross-env COMPILE_ON_DEMAND=none PORT=8089 ESLINT=none umi dev",
+    "start": "cross-env COMPILE_ON_DEMAND=none PORT=8000 ESLINT=none umi dev",
     "build": "cross-env ESLINT=none umi build",
+    "anal": "cross-env ANALYZE=1 ESLINT=none umi build",
     "lint": "eslint --fix --ext .js src"
   }
 }

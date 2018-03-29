@@ -2,6 +2,7 @@ const getRelPath = path => __dirname + path
 
 export default {
   'disableCSSModules': true,
+  'ignoreMomentLocale': true,
   "browserslist": [
     "> 1%",
     "last 2 versions",
@@ -18,7 +19,8 @@ export default {
     'images': getRelPath('/src/images'),
     'pages': getRelPath('/src/pages'),
     'utils': getRelPath('/src/utils'),
-    'services': getRelPath('/src/services')
+    'services': getRelPath('/src/services'),
+    'layouts': getRelPath('/src/layouts')
   },
   'env': {
     'production': {
