@@ -9,7 +9,7 @@ import windowScroll from 'utils/scrollToAnchor'
 const SubMenu = Menu.SubMenu
 
 const handleClick = (e) => {
-  router.push(`/admin/${e.key}`)
+  router.push(e.key)
   windowScroll('navigation')
 }
 
@@ -24,7 +24,7 @@ const AdminSider = props => (
     {
       props.user.role === 'admin' &&
       <SubMenu key='home' title={<span>主页管理</span>}>
-        <Menu.Item key='news'>通知管理</Menu.Item>
+        <Menu.Item key='/admin/news'>公告管理</Menu.Item>
       </SubMenu>
     }
     {/*<SubMenu key='group' title={<span>用户组管理</span>}>*/}
@@ -33,24 +33,24 @@ const AdminSider = props => (
       {/*<Menu.Item key='group-manage' disabled>用户组管理</Menu.Item>*/}
     {/*</SubMenu>*/}
     <SubMenu key='contest' title={<span>竞赛管理</span>}>
-      <Menu.Item key='contest-list'>竞赛列表</Menu.Item>
-      <Menu.Item key='contest-edit'>添加竞赛</Menu.Item>
+      <Menu.Item key='/admin/contest-list'>竞赛列表</Menu.Item>
+      <Menu.Item key='/admin/contest-edit'>添加竞赛</Menu.Item>
     </SubMenu>
     <SubMenu key='problem' title={<span>题目管理</span>}>
-      <Menu.Item key='problem-list'>题目列表</Menu.Item>
-      <Menu.Item key='problem-edit'>创建题目</Menu.Item>
-      <Menu.Item key='problem-tag'>标签管理</Menu.Item>
-      <Menu.Item key='problem-upload'>题目导入</Menu.Item>
+      <Menu.Item key='/admin/problem-list'>题目列表</Menu.Item>
+      <Menu.Item key='/admin/problem-edit'>创建题目</Menu.Item>
+      <Menu.Item key='/admin/problem-tag'>标签管理</Menu.Item>
+      <Menu.Item key='/admin/problem-upload'>题目导入</Menu.Item>
     </SubMenu>
     <SubMenu key='machine' title={<span>判题管理</span>}>
-      <Menu.Item key='machine-list'>机器列表</Menu.Item>
-      <Menu.Item key='machine-edit'>机器管理</Menu.Item>
+      <Menu.Item key='/admin/machine-list'>机器列表</Menu.Item>
+      <Menu.Item key='/admin/machine-edit'>机器管理</Menu.Item>
       {/*<Menu.Item key='machine-delete'>机器添加</Menu.Item>*/}
     </SubMenu>
     {
       props.user.role === 'admin' &&
       <SubMenu key='system' title={<span>系统管理</span>}>
-        <Menu.Item key='team-generator'>账号生成</Menu.Item>
+        <Menu.Item key='/admin/team-generator'>账号生成</Menu.Item>
       </SubMenu>
     }
   </Menu>

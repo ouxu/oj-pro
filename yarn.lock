@@ -982,7 +982,7 @@ antd-mobile@^2.0.0:
     rmc-tooltip "~1.0.0"
     rn-topview "^0.1.6"
 
-antd@^3.0.0, antd@^3.3.0:
+antd@^3.0.0, antd@^3.3.3:
   version "3.3.3"
   resolved "http://registry.npm.taobao.org/antd/download/antd-3.3.3.tgz#048a6550dffb355443d169226be05593c638e0cc"
   dependencies:
@@ -9638,6 +9638,12 @@ umi-plugin-dva@^0.4.0:
     dva-loading "^1.0.4"
     globby "^7.1.1"
     lodash.uniq "^4.5.0"
+
+umi-plugin-routes@^0.1.2:
+  version "0.1.2"
+  resolved "http://registry.npm.taobao.org/umi-plugin-routes/download/umi-plugin-routes-0.1.2.tgz#b9b45a0cac059d25dfc45339f8f5991b9657b55d"
+  dependencies:
+    is-plain-object "^2.0.4"
 
 umi-test@^0.5.2:
   version "0.5.2"

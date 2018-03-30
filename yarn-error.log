@@ -60,7 +60,7 @@ npm manifest:
       "lint"
     ],
     "scripts": {
-      "start": "cross-env COMPILE_ON_DEMAND=none PORT=8089 ESLINT=none umi dev",
+      "start": "cross-env COMPILE_ON_DEMAND=none PORT=8000 ESLINT=none umi dev",
       "build": "cross-env ESLINT=none umi build",
       "anal": "cross-env ANALYZE=1 ESLINT=none umi build",
       "lint": "eslint --fix --ext .js src"

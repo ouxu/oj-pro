@@ -7,20 +7,20 @@ import { List, Tag } from 'antd'
 import { colorArr } from 'utils/theme'
 import TitleCard from 'components/plugins/TitleCard'
 
-const StatusPanel = () => {
+const StatusPanel = ({submits}) => {
   const listItemStyle = {
     width: '100%'
   }
   const tableProps = {
     dataSource: [{
       label: '今日提交',
-      value: 123
+      value: submits.day
     }, {
       label: '本周提交',
-      value: 123
+      value: submits.week
     }, {
       label: '本月提交',
-      value: 123
+      value: submits.month
     }],
     size: 'small',
     renderItem (item, index) {

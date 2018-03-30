@@ -19,7 +19,7 @@ class Home extends PureComponent {
 
   render () {
     const {home, dispatch, utils} = this.props
-    const {hotProblems, news, chartData} = home
+    const { hotProblems, news, chartData, submits } = home
     const {loading} = utils
     const problemItemProps = {hotProblems, loading, dispatch}
     const cardBodyStyle = {padding: 0}
@@ -42,7 +42,7 @@ class Home extends PureComponent {
           <Col className='right-content' xs={{span: 24, order: 1}} sm={{span: 6, order: 3}}>
             <QueueAnim delay={200} type='bottom'>
               <div key='status-panel' className='status-panel'>
-                <StatusPanel />
+                <StatusPanel submits={submits} />
               </div>
               <div key='news-panel'>
                 <NewsPanel news={news} />

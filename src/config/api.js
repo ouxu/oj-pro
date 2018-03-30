@@ -64,6 +64,9 @@ export default {
 
   // News
   news: 'news',
+  newsDetail: 'news/:id',
+  editNews: 'news/:id/update',
+  delNews: 'news/:id/delete',
   createNews: 'news/create',
   newsIndex: 'news/index'
 }

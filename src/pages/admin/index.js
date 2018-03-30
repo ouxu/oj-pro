@@ -1,9 +1,4 @@
-import React, { Component } from 'react'
+import React from 'react'
+import Redirect from 'umi/redirect'
 
-export default class Admin extends Component {
-  render () {
-    return (
-      <div>admin</div>
-    )
-  }
-}
+export default () => <Redirect to='/admin/news' />

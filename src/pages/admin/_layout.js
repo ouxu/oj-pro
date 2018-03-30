@@ -7,7 +7,7 @@ import AdminSider from 'layouts/AdminSider'
 import './index.less'
 
 function AdminComponent (props) {
-  const { path = 'problem-list' } = props.route.routes[1]
+  const { path = '/admin/problem-list' } = props.route.routes[1]
   return (
     <QueueAnim id='admin' type={['left', 'right']} delay={100}>
       <Navigation />

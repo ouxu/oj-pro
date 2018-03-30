@@ -74,7 +74,7 @@ export default modelExtend(baseModel, loadingModel, {
     * getChartData ({ payload }, { put, call }) {
       const { statistics, submits } = yield call(getChartData)
       const chartData = Object.keys(statistics).map(key => ({
-        time: key.slice(5),
+        time: key.slice(5).replace('-', '/'),
         submit: statistics[key].submit,
         accept: statistics[key].solved
       }))
