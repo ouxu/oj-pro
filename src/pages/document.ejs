@@ -180,6 +180,10 @@
     </div>
   </div>
 </div>
-<script type="text/javascript" src="https://cdn.polyfill.io/v2/polyfill.min.js"></script>
+<% if (process.env.NODE_ENV === 'production') { %>
+    <script type="text/javascript" src="https://cdn.polyfill.io/v2/polyfill.min.js"></script>
+    <script src="https://js.fundebug.cn/fundebug.0.3.6.min.js" apikey="37f892106d4711831f0d3e28733fd2aa8d5e8f81b1d09bf40e7cabe4daf4b254"></script>
+    <script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<% } %>
 </body>
 </html>

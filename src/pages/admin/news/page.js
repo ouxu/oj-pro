@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Button, Form, Icon, Input, Modal, Radio, Tag, List, Avatar, Divider, Table } from 'antd'
+import { Button, Form, Icon, Input, Modal, Radio, Tag, List, Divider } from 'antd'
 import QueueAnim from 'rc-queue-anim'
 import { color } from 'utils/theme'
 import message from 'utils/message'

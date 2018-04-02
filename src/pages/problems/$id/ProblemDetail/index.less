@@ -17,10 +17,26 @@
         font-weight: 400;
         color: #575757;
       }
-      .content {
-        margin-top: 8px;
+      &-breadcrumb {
+        padding: 10px;
+        display: flex;
+        justify-content: space-between;
+        &-detail {
+          &-tags {
+            padding: 3px;
+          }
+          line-height: 20px;
+          span {
+            margin: 1px;
+            padding-left: 3px;
+            font-size: 12px;
+          }
+          &-tags:first-child {
+            padding-left: 0px;
+            margin-left: -4px;
+          }
+        }
       }
     }
-
   }
 }

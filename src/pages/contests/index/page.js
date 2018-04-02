@@ -74,7 +74,7 @@ class Contests extends PureComponent {
     }
     const privatestatus = [
       '公开',
-      '加密',
+      '密码',
       '私有'
     ]
     const colorArr = {

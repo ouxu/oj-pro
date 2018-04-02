@@ -5,11 +5,11 @@ export default {
     value: '首页'
   }, {
     key: '/problems',
-    icon: 'bars',
+    icon: 'book',
     value: '问题'
   }, {
     key: '/contests',
-    icon: 'smile',
+    icon: 'trophy',
     value: '竞赛&作业'
   },
   // {

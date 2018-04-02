@@ -4,12 +4,12 @@ import PropTypes from 'prop-types'
 import { color } from 'utils/theme'
 import { Area, AreaChart, CartesianGrid, Legend, ResponsiveContainer, Tooltip, XAxis, YAxis } from 'recharts'
 import './index.less'
-const HomeChart = ({chartDate}) => {
+const HomeChart = ({chartData}) => {
   return (
     <div className='sales'>
       <div className='title'><Icon type='clock-circle-o' /> 近期提交</div>
       <ResponsiveContainer minHeight={360}>
-        <AreaChart data={chartDate}>
+        <AreaChart data={chartData}>
           <Legend verticalAlign='top'
             content={prop => {
               const {payload} = prop
@@ -19,13 +19,13 @@ const HomeChart = ({chartDate}) => {
               </ul>)
             }}
           />
-          <XAxis dataKey='time' axisLine={{stroke: color.borderBase, strokeWidth: 1}} tickLine={false} />
+          <XAxis dataKey='date' axisLine={{stroke: color.borderBase, strokeWidth: 1}} tickLine={false} />
           <YAxis axisLine={false} tickLine={false} />
           <CartesianGrid vertical={false} stroke={color.borderBase} strokeDasharray='3 3' />
           <Tooltip />
           <Area type='monotone' dataKey='submit' stroke={color.yellow} fill={color.grass} strokeWidth={1}
             dot={{fill: '#fff'}} activeDot={{r: 5, fill: '#fff', stroke: color.green}} />
-          <Area type='monotone' dataKey='accept' stroke={color.sky} fill={color.sky} strokeWidth={1}
+          <Area type='monotone' dataKey='solved' stroke={color.sky} fill={color.sky} strokeWidth={1}
             dot={{fill: '#fff'}} activeDot={{r: 5, fill: '#fff', stroke: color.blue}} />
         </AreaChart>
       </ResponsiveContainer>

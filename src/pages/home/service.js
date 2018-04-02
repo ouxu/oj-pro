@@ -15,7 +15,7 @@ const getHomeNews = () => request({
   method: 'get'
 })
 
-const getChartData = (data = { days: 13 }) => request({
+const getChartData = (data = { days: 9 }) => request({
   url: API.homeChart,
   method: 'get',
   data

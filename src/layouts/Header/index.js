@@ -9,6 +9,7 @@ import message from 'utils/message'
 const ButtonGroup = Button.Group
 
 const {Header} = Layout
+const enAdmin = ['teacher', 'admin']
 
 class HeaderContent extends Component {
   onClickLogout = (e) => {
@@ -29,9 +30,9 @@ class HeaderContent extends Component {
     const menu = (
       <Menu style={{width: 90, float: 'right'}}>
         {
-          user.role === 'admin' && (
+          enAdmin.includes(user.role) && (
             <Menu.Item>
-              <Link to='admin'>进入后台</Link>
+              <Link to='/admin'>进入后台</Link>
             </Menu.Item>
           )
         }

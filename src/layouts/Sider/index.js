@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React from 'react'
 import { Link, routerRedux } from 'dva/router'
 import { Icon, Layout, Menu } from 'antd'
 import ACMLogo1 from 'images/acm_logo_short.png'

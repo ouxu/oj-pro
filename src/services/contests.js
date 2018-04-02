@@ -11,6 +11,13 @@ const getContests = (data) => request({
   data
 })
 
+const getMyContests = (data) => request({
+  url: API.contestsMine,
+  method: 'get',
+  token: true,
+  data
+})
+
 const searchContests = (data) => request({
   url: API.contestsSearch,
   method: 'get',
@@ -18,4 +25,4 @@ const searchContests = (data) => request({
   data
 })
 
-export { getContests, searchContests }
+export { getContests, searchContests, getMyContests }

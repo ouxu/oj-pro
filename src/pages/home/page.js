@@ -32,7 +32,7 @@ class Home extends PureComponent {
                 <HomeBanner />
               </div>
               <Card bodyStyle={cardBodyStyle} style={{marginBottom: 10}} key='home-chart'>
-                <HomeChart chartDate={chartData} />
+                <HomeChart chartData={chartData} />
               </Card>
               <Card bodyStyle={cardBodyStyle} key='problem-list' className='mb-10'>
                 <ProblemItem {...problemItemProps} />

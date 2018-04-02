@@ -27,11 +27,11 @@ const AdminSider = props => (
         <Menu.Item key='/admin/news'>公告管理</Menu.Item>
       </SubMenu>
     }
-    {/*<SubMenu key='group' title={<span>用户组管理</span>}>*/}
-      {/*<Menu.Item key='groups-list'>用户组列表 </Menu.Item>*/}
-      {/*<Menu.Item key='group-create'>创建用户组 </Menu.Item>*/}
-      {/*<Menu.Item key='group-manage' disabled>用户组管理</Menu.Item>*/}
-    {/*</SubMenu>*/}
+    {/* <SubMenu key='group' title={<span>用户组管理</span>}>
+      <Menu.Item key='groups-list'>用户组列表 </Menu.Item>
+      <Menu.Item key='group-create'>创建用户组 </Menu.Item>
+      <Menu.Item key='group-manage' disabled>用户组管理</Menu.Item>
+    </SubMenu> */}
     <SubMenu key='contest' title={<span>竞赛管理</span>}>
       <Menu.Item key='/admin/contest-list'>竞赛列表</Menu.Item>
       <Menu.Item key='/admin/contest-edit'>添加竞赛</Menu.Item>
@@ -45,7 +45,7 @@ const AdminSider = props => (
     <SubMenu key='machine' title={<span>判题管理</span>}>
       <Menu.Item key='/admin/machine-list'>机器列表</Menu.Item>
       <Menu.Item key='/admin/machine-edit'>机器管理</Menu.Item>
-      {/*<Menu.Item key='machine-delete'>机器添加</Menu.Item>*/}
+      {/* <Menu.Item key='machine-delete'>机器添加</Menu.Item> */}
     </SubMenu>
     {
       props.user.role === 'admin' &&
