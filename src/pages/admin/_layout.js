@@ -5,9 +5,17 @@ import Footer from 'layouts/Footer'
 import Navigation from 'layouts/Navigation/adminnav'
 import AdminSider from 'layouts/AdminSider'
 import './index.less'
+import Redirect from 'umi/redirect'
+
+const enRoles = ['admin', 'teacher']
 
 function AdminComponent (props) {
   const path = props.location.pathname || '/admin/problem-list'
+  if (!enRoles.includes(props.user.role)) {
+    return (
+      <Redirect to='/home' />
+    )
+  }
   return (
     <QueueAnim id='admin' type={['left', 'right']} delay={100}>
       <Navigation />

@@ -82,7 +82,7 @@ export default async options => {
   }
   const {data} = res
   if (data.code !== 0) {
-    window.fundebug.notifyError(data.code, options)
+    window.fundebug && window.fundebug.notifyError(data.code, options)
     throw new Error(data.code)
   }
   return data.data

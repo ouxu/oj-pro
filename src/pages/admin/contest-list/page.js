@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import QueueAnim from 'rc-queue-anim'
-import { Tag } from 'antd'
+import { Tag, Input } from 'antd'
 import { getContests, getMyContests } from 'services/contests'
 import { connect } from 'dva'
 
@@ -44,6 +44,7 @@ class ContestList extends Component {
           </div>
           <div>
             <Tag color='#108ee9'>添加</Tag>
+
           </div>
         </div>
       </QueueAnim>
