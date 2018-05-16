@@ -1,7 +1,6 @@
 import modelExtend from 'dva-model-extend'
 import { baseModel, loadingModel } from 'utils/modelExtend'
 import { getHomeNews, getHotProblems, getChartData } from './service'
-import sleep from 'utils/sleep'
 
 export default modelExtend(baseModel, loadingModel, {
   namespace: 'home',
@@ -48,22 +47,17 @@ export default modelExtend(baseModel, loadingModel, {
           size,
           keyword: 'A+B'
         }
-        try {
-          const { problems, total_count } = yield call(getHotProblems, query)
-          const hotProblems = {
-            data: [
-              ...data,
-              ...problems
-            ],
-            count: total_count,
-            page,
-            size
-          }
-          yield call(sleep, 1500)
-          yield put({ type: 'update', payload: { hotProblems } })
-        } catch (e) {
-          throw e
+        const { problems, total_count } = yield call(getHotProblems, query)
+        const hotProblems = {
+          data: [
+            ...data,
+            ...problems
+          ],
+          count: total_count,
+          page,
+          size
         }
+        yield put({ type: 'update', payload: { hotProblems } })
       }
     },
     * getHomeNews ({ payload }, { put, call, select }) {

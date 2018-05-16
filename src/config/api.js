@@ -51,7 +51,11 @@ export default {
   contestRankList: 'contest/:id/ranklist',
   contestSubmit: 'contest/:cid/problem/:pnum/submit',
   joinContest: 'contest/:id/join',
+
   createContest: 'contest/create',
+  contestAdmin: 'contest/:id/update',
+  delContest: 'contest/:id/delete',
+  updateContest: 'contest/:id/update/info',
 
   contestsMine: 'contests/mine',
 

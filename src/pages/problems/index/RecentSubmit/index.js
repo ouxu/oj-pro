@@ -7,7 +7,7 @@ import Link from 'umi/link'
 import TitleCard from 'components/plugins/TitleCard/index'
 import { recordingColumn } from 'config/tableConfig'
 
-const RecentSubmit = ({statusList}) => {
+const RecentSubmit = ({ statusList }) => {
   const tableProps = {
     dataSource: statusList,
     showHeader: false,
@@ -21,7 +21,7 @@ const RecentSubmit = ({statusList}) => {
     <TitleCard header={(
       <span className='flex-lol'>
         <span>近期提交</span>
-        <Link to='/status' className='white-text'>More</Link>
+        {statusList.length > 0 && (<Link to='/status' className='white-text'>More</Link>)}
       </span>
     )}>
       <Table {...tableProps} />

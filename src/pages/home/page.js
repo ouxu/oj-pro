@@ -4,7 +4,6 @@
 import React, { PureComponent } from 'react'
 import { connect } from 'dva'
 import { Card, Col, Row } from 'antd'
-import QueueAnim from 'rc-queue-anim'
 
 import ProblemItem from './ProblemItem'
 import HomeBanner from './HomeBanner'
@@ -27,7 +26,7 @@ class Home extends PureComponent {
       <div className='homepage m-16'>
         <Row gutter={12} type='flex'>
           <Col className='left-content' xs={{span: 24, order: 2}} sm={{span: 18}}>
-            <QueueAnim delay={100} interval={200}>
+            <div>
               <div key='home-banner'>
                 <HomeBanner />
               </div>
@@ -37,17 +36,17 @@ class Home extends PureComponent {
               <Card bodyStyle={cardBodyStyle} key='problem-list' className='mb-10'>
                 <ProblemItem {...problemItemProps} />
               </Card>
-            </QueueAnim>
+            </div>
           </Col>
           <Col className='right-content' xs={{span: 24, order: 1}} sm={{span: 6, order: 3}}>
-            <QueueAnim delay={200} type='bottom'>
+            <div>
               <div key='status-panel' className='status-panel'>
                 <StatusPanel submits={submits} />
               </div>
               <div key='news-panel'>
                 <NewsPanel news={news} />
               </div>
-            </QueueAnim>
+            </div>
           </Col>
         </Row>
       </div>

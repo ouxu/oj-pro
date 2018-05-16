@@ -2,7 +2,6 @@
  * Created by out_xu on 17/8/20.
  */
 import React from 'react'
-import QueueAnim from 'rc-queue-anim'
 import { routerRedux } from 'dva/router'
 import { Button, Icon, Input, Table } from 'antd'
 import { problemsColumn } from 'config/tableConfig'
@@ -47,7 +46,7 @@ const ProblemTable = ({problemsList, loading, dispatch, location}) => {
     dispatch(routerRedux.push(pathname + '?' + qs.stringify({keyword: value})))
   }
   return (
-    <QueueAnim className='problems-item' delay={100}>
+    <div className='problems-item'>
       <div className='p-8 flex-lol border-bottom' key='header'>
         <Search
           defaultValue={query.keyword}
@@ -63,7 +62,7 @@ const ProblemTable = ({problemsList, loading, dispatch, location}) => {
       <div className='table' key='table'>
         <Table {...tableProps} />
       </div>
-    </QueueAnim>
+    </div>
   )
 }
 

@@ -107,10 +107,6 @@ caption, td, th {
     vertical-align: top
 }
 
-input, select {
-    vertical-align: middle
-}
-
 input[type=checkbox] {
     vertical-align: bottom
 }

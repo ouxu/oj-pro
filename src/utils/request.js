@@ -1,4 +1,5 @@
 import axios from 'axios'
+import AppConfig from 'config/app'
 
 const getToken = () => {
   const {token: ojToken = ''} = {
@@ -16,8 +17,8 @@ const fetch = options => {
   } = options
 
   let config = {
-    timeout: 30000,
-    baseURL: 'http://140.143.222.61:8088/'
+    timeout: AppConfig.requestTime,
+    baseURL: AppConfig.requestBaseURL
   }
 
   if (token) {

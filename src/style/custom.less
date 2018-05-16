@@ -1,9 +1,20 @@
 // 滚动条样式
 ::-webkit-scrollbar {
-  width: 8px;
-  height: 8px;
+  width: 0px;
+  height: 4px;
+  background-color: #f0f2f5;
 }
 
 ::-webkit-scrollbar-thumb {
   background-color: rgba(0, 0, 0, 0.2);
+}
+
+.fade-enter {
+  opacity: 0;
+  z-index: 1;
+}
+
+.fade-enter.fade-enter-active {
+  opacity: 1;
+  transition: opacity 250ms ease-in;
 }

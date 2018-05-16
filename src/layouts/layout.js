@@ -13,7 +13,7 @@ import './index.less'
 
 const { Content, Sider } = Layout
 
-function LayoutContent(props) {
+function LayoutContent (props) {
   const { root, dispatch, location, user, utils } = props
 
   if (location.pathname.indexOf('admin') !== -1) {
@@ -21,9 +21,7 @@ function LayoutContent(props) {
   }
 
   const { layout } = root
-  const headerProps = {
-    user, dispatch, location, utils
-  }
+  const headerProps = {user, dispatch, location, utils}
   let siderProps = {
     collapsible: true,
     collapsed: layout.collapsed,
@@ -48,15 +46,17 @@ function LayoutContent(props) {
           siderProps = { ...siderProps }
         }
         return (
-          <Layout className='layout'>
+          <Layout className='layout' key={location.key}>
             <Sider {...siderProps} className='sider'>
               <SiderContent sider={root.layout.sider} dispatch={dispatch} location={location} />
             </Sider>
             <Layout className={layoutClass} key={user.token}>
               <HeaderContent {...headerProps} />
-              <Content>
-                {props.children}
-              </Content>
+              <QueueAnim type='bottom'>
+                <Content key={location.key}>
+                  {props.children}
+                </Content>
+              </QueueAnim>
             </Layout>
           </Layout>
         )

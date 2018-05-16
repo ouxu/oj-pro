@@ -160,8 +160,8 @@ class Contests extends PureComponent {
         bordered={false}
         className='m-16 contests'
       >
-        <div className='contests-header clearfix'>
-          <h3 className='text-bold text-large d-inline-block'>竞赛&作业列表</h3>
+        <div className='contests-header flex-lol'>
+          <span className='h-1'>竞赛&作业列表</span>
           <Search
             enterButton
             placeholder='竞赛名称'

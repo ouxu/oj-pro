@@ -4,7 +4,6 @@
 import React, { PureComponent } from 'react'
 import { connect } from 'dva'
 import { Card, Col, Row } from 'antd'
-import QueueAnim from 'rc-queue-anim'
 import UserStatus from './UserStatus'
 import ProblemTable from './ProblemTable'
 import RecentSubmit from './RecentSubmit'
@@ -37,21 +36,21 @@ class ProblemsList extends PureComponent {
       <div className='m-16'>
         <Row gutter={12} type='flex' className='problems'>
           <Col className='left-content' xs={{span: 24, order: 1}} sm={{span: 18}}>
-            <QueueAnim delay={100} interval={200} className='keep-away'>
+            <div className='keep-away'>
               <Card bodyStyle={cardBodyStyle} key='home-chart'>
                 <ProblemTable {...problemItemProps} />
               </Card>
-            </QueueAnim>
+            </div>
           </Col>
           <Col className='right-content' xs={{span: 24, order: 2}} sm={{span: 6}}>
-            <QueueAnim delay={200} type='bottom'>
+            <div delay={200} type='bottom'>
               <div key='user-status' className='user-status'>
                 <UserStatus />
               </div>
               <div key='recent-submit'>
                 <RecentSubmit statusList={statusList} />
               </div>
-            </QueueAnim>
+            </div>
           </Col>
         </Row>
       </div>

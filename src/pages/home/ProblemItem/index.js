@@ -4,7 +4,6 @@
 import React from 'react'
 import { Button, Icon, Table } from 'antd'
 import './index.less'
-import QueueAnim from 'rc-queue-anim'
 import { problemsColumn } from 'config/tableConfig'
 import { routerRedux } from 'dva/router'
 import { randomNumBoth } from 'utils/numberAbout'
@@ -35,7 +34,7 @@ const ProblemItem = ({hotProblems, loading, dispatch}) => {
   }
 
   return (
-    <QueueAnim className='home-problem-item' delay={100}>
+    <div className='home-problem-item'>
       <div className='p-8 flex-lol border-bottom' key='header'>
         <span>
           🔥 热门题目
@@ -47,7 +46,7 @@ const ProblemItem = ({hotProblems, loading, dispatch}) => {
       <div className='table' key='table'>
         <Table {...tableProps} />
       </div>
-    </QueueAnim>
+    </div>
   )
 }
 
