@@ -162,15 +162,17 @@ class Contests extends PureComponent {
       >
         <div className='contests-header flex-lol'>
           <span className='h-1'>竞赛&作业列表</span>
-          <Search
-            enterButton
-            placeholder='竞赛名称'
-            style={{width: 200}}
-            className='float-right mr-10'
-            onSearch={(value) => {
-              dispatch(routerRedux.push(pathname + '?' + qs.stringify({...query, keyword: value})))
-            }}
-          />
+          <div>
+            <Search
+              enterButton
+              placeholder='竞赛名称'
+              style={{width: 200}}
+              className='mr-10'
+              onSearch={(value) => {
+                dispatch(routerRedux.push(pathname + '?' + qs.stringify({...query, keyword: value})))
+              }}
+            />
+          </div>
         </div>
         <List {...listProps} />
       </Card>

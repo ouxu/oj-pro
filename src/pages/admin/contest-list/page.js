@@ -44,7 +44,7 @@ class ContestList extends Component {
     }
     this.setState({
       count: res.total_count,
-      data: res.contests
+      data: res.contests ? res.contests : []
     })
   }
 
@@ -62,7 +62,7 @@ class ContestList extends Component {
   }
 
   render () {
-    const { data, count } = this.state
+    const { data = [], count } = this.state
     const { query, pathname } = this.props.location
 
     const { page, size } = query
@@ -99,7 +99,11 @@ class ContestList extends Component {
         <div className='mb-16 flex-lol' key='header'>
           <span className='h-1'>竞赛列表</span>
           <span>
-            <Button type='primary' className='mr-8' onClick={this.createContest}>
+            <Button
+              type='primary'
+              className='mr-8'
+              onClick={this.createContest}
+            >
               新建
             </Button>
             <Input.Search

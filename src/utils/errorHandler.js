@@ -2,7 +2,6 @@ import codeHelper from './codeHelper'
 import message from 'utils/message'
 
 export default (error, dispatch) => {
-  error.preventDefault()
   if (error.message >= 400) {
     switch (+error.message) {
       case 1004:
@@ -11,9 +10,6 @@ export default (error, dispatch) => {
       case 1013:
         dispatch({type: 'user/logout'})
         break
-      case 6001:
-        window.history.go(-1)
-        break
       default:
         break
     }
@@ -21,4 +17,5 @@ export default (error, dispatch) => {
   } else {
     console.error('top:->', error)
   }
+  error.preventDefault()
 }

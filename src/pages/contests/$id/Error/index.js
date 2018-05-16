@@ -29,7 +29,7 @@ class ErrorResult extends Component {
     Modal.confirm({
       title: '此竞赛私有，需要校验密码进入',
       content: (
-        <Input size='small' type='password' style={{width: 200}} onBlur={(e) => {
+        <Input type='password' onBlur={(e) => {
           this.setState({password: e.target.value})
         }} />
       ),

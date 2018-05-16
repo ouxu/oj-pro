@@ -56,6 +56,7 @@ export default {
   contestAdmin: 'contest/:id/update',
   delContest: 'contest/:id/delete',
   updateContest: 'contest/:id/update/info',
+  updateContestProblems: 'contest/:id/update/problem',
 
   contestsMine: 'contests/mine',
 

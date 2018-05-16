@@ -1,7 +1,7 @@
 import siderConfig from 'config/sider'
 import router from 'umi/router'
 
-const enQuery = ['/problems', '/contests']
+const enQuery = ['/problems', '/contests', '/admin/contest-list']
 
 export default {
   namespace: 'root',
