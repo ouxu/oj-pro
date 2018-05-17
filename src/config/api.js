@@ -23,10 +23,12 @@ export default {
   problems: 'problems',
   problem: 'problem/:id',
   problemSubmit: 'problem/:id/submit',
+  deleteProblem: 'problem/:id/delete',
   problemsSearch: 'problems/search',
   problemsMine: 'problems/mine',
   problemsImport: 'problems/import',
   queryResult: 'judge/:id/result',
+
   // Tags
   tag: 'tag/',
   tagCreate: 'tag/createTag',

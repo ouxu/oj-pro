@@ -1,11 +1,12 @@
 import React, { Component } from 'react'
 import router from 'umi/router'
 import QueueAnim from 'rc-queue-anim'
+import Link from 'umi/link'
 import { Tag, List, Divider, Input, Avatar, Button } from 'antd'
 import { getContests, getMyContests } from 'services/contests'
 import { connect } from 'dva'
 import { color } from 'utils/theme'
-
+import scrollToAnchor from 'utils/scrollToAnchor'
 const privateStatus = ['公开', '密码', '私有']
 const colorArr = {
   0: color.green,
@@ -46,6 +47,7 @@ class ContestList extends Component {
       count: res.total_count,
       data: res.contests ? res.contests : []
     })
+    scrollToAnchor('navigation')
   }
 
   editContest = record => {
@@ -136,7 +138,9 @@ class ContestList extends Component {
                 <List.Item.Meta
                   title={
                     <span>
-                      <Tag color='#2db7f5'>{item.id}</Tag>
+                      <Tag color='#2db7f5'>
+                        <Link target='_black' to={`/contests/${item.id}`}>{item.id}</Link>
+                      </Tag>
                       {item.title}
                     </span>
                   }

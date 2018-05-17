@@ -127,7 +127,6 @@ export default class ContestEdit extends Component {
               }
             } catch (e) {
               errorHandler(e)
-              console.log(1)
               return Promise.reject
             }
             message.success('操作成功')
@@ -186,7 +185,7 @@ export default class ContestEdit extends Component {
           {isEdit ? (
             <span>
               编辑竞赛 —
-              <Link to={`/contests/${contestInfo.id}`}> {contestInfo.id}</Link>
+              <Link target='_black' to={`/contests/${contestInfo.id}`}> {contestInfo.id}</Link>
             </span>
           ) : (
             '创建竞赛'
