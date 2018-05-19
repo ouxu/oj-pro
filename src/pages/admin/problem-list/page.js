@@ -72,7 +72,7 @@ export default class ProblemList extends Component {
 
   createContest = () => {
     router.push({
-      pathname: '/admin/problem-edit',
+      pathname: '/admin/contest-edit',
       query: {
         withProblem: true
       }

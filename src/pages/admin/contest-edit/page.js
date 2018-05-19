@@ -7,7 +7,7 @@ import verify from 'utils/regexp'
 import { newDate } from 'utils/dateAbout'
 import message from 'utils/message'
 import errorHandler from 'utils/errorHandler'
-
+import { connect } from 'dva'
 import './index.less'
 
 import {
@@ -51,6 +51,7 @@ const langMap = [
 ]
 
 @Form.create()
+@connect(({ admin }) => ({ admin }))
 export default class ContestEdit extends Component {
   constructor (props) {
     super(props)
@@ -165,10 +166,14 @@ export default class ContestEdit extends Component {
     const { isEdit, contestInfo = {}, problemsInfo = [], userIds } = this.state
     const { getFieldDecorator } = this.props.form
     const { query = {} } = this.props.location
-    const cid = query.id
+    const { withProblem, id: cid } = query
+    const { selectProblems = [] } = this.props.admin
     let progress = NaN
-    const problems = problemsInfo.map(e => e.problem_id)
+    let problems = problemsInfo.map(e => e.problem_id)
 
+    if (withProblem) {
+      problems = [...problems, ...selectProblems]
+    }
     const start = newDate(contestInfo.start_time)
     const end = newDate(contestInfo.end_time)
     const time = new Date()
@@ -185,7 +190,10 @@ export default class ContestEdit extends Component {
           {isEdit ? (
             <span>
               编辑竞赛 —
-              <Link target='_black' to={`/contests/${contestInfo.id}`}> {contestInfo.id}</Link>
+              <Link target='_black' to={`/contests/${contestInfo.id}`}>
+                {' '}
+                {contestInfo.id}
+              </Link>
             </span>
           ) : (
             '创建竞赛'
