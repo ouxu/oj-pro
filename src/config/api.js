@@ -22,8 +22,10 @@ export default {
   // Problems
   problems: 'problems',
   problem: 'problem/:id',
+  createProblem: 'problem/create',
   problemSubmit: 'problem/:id/submit',
   deleteProblem: 'problem/:id/delete',
+  updateProblem: 'problem/:id/update',
   problemsSearch: 'problems/search',
   problemsMine: 'problems/mine',
   problemsImport: 'problems/import',
@@ -68,7 +70,6 @@ export default {
 
   // Home
   homeChart: 'status/statistics',
-
   // News
   news: 'news',
   newsDetail: 'news/:id',

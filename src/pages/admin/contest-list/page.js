@@ -139,7 +139,9 @@ class ContestList extends Component {
                   title={
                     <span>
                       <Tag color='#2db7f5'>
-                        <Link target='_black' to={`/contests/${item.id}`}>{item.id}</Link>
+                        <Link target='_black' to={`/contests/${item.id}`}>
+                          {item.id}
+                        </Link>
                       </Tag>
                       {item.title}
                     </span>

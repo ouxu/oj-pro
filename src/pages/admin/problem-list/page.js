@@ -4,6 +4,8 @@ import { connect } from 'dva'
 import Link from 'umi/link'
 import router from 'umi/router'
 import scrollToAnchor from 'utils/scrollToAnchor'
+import errorHandler from 'utils/errorHandler'
+import message from 'utils/message'
 import { delProblem } from '../problem-edit/service'
 import { getProblems, searchProblems } from 'services/problems'
 
@@ -54,7 +56,7 @@ export default class ProblemList extends Component {
 
   delProblem = record => {
     confirm({
-      title: `是否决定要删除-${record.id}?删除后无法恢复！`,
+      title: `是否决定要删除题目-${record.id}?删除后无法恢复！`,
       content: (
         <Input
           type='password'
@@ -63,9 +65,14 @@ export default class ProblemList extends Component {
         />
       ),
       onOk: async () => {
-        delProblem(record.id, {
-          password: this.state.password
-        })
+        try {
+          await delProblem(record.id, { password: this.state.password })
+        } catch (e) {
+          errorHandler(e)
+          return Promise.reject
+        }
+        this.fetchData()
+        message.success('删除成功')
       }
     })
   }
@@ -112,7 +119,7 @@ export default class ProblemList extends Component {
       },
       {
         title: '删除',
-        render: () => <a onClick={this.delProblem}>删除</a>,
+        render: record => <a onClick={() => this.delProblem(record)}>删除</a>,
         width: 60,
         key: 'problem-manage-del'
       }

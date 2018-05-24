@@ -8,7 +8,6 @@ import { newDate } from 'utils/dateAbout'
 import message from 'utils/message'
 import errorHandler from 'utils/errorHandler'
 import { connect } from 'dva'
-import './index.less'
 
 import {
   getContest,
@@ -131,6 +130,7 @@ export default class ContestEdit extends Component {
               return Promise.reject
             }
             message.success('操作成功')
+            router.push('/admin/contest-list')
           }
         })
       }
@@ -139,7 +139,7 @@ export default class ContestEdit extends Component {
 
   onConfirmDel = () => {
     confirm({
-      title: '是否决定要删除?',
+      title: '是否决定要删除?删除后无法恢复！',
       content: (
         <Input
           type='password'
@@ -199,7 +199,7 @@ export default class ContestEdit extends Component {
             '创建竞赛'
           )}
         </div>
-        <div className='form-content'>
+        <div className='form-content' style={{ maxWidth: 680 }}>
           <FormItem label='标题'>
             {getFieldDecorator('title', {
               rules: [{ required: true, message: '请输入标题' }],
@@ -337,12 +337,12 @@ export default class ContestEdit extends Component {
                 修改竞赛
               </Button>
             ) : (
-              <Button type='primary' size='large' onClick={this.handleSubmit}>
+              <Button type='primary' onClick={this.handleSubmit}>
                 添加竞赛
               </Button>
             )}
             {cid && (
-              <Button type='danger' size='large' onClick={this.onConfirmDel}>
+              <Button type='danger' onClick={this.onConfirmDel}>
                 删除竞赛
               </Button>
             )}
