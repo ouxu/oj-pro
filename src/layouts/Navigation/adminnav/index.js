@@ -11,7 +11,7 @@ import '../index.less'
 
 function AdminNavigation () {
   return (
-    <div id='navigation' key='navigation'>
+    <div id='navigation' className='admin-navigation' key='navigation'>
       <nav role='navigation'>
         <Link className='navigation-left' to='/'>
           <img src={ACMLogo1} className='return-logo' />

@@ -9,11 +9,14 @@
   .admin {
     &-wrap {
       display: flex;
-      padding: 20px 0;
+      padding: 10px 0;
       width: 100%;
       max-width: 1280px;
-      margin: 0 auto 58px auto;
+      margin: 1px auto 58px auto;
       background-color: #fff;
+      @media screen and (min-width: 1280px) {
+        margin: 16px auto 58px auto;
+      }
     }
     &-sider {
       height: 100%;

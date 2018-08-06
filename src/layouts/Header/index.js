@@ -39,7 +39,6 @@ class HeaderContent extends Component {
         <Menu.Item>
           <a onClick={this.onClickLogout}> 退出登录 </a>
         </Menu.Item>
-        <Menu.Divider />
       </Menu>
     )
     return (
