@@ -39,7 +39,7 @@ const AdminSider = props => (
     <SubMenu key='problem' title={<span>题目管理</span>}>
       <Menu.Item key='/admin/problem-list'>题目列表</Menu.Item>
       <Menu.Item key='/admin/problem-edit'>创建题目</Menu.Item>
-      <Menu.Item key='/admin/problem-tag'>标签管理</Menu.Item>
+      <Menu.Item key='/admin/problem-data'>题目数据</Menu.Item>
       <Menu.Item key='/admin/problem-upload'>题目导入</Menu.Item>
     </SubMenu>
     <SubMenu key='machine' title={<span>判题管理</span>}>
