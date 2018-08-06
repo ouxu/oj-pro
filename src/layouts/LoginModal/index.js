@@ -3,7 +3,7 @@
  */
 import React from 'react'
 import { Button, Form, Icon, Input, Modal } from 'antd'
-import Link from 'umi/link'
+import router from 'umi/router'
 import verify from 'utils/regexp'
 import './index.less'
 
@@ -22,6 +22,10 @@ const LoginModal = ({form, user, dispatch, location, utils}) => {
         dispatch({type: 'user/login', payload: {values, location}})
       }
     })
+  }
+  const handleLink = (link) => {
+    dispatch({type: 'utils/hideModal'})
+    router.push(link)
   }
   const {getFieldDecorator} = form
   return (
@@ -57,12 +61,12 @@ const LoginModal = ({form, user, dispatch, location, utils}) => {
         </Form.Item>
 
         <Button onClick={handleSubmit} type='primary' id='login-btn' loading={utils.loading}>登录</Button>
-        <Link to='/user/register'>
+        <a onClick={() => handleLink('/user/register')}>
           <span>注册账号</span>
-        </Link>
-        <Link to='/user/forget'>
+        </a>
+        <a onClick={() => handleLink('/user/forget')}>
           <span className='login-form-forgot'>忘记密码</span>
-        </Link>
+        </a>
       </Form>
     </Modal>
   )

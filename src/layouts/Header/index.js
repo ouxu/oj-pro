@@ -68,7 +68,9 @@ class HeaderContent extends Component {
               >
                 登录
               </Button>
-              <Button className='user-login-btn' type='primary' size='small' ghost> 注册</Button>
+              <Button className='user-login-btn' type='primary' size='small' ghost>
+                <Link to='/user/register'>注册</Link>
+              </Button>
             </ButtonGroup>
           </div>
         )}
