@@ -34,6 +34,7 @@
     "eslint-plugin-promise": "^3.7.0",
     "eslint-plugin-react": "^7.7.0",
     "eslint-plugin-standard": "^3.0.1",
+    "fjpublish": "^2.0.1",
     "prop-types": "^15.6.0",
     "qiniu-webpack-plugin": "^0.4.2",
     "umi": "^1.1.4",
@@ -47,6 +48,7 @@
   "scripts": {
     "start": "cross-env COMPILE_ON_DEMAND=none PORT=8000 ESLINT=none umi dev",
     "build": "cross-env ESLINT=none umi build",
+    "pub": "fjpublish env prod -y",
     "anal": "cross-env ANALYZE=1 ESLINT=none umi build",
     "lint": "eslint --fix --ext .js src"
   }
