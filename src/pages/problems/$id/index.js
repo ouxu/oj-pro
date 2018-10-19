@@ -4,9 +4,9 @@
 import React, { Component } from 'react'
 import { Col, Icon, Row } from 'antd'
 import { connect } from 'dva'
-import ProblemEditor from './ProblemEditor'
+import ProblemEditor from './components/ProblemEditor'
 import './index.less'
-import ProblemDetail from './ProblemDetail'
+import ProblemDetail from './components/ProblemDetail'
 
 class ProblemPage extends Component {
   componentWillReceiveProps (nextProps) {

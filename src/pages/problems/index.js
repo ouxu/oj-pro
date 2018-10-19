@@ -4,9 +4,9 @@
 import React, { PureComponent } from 'react'
 import { connect } from 'dva'
 import { Card, Col, Row } from 'antd'
-import UserStatus from './UserStatus'
-import ProblemTable from './ProblemTable'
-import RecentSubmit from './RecentSubmit'
+import UserStatus from './components/UserStatus'
+import ProblemTable from './components/ProblemTable'
+import RecentSubmit from './components/RecentSubmit'
 import './index.less'
 import windowScroll from 'utils/scrollToAnchor'
 

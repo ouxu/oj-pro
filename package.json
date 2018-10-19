@@ -1,4 +1,23 @@
 {
+  "name": "OJPRO",
+  "version": "1.0.0",
+  "description": "neuq oj base on umijs",
+  "private": false,
+  "author": {
+    "name": "out_xu",
+    "email": "out_xu@outlook.com"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:ouxu/OJPRO.git"
+  },
+  "scripts": {
+    "start": "umi dev",
+    "build": "umi build",
+    "pub": "fjpublish env prod -y",
+    "anal": "cross-env ANALYZE=1 umi build",
+    "lint": "eslint --fix --ext .js src"
+  },
   "dependencies": {
     "antd": "^3.5.2",
     "axios": "^0.18.0",
@@ -37,19 +56,7 @@
     "fjpublish": "^2.0.1",
     "prop-types": "^15.6.0",
     "qiniu-webpack-plugin": "^0.4.2",
-    "umi": "^1.3.17",
-    "umi-plugin-dll": "^0.2.1",
-    "umi-plugin-dva": "^0.9.1",
-    "umi-plugin-routes": "^0.1.5"
-  },
-  "pre-commit": [
-    "lint"
-  ],
-  "scripts": {
-    "start": "cross-env COMPILE_ON_DEMAND=none PORT=8000 ESLINT=none umi dev",
-    "build": "cross-env ESLINT=none umi build",
-    "pub": "fjpublish env prod -y",
-    "anal": "cross-env ANALYZE=1 ESLINT=none umi build",
-    "lint": "eslint --fix --ext .js src"
+    "umi": "^2.1.2",
+    "umi-plugin-react": "^1.1.1"
   }
 }

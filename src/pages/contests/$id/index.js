@@ -1,8 +1,8 @@
 import React, { PureComponent } from 'react'
 import { connect } from 'dva'
 
-import ErrorResult from './Error'
-import SuccessResult from './Success'
+import ErrorResult from './components/Error'
+import SuccessResult from './components/Success'
 
 @connect(({contest}) => ({contest}))
 class ContestDetail extends PureComponent {

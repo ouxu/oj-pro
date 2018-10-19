@@ -8,7 +8,7 @@ import colorEncode from 'utils/colorEncode'
 import { generateWord } from 'utils/numberAbout'
 import { newDate, sec2Str } from 'utils/dateAbout'
 import Fullscreenable from 'react-fullscreenable'
-import { getRank } from '../../service'
+import { getRank } from '../../../service'
 import './index.less'
 
 class RankList extends Component {

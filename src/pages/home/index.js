@@ -1,15 +1,15 @@
 /**
- * Created by out_xu on 17/8/10.
+ * title: Home Page
  */
 import React, { PureComponent } from 'react'
 import { connect } from 'dva'
 import { Card, Col, Row } from 'antd'
 
-import ProblemItem from './ProblemItem'
-import HomeBanner from './HomeBanner'
-import NewsPanel from './NewsPanel'
-import StatusPanel from './StatusPanel'
-import HomeChart from './HomeChart'
+import ProblemItem from './components/ProblemItem'
+import HomeBanner from './components/HomeBanner'
+import NewsPanel from './components/NewsPanel'
+import StatusPanel from './components/StatusPanel'
+import HomeChart from './components/HomeChart'
 
 class Home extends PureComponent {
   componentDidMount () {
