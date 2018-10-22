@@ -13,9 +13,9 @@
   },
   "scripts": {
     "start": "umi dev",
-    "build": "umi build",
+    "build": "cross-env UMI_ENV=prod umi build",
     "pub": "fjpublish env prod -y",
-    "anal": "cross-env ANALYZE=1 umi build",
+    "anal": "cross-env UMI_ENV=prod ANALYZE=1 umi build",
     "lint": "eslint --fix --ext .js src"
   },
   "dependencies": {

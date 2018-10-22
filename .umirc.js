@@ -1,5 +1,4 @@
 const getRelPath = path => __dirname + path
-const QiniuPlugin = require('qiniu-webpack-plugin')
 
 export default {
   plugins: [
@@ -24,8 +23,6 @@ export default {
   ],
   disableCSSModules: true,
   ignoreMomentLocale: true,
-  browserslist: ['> 1%', 'last 2 versions', 'iOS >= 8'],
-  targets: { ie: 10 },
   alias: {
     components: getRelPath('/src/components'),
     config: getRelPath('/src/config'),
@@ -34,13 +31,5 @@ export default {
     utils: getRelPath('/src/utils'),
     services: getRelPath('/src/services'),
     layouts: getRelPath('/src/layouts')
-  },
-  env: {
-    production: {
-      publicPath: 'http://p0y3d4gdq.bkt.clouddn.com/new/'
-    },
-    chainWebpack (config, { webpack }) {
-      config.plugin('qiniu').use(QiniuPlugin, require('./pushConfig').qiniu)
-    }
   }
 }
