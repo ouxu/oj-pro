@@ -3,13 +3,26 @@
  */
 import React from 'react'
 import PropType from 'prop-types'
+import classnames from 'classnames'
+import kt from 'katex'
+import texmath from 'markdown-it-texmath'
+import markdownit from 'markdown-it'
 import Markdown from 'react-markdown'
+import 'katex/dist/katex.css'
 import './index.less'
 
-const MarkdownArea = ({content = '', className = ''}) => {
+const MarkdownArea = ({ content = '', className }) => {
   return (
-    <div className={className}>
-      <Markdown className='markdown-body' escapeHtml={false} source={content} />
+    <div className={classnames('markdown-body', className)}>
+      <Markdown
+        source={markdownit({
+          html: true,
+          linkify: true,
+          typographer: true
+        })
+          .use(texmath.use(kt))
+          .render(content)}
+      />
     </div>
   )
 }
