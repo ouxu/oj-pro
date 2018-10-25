@@ -4,7 +4,7 @@
 import React from 'react'
 import { Collapse } from 'antd'
 import TitleCard from 'components/plugins/TitleCard'
-import Markdown from 'components/plugins/Markdown'
+import Markdown from 'components/plugins/Markdown/async'
 
 const Panel = Collapse.Panel
 

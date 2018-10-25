@@ -5,7 +5,7 @@ import React from 'react'
 import { Card, Icon, Tooltip } from 'antd'
 import copy from 'copy-to-clipboard'
 import message from 'utils/message'
-import Markdown from 'components/plugins/Markdown'
+import Markdown from 'components/plugins/Markdown/async'
 
 const Simple = ({detail}) => {
   const style = {

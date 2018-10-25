@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import Link from 'umi/link'
 import Process from './Process'
-import Markdown from 'components/plugins/Markdown'
+import Markdown from 'components/plugins/Markdown/async'
 import './index.less'
 
 class PageHeader extends Component {

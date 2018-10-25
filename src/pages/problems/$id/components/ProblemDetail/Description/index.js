@@ -3,7 +3,7 @@
  */
 import React from 'react'
 import { Card, Tag } from 'antd'
-import Markdown from 'components/plugins/Markdown'
+import Markdown from 'components/plugins/Markdown/async'
 import './index.less'
 import { randomNumBoth } from 'utils/numberAbout'
 import { colorArr } from 'utils/theme'

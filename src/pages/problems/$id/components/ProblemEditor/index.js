@@ -3,18 +3,12 @@
  */
 
 import React from 'react'
+import AceEditor from 'components/plugins/AceEditor/async'
 import { Button, Checkbox, Divider, Icon, Modal, Select, Tooltip } from 'antd'
 import { Link } from 'dva/router'
-import AceEditor from 'react-ace'
-import 'brace/theme/tomorrow'
 import copy from 'copy-to-clipboard'
-import 'brace/mode/golang'
-import 'brace/mode/java'
-import 'brace/mode/python'
-import 'brace/snippets/golang'
-import 'brace/ext/language_tools'
-import './index.less'
 import message from 'utils/message'
+import './index.less'
 
 const {Option} = Select
 const languages = [

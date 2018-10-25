@@ -4,12 +4,15 @@
 import React, { PureComponent } from 'react'
 import { connect } from 'dva'
 import { Card, Col, Row } from 'antd'
-
+import dynamic from 'umi/dynamic'
 import ProblemItem from './components/ProblemItem'
 import HomeBanner from './components/HomeBanner'
 import NewsPanel from './components/NewsPanel'
 import StatusPanel from './components/StatusPanel'
-import HomeChart from './components/HomeChart'
+
+const HomeChart = dynamic({
+  loader: () => import('./components/HomeChart')
+})
 
 class Home extends PureComponent {
   componentDidMount () {
