@@ -15,8 +15,9 @@ export default {
           include: ['dva/router', 'dva/saga', 'react', 'react-dom', 'axios', 'antd/es']
         },
         dynamicImport: {
-          webpackChunkName: true,
-          loadingComponent: '/components/plugins/Loading'
+          webpackChunkName: false,
+          loadingComponent: '/components/plugins/Loading',
+          level: 1
         }
       }
     ]
