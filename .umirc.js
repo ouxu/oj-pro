@@ -10,10 +10,6 @@ export default {
         routes: {
           exclude: [/model\.(j|t)sx?$/, /service\.(j|t)sx?$/, /models\//, /components\//, /services\//]
         },
-        dll: {
-          exclude: ['@babel/runtime'],
-          include: ['dva/router', 'dva/saga', 'react', 'react-dom', 'axios', 'antd/es']
-        },
         dynamicImport: {
           webpackChunkName: false,
           loadingComponent: '/components/plugins/Loading',
