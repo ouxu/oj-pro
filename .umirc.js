@@ -11,7 +11,7 @@ export default {
           exclude: [/model\.(j|t)sx?$/, /service\.(j|t)sx?$/, /models\//, /components\//, /services\//]
         },
         dynamicImport: {
-          webpackChunkName: false,
+          webpackChunkName: true,
           loadingComponent: '/components/plugins/Loading',
           level: 1
         }
