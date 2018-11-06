@@ -41,9 +41,9 @@ class RankList extends Component {
     this.timer && clearInterval(this.timer)
   }
 
-  getRankList = (id) => {
-    this.setState({loading: true})
-    getRank(id).then((data) => {
+  getRankList = id => {
+    this.setState({ loading: true })
+    getRank(id).then(data => {
       this.setState({
         rankData: data,
         loading: false
@@ -52,44 +52,52 @@ class RankList extends Component {
   }
 
   render () {
-    const {countNum, isFullscreen, toggleFullscreen, contestInfo} = this.props
-    const {rankData: {rank_data: rankData = [], first_ac = []}, loading} = this.state
-    const columns = [{
-      title: '排名',
-      width: 50,
-      render: (text, record, index) => index + 1,
-      key: 'contest-info-rank',
-      fixed: 'left',
-      className: 'contest-info-rank'
-    }, {
-      title: '用户',
-      render: record => (
-        <span>
-          <Link to={`/userpage/${record.user_id}`}> {record.user_name}</Link>
-        </span>
-      ),
-      key: 'contest-info-user',
-      fixed: 'left',
-      className: 'contest-info-user',
-      width: 100
-    }, {
-      title: '解决',
-      dataIndex: 'solved',
-      width: 50,
-      key: 'contest-info-solved',
-      className: 'contest-info-solved'
-    }, {
-      title: '用时',
-      render: (record) => {
-        return <span>{sec2Str(record.time)}</span>
+    const { countNum } = this.props
+    const {
+      rankData: { rank_data: rankData = [], first_ac = [] }, //eslint-disable-line
+      loading
+    } = this.state
+    const columns = [
+      {
+        title: '排名',
+        width: 50,
+        render: (text, record, index) => index + 1,
+        key: 'contest-info-rank',
+        fixed: 'left',
+        className: 'contest-info-rank'
       },
-      key: 'contest-info-time',
-      className: 'contest-info-time'
-    }]
+      {
+        title: '用户',
+        render: record => (
+          <span>
+            <Link to={`/userpage/${record.user_id}`}> {record.user_name}</Link>
+          </span>
+        ),
+        key: 'contest-info-user',
+        fixed: 'left',
+        className: 'contest-info-user',
+        width: 100
+      },
+      {
+        title: '解决',
+        dataIndex: 'solved',
+        width: 50,
+        key: 'contest-info-solved',
+        className: 'contest-info-solved'
+      },
+      {
+        title: '用时',
+        render: record => {
+          return <span>{sec2Str(record.time)}</span>
+        },
+        key: 'contest-info-time',
+        className: 'contest-info-time'
+      }
+    ]
     for (let i = 0; i < countNum; i++) {
       columns.push({
         title: generateWord(i + 1),
-        render: (record) => {
+        render: record => {
           return colorEncode(record, i, first_ac)
         },
         key: 'contest-info-problem-' + i,
@@ -102,7 +110,7 @@ class RankList extends Component {
         columns={columns}
         rowKey={record => `contest-info-${record.user_id}`}
         dataSource={rankData}
-        scroll={{x: countNum * 90 + 300, y: window.screen.availHeight - 155}}
+        scroll={{ x: countNum * 90 + 300, y: window.screen.availHeight - 155 }}
         bordered
         pagination={false}
         loading={loading}

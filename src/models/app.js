@@ -22,7 +22,7 @@ export default {
     querySubscriber ({dispatch, history}) {
       return history.listen(({pathname, query}) => {
         if (enQuery.includes(pathname)) {
-          dispatch({type: 'handleQuerys', payload: {pathname, query}})
+          dispatch({type: 'handleQueries', payload: {pathname, query}})
         }
       })
     }
@@ -31,10 +31,10 @@ export default {
     * onCollapse ({payload: {type, collapsed}}, {put}) {
       yield put({type: 'updateLayout', payload: {collapsed}})
     },
-    * handleQuerys ({payload}, {put, select}) {
+    * handleQueries ({payload}, {put, select}) {
       const {pathname, query} = payload
       if (JSON.stringify(query) !== '{}') {
-        yield put({type: 'updateQuerys', payload})
+        yield put({type: 'updateQueries', payload})
       } else {
         const {query: savedQuery} = yield select(({root}) => root)
         if (savedQuery[pathname]) {
@@ -57,7 +57,7 @@ export default {
         layout
       }
     },
-    updateQuerys (state, {payload}) {
+    updateQueries (state, {payload}) {
       const {pathname, query} = payload
       return {
         ...state,

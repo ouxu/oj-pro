@@ -20,6 +20,7 @@ export default modelExtend(baseModel, {
         size,
         keyword
       }
+      // eslint-disable-next-line
       const {contests, total_count} = keyword ? yield call(searchContests, query) : yield call(getContests, query)
       const contestsList = {
         data: contests,

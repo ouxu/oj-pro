@@ -94,7 +94,6 @@ export default class ProblemEdit extends Component {
   }
 
   handelDelete = () => {
-
     confirm({
       title: `是否决定要删除题目-${this.state.detail.id}?删除后无法恢复！`,
       content: (

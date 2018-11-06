@@ -15,7 +15,7 @@ const Search = Input.Search
 /**
  * TODO 添加竞赛关联和用户关联
  */
-@connect(({contests, user}) => ({contests, user}))
+@connect(({ contests, user }) => ({ contests, user }))
 class Contests extends PureComponent {
   constructor (props) {
     super(props)
@@ -25,21 +25,21 @@ class Contests extends PureComponent {
   }
 
   componentDidMount () {
-    const {dispatch, location} = this.props
+    const { dispatch, location } = this.props
     const query = location.query
-    dispatch({type: 'contests/init', payload: query}).then(() => {
+    dispatch({ type: 'contests/init', payload: query }).then(() => {
       setTimeout(() => windowScroll('navigation'), 1000)
     })
   }
 
-  verifyPermission = (record) => {
-    const {user} = this.props
+  verifyPermission = record => {
+    const { user } = this.props
     if (!user.token) {
       return message.warning('请先登录')
     }
     const presentTime = +Date.now()
     const startTime = newDate(record.start_time)
-    const startStatus = (presentTime > startTime)
+    const startStatus = presentTime > startTime
     if (startStatus) {
       this.props.dispatch(routerRedux.push('/contests/' + record.id))
     } else {
@@ -48,10 +48,14 @@ class Contests extends PureComponent {
   }
 
   render () {
-    const {contests: {contestsList = {}}, location, dispatch} = this.props
-    const {count, data = []} = contestsList
-    const {pathname, query} = location
-    const {page, size} = query
+    const {
+      contests: { contestsList = {} },
+      location,
+      dispatch
+    } = this.props
+    const { count, data = [] } = contestsList
+    const { pathname, query } = location
+    const { page, size } = query
     const pagination = {
       pageSize: +size || 20,
       current: +page || 1,
@@ -59,17 +63,13 @@ class Contests extends PureComponent {
       pageSizeOptions: ['20', '50', '100'],
       showSizeChanger: true,
       onShowSizeChange: (current, pageSize) => {
-        dispatch(routerRedux.push(pathname + '?' + qs.stringify({...query, page: current, size: pageSize})))
+        dispatch(routerRedux.push(pathname + '?' + qs.stringify({ ...query, page: current, size: pageSize })))
       },
-      onChange: (current) => {
-        dispatch(routerRedux.push(pathname + '?' + qs.stringify({...query, page: current})))
+      onChange: current => {
+        dispatch(routerRedux.push(pathname + '?' + qs.stringify({ ...query, page: current })))
       }
     }
-    const privatestatus = [
-      '公开',
-      '密码',
-      '私有'
-    ]
+    const privatestatus = ['公开', '密码', '私有']
     const colorArr = {
       0: color.green,
       1: color.purple,
@@ -79,11 +79,7 @@ class Contests extends PureComponent {
       unstart: time => (
         <div>
           未开始 @ {time}
-          <Progress
-            percent={0}
-            status='active'
-            strokeWidth={5}
-          />
+          <Progress percent={0} status='active' strokeWidth={5} />
         </div>
       ),
       running: (time, startTime, endTime) => (
@@ -91,7 +87,7 @@ class Contests extends PureComponent {
           进行中 @ {time}
           <Progress
             status='active'
-            percent={parseInt(100 * (this.state.presentTime - startTime) / (endTime - startTime))}
+            percent={parseInt((100 * (this.state.presentTime - startTime)) / (endTime - startTime))}
             strokeWidth={5}
             format={percent => percent}
           />
@@ -100,11 +96,7 @@ class Contests extends PureComponent {
       ended: time => (
         <div>
           已结束 @ {time}
-          <Progress
-            percent={100}
-            status='success'
-            strokeWidth={5}
-          />
+          <Progress percent={100} status='success' strokeWidth={5} />
         </div>
       )
     }
@@ -115,33 +107,39 @@ class Contests extends PureComponent {
       rowKey: 'id',
       pagination,
       renderItem: item => {
-        const {start_time, end_time} = item
+        const { start_time, end_time } = item // eslint-disable-line
         const startTime = newDate(start_time)
         const endTime = newDate(end_time)
-        const startStatus = (this.state.presentTime < startTime)
-        const endStatus = (this.state.presentTime > endTime)
+        const startStatus = this.state.presentTime < startTime
+        const endStatus = this.state.presentTime > endTime
         return (
           <List.Item>
             <List.Item.Meta
-              avatar={(
+              avatar={
                 <Avatar
-                  shape='square' size='large'
-                  style={{minWidth: 48, minHeight: 48, backgroundColor: colorArr[item.private]}}>
-                  <span style={{lineHeight: '48px'}}>{privatestatus[item.private]}</span>
+                  shape='square'
+                  size='large'
+                  style={{ minWidth: 48, minHeight: 48, backgroundColor: colorArr[item.private] }}
+                >
+                  <span style={{ lineHeight: '48px' }}>{privatestatus[item.private]}</span>
                 </Avatar>
-              )}
-              title={(
+              }
+              title={
                 <div className='hand' onClick={() => this.verifyPermission(item)}>
                   <Ellipsis lines={1}>{item.title}</Ellipsis>
                 </div>
-              )}
-              description={(
-                <span><Icon type='user' className='mr-5' />创建者：{item.creator_name}</span>
-              )}
+              }
+              description={
+                <span>
+                  <Icon type='user' className='mr-5' />
+                  创建者：
+                  {item.creator_name}
+                </span>
+              }
             />
             <div className='contests-item-process'>
               {startStatus && progress.unstart(start_time)}
-              {(startStatus === false && endStatus === false) && progress.running(end_time, startTime, endTime)}
+              {startStatus === false && endStatus === false && progress.running(end_time, startTime, endTime)}
               {endStatus && progress.ended(end_time)}
             </div>
           </List.Item>
@@ -149,20 +147,17 @@ class Contests extends PureComponent {
       }
     }
     return (
-      <Card
-        bordered={false}
-        className='m-16 contests'
-      >
+      <Card bordered={false} className='m-16 contests'>
         <div className='contests-header flex-lol'>
           <span className='h-1'>竞赛&作业列表</span>
           <div>
             <Search
               enterButton
               placeholder='竞赛名称'
-              style={{width: 200}}
+              style={{ width: 200 }}
               className='mr-10'
-              onSearch={(value) => {
-                dispatch(routerRedux.push(pathname + '?' + qs.stringify({...query, keyword: value})))
+              onSearch={value => {
+                dispatch(routerRedux.push(pathname + '?' + qs.stringify({ ...query, keyword: value })))
               }}
             />
           </div>

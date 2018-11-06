@@ -47,7 +47,7 @@ export default modelExtend(baseModel, loadingModel, {
           size,
           keyword: 'A+B'
         }
-        const { problems, total_count } = yield call(getHotProblems, query)
+        const { problems, total_count } = yield call(getHotProblems, query) // eslint-disable-line
         const hotProblems = {
           data: [
             ...data,

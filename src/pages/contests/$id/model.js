@@ -16,8 +16,8 @@ export default modelExtend(baseModel, {
     ...initError
   },
   effects: {
-    * init ({payload}, {put, call, select}) {
-      const {contest_info} = yield select(({contest}) => (contest))
+    * init ({ payload }, { put, call, select }) {
+      const { contest_info } = yield select(({ contest }) => contest) // eslint-disable-line
       if (+contest_info.id === +payload) {
         return
       }
@@ -41,8 +41,8 @@ export default modelExtend(baseModel, {
         })
       }
     },
-    * joinContest ({payload}, {put, call}) {
-      const {id, data} = payload
+    * joinContest ({ payload }, { put, call }) {
+      const { id, data } = payload
       yield call(joinContest, id, data)
     }
   },

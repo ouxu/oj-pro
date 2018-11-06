@@ -7,7 +7,7 @@ export default modelExtend(baseModel, loadingModel, inputModel, {
   state: {
     problemsList: {
       data: [],
-      count: 0,
+      count: 0
     },
     selectProblem: {},
     statusList: [],
@@ -26,10 +26,11 @@ export default modelExtend(baseModel, loadingModel, inputModel, {
         keyword
       }
       try {
+        // eslint-disable-next-line
         const {problems, total_count} = keyword ? yield call(searchProblems, query) : yield call(getProblems, query)
         const problemsList = {
           data: problems,
-          count: total_count,
+          count: total_count, // eslint-disable-line
         }
         yield put({type: 'update', payload: {problemsList}})
       } catch (e) {
