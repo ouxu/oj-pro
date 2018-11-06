@@ -9,18 +9,6 @@ import './index.less'
 import ProblemDetail from './components/ProblemDetail'
 
 class ProblemPage extends Component {
-  componentWillReceiveProps (nextProps) {
-    const {dispatch, match} = this.props
-    if (match.params.id !== nextProps.match.params.id) {
-      dispatch({
-        type: 'problem/init',
-        payload: {
-          id: nextProps.match.params.id,
-          query: location.query
-        }
-      })
-    }
-  }
   componentDidMount () {
     const {dispatch, match, location} = this.props
     dispatch({

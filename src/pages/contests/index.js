@@ -27,16 +27,9 @@ class Contests extends PureComponent {
   componentDidMount () {
     const {dispatch, location} = this.props
     const query = location.query
-    dispatch({type: 'contests/init', payload: query})
-  }
-
-  componentWillReceiveProps (nextProps) {
-    if (nextProps.location.search !== this.props.location.search) {
-      const {dispatch} = this.props
-      const query = nextProps.location.query
-      dispatch({type: 'contests/init', payload: query})
-      windowScroll('navigation')
-    }
+    dispatch({type: 'contests/init', payload: query}).then(() => {
+      setTimeout(() => windowScroll('navigation'), 1000)
+    })
   }
 
   verifyPermission = (record) => {

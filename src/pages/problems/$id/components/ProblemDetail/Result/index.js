@@ -30,18 +30,16 @@ const columnsP = [
   {
     title: '结果',
     key: 'result',
-    render: record => (
-      <span>
-        {resultBadge[record.Result + 1]}
-      </span>
-    ),
+    render: record => <span>{resultBadge[record.Result + 1]}</span>,
     width: 150,
     className: 'status-result-code'
-  }, {
+  },
+  {
     title: '耗时',
     dataIndex: 'CpuTime',
     className: 'status—cpu-time'
-  }, {
+  },
+  {
     title: '内存',
     dataIndex: 'Memory',
     width: 150,
@@ -55,30 +53,33 @@ class Result extends Component {
     this.state = {
       result_data: {},
       result_code: 0,
-      loading: false
+      loading: false,
+      solutionId: this.props.solutionId
     }
   }
 
-  getResult = (solutionId) => {
-    queryResult(solutionId)
-      .then(data => this.setState({...data}))
-  }
-
-  componentWillReceiveProps (nextProps, nextContext) {
-    if (nextProps.solutionId !== this.props.solutionId) {
-      this.setState({
+  static getDerivedStateFromProps (nextProps, prevState) {
+    if (nextProps.solutionId !== prevState.solutionId) {
+      return {
         result_data: {},
         loading: true,
-        result_code: 0
-      })
+        result_code: 0,
+        solutionId: nextProps.solutionId
+      }
     }
+    return null
   }
 
-  componentWillUpdate (nextProps, nextState, nextContext) {
-    if (nextState.loading) {
-      if (!shutUp.includes(nextState.result_code)) {
-        setTimeout(() => this.getResult(nextProps.solutionId), globalConfig.resultQueryTime)
+  getResult = solutionId => {
+    queryResult(solutionId).then(data => this.setState({ ...data }))
+  }
+
+  componentDidUpdate (prevProps, prevState) {
+    if (this.state.loading) {
+      if (!shutUp.includes(this.state.result_code)) {
+        this.timer = setTimeout(() => this.getResult(this.state.solutionId), globalConfig.resultQueryTime)
       } else {
+        clearTimeout(this.timer)
         this.setState({
           loading: false
         })
@@ -86,9 +87,13 @@ class Result extends Component {
     }
   }
 
+  componentWillUnmount () {
+    clearTimeout(this.timer)
+  }
+
   render () {
-    const {result_data: resultData, result_code: resultCode = 0, loading} = this.state
-    let {Passed = [], UnPassed = []} = resultData
+    const { result_data: resultData, result_code: resultCode = 0, loading } = this.state
+    let { Passed = [], UnPassed = [] } = resultData
     Passed = Passed === null ? [] : Passed
     UnPassed = UnPassed === null ? [] : UnPassed
     const percent = ~~(Passed.length / (Passed.length + UnPassed.length)) * 100
@@ -100,31 +105,33 @@ class Result extends Component {
     const progressProps = {
       status: loading ? 'active' : 'normal',
       strokeWidth: 4,
-      style: {width: '98%'},
-      percent: loading ? randomNumBoth(20, 40) : (percent || 0)
+      style: { width: '98%' },
+      percent: loading ? randomNumBoth(20, 40) : percent || 0
     }
     return (
       <div className='problem-detail-result' key={this.props.solutionId}>
         <div className='header'>
           <h4>
             {loading ? (
-              <div><Icon type='loading' /><span className='ml-5'>判题中</span></div>
-            ) : status[resultCode]}
+              <div>
+                <Icon type='loading' />
+                <span className='ml-5'>判题中</span>
+              </div>
+            ) : (
+              status[resultCode]
+            )}
           </h4>
           <Progress {...progressProps} />
         </div>
         {(resultCode === -1 || resultCode === 2) && (
           <div className='mt-16 mr-8'>
-            <Alert
-              type='error'
-              message={'Error:'}
-              description={resultData || ''}
-            />
+            <Alert type='error' message={'Error:'} description={resultData || ''} />
           </div>
         )}
-        {(resultCode === 3 || resultCode === 4) && Passed.length > 0 && (
+        {(resultCode === 3 || resultCode === 4) &&
+          Passed.length > 0 && (
           <div className='mt-16'>
-          通过的数据：
+              通过的数据：
             <Table
               {...tableConfig}
               columns={columnsP}
@@ -134,9 +141,10 @@ class Result extends Component {
             />
           </div>
         )}
-        {(resultCode === 3 || resultCode === 4) && UnPassed.length > 0 && (
+        {(resultCode === 3 || resultCode === 4) &&
+          UnPassed.length > 0 && (
           <div className='mt-16'>
-          未通过的数据:
+              未通过的数据:
             <Table
               {...tableConfig}
               columns={columnsP}
