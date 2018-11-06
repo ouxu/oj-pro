@@ -17,10 +17,10 @@ function AdminComponent (props) {
     )
   }
   return (
-    <QueueAnim id='admin' type={['left', 'right']} delay={100}>
+    <div id='admin'>
       <Navigation />
-      <QueueAnim className='admin-wrap' key='admin-wrap' type={['left', 'right']} delay={100}>
-        <div className='admin-sider' key='admin-sider'>
+      <QueueAnim className='admin-wrap' key={props.location.key} delay={100}>
+        <div className='admin-sider'>
           <AdminSider select={path} user={props.user} />
         </div>
         <div className='admin-main' key='admin-main'>
@@ -28,7 +28,7 @@ function AdminComponent (props) {
         </div>
       </QueueAnim>
       <Footer />
-    </QueueAnim>
+    </div>
   )
 }
 

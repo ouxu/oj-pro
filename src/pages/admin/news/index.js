@@ -1,6 +1,5 @@
 import React, { Component } from 'react'
 import { Button, Form, Icon, Input, Modal, Radio, Tag, List, Divider } from 'antd'
-import QueueAnim from 'rc-queue-anim'
 import { color } from 'utils/theme'
 import message from 'utils/message'
 import sleep from 'utils/sleep'
@@ -127,14 +126,13 @@ class AdminNews extends Component {
     )
 
     return (
-      <QueueAnim className='news-manage' delay={100}>
-        <div className='h-1 mb-16' key='news-manage'>
+      <div className='news-manage'>
+        <div className='h-1 mb-16'>
           主页公告
         </div>
         <List
           itemLayout='horizontal'
           dataSource={news}
-          key='news-list'
           header={title}
           renderItem={item => (
             <List.Item actions={[
@@ -155,63 +153,61 @@ class AdminNews extends Component {
             </List.Item>
           )}
         />
-        <div>
-          <Modal
-            visible={visible}
-            title={modal.id ? '编辑公告' : '发布公告'}
-            key={'' + visible}
-            onOk={this.handleOk}
-            onCancel={this.hideModal}
-            footer={[
-              <Button key='back' size='large' onClick={this.hideModal}>取消</Button>,
-              <Button
-                key='submit'
-                type='primary'
-                size='large'
-                loading={this.state.loading}
-                onClick={this.handleOk}
-              >
-                提交
-              </Button>
-            ]}
-          >
-            <Form onSubmit={this.handleOk}>
-              <FormItem>
-                {getFieldDecorator('title', {
-                  rules: [{ required: true, message: '请输入标题' }],
-                  initialValue: modal.title || ''
-                })(
-                  <TextArea placeholder='请输入标题' autosize={{ maxRows: 6 }} />
-                )}
-              </FormItem>
-              <FormItem>
-                {getFieldDecorator('content', {
-                  rules: [{ required: true, message: '请输入内容！' }],
-                  initialValue: modal.content || ''
-                })(
-                  <TextArea
-                    placeholder='请输入内容，支持 Markdown 语法，请在 Markdown 编辑器中编辑后粘贴'
-                    autosize={{ minRows: 2, maxRows: 6 }} />
-                )}
-              </FormItem>
-              <FormItem>
-                <span style={{ marginRight: '10px' }}>请选择重要程度，会根据程度展示不同样式</span>
-                {getFieldDecorator('importance', {
-                  rules: [{ required: true, message: '请选择！' }],
-                  initialValue: modal.importance || ''
-                })(
-                  <RadioGroup onChange={this.onChange}>
-                    <Radio value={0}>固定</Radio>
-                    <Radio value={1}>普通</Radio>
-                    <Radio value={2}>重要</Radio>
-                    <Radio value={3}>紧急</Radio>
-                  </RadioGroup>
-                )}
-              </FormItem>
-            </Form>
-          </Modal>
-        </div>
-      </QueueAnim>
+        <Modal
+          visible={visible}
+          title={modal.id ? '编辑公告' : '发布公告'}
+          key={'' + visible}
+          onOk={this.handleOk}
+          onCancel={this.hideModal}
+          footer={[
+            <Button key='back' size='large' onClick={this.hideModal}>取消</Button>,
+            <Button
+              key='submit'
+              type='primary'
+              size='large'
+              loading={this.state.loading}
+              onClick={this.handleOk}
+            >
+              提交
+            </Button>
+          ]}
+        >
+          <Form onSubmit={this.handleOk}>
+            <FormItem>
+              {getFieldDecorator('title', {
+                rules: [{ required: true, message: '请输入标题' }],
+                initialValue: modal.title || ''
+              })(
+                <TextArea placeholder='请输入标题' autosize={{ maxRows: 6 }} />
+              )}
+            </FormItem>
+            <FormItem>
+              {getFieldDecorator('content', {
+                rules: [{ required: true, message: '请输入内容！' }],
+                initialValue: modal.content || ''
+              })(
+                <TextArea
+                  placeholder='请输入内容，支持 Markdown 语法，请在 Markdown 编辑器中编辑后粘贴'
+                  autosize={{ minRows: 2, maxRows: 6 }} />
+              )}
+            </FormItem>
+            <FormItem>
+              <span style={{ marginRight: '10px' }}>请选择重要程度，会根据程度展示不同样式</span>
+              {getFieldDecorator('importance', {
+                rules: [{ required: true, message: '请选择！' }],
+                initialValue: modal.importance || ''
+              })(
+                <RadioGroup onChange={this.onChange}>
+                  <Radio value={0}>固定</Radio>
+                  <Radio value={1}>普通</Radio>
+                  <Radio value={2}>重要</Radio>
+                  <Radio value={3}>紧急</Radio>
+                </RadioGroup>
+              )}
+            </FormItem>
+          </Form>
+        </Modal>
+      </div>
     )
   }
 }

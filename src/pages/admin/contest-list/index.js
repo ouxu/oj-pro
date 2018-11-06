@@ -1,6 +1,5 @@
-import React, { Component } from 'react'
+import React, { Component, Fragment } from 'react'
 import router from 'umi/router'
-import QueueAnim from 'rc-queue-anim'
 import Link from 'umi/link'
 import { Tag, List, Divider, Input, Avatar, Button } from 'antd'
 import { getContests, getMyContests } from 'services/contests'
@@ -97,7 +96,7 @@ class ContestList extends Component {
     }
 
     return (
-      <QueueAnim delay={100}>
+      <Fragment>
         <div className='mb-16 flex-lol' key='header'>
           <span className='h-1'>竞赛列表</span>
           <span>
@@ -124,7 +123,6 @@ class ContestList extends Component {
             />
           </span>
         </div>
-
         <div className='contest-list'>
           <List
             itemLayout='horizontal'
@@ -171,7 +169,7 @@ class ContestList extends Component {
             )}
           />
         </div>
-      </QueueAnim>
+      </Fragment>
     )
   }
 }
