@@ -16,35 +16,34 @@ const getToken = () => {
 }
 
 const fetch = options => {
-  let { method = 'get', data, url, token = false } = options
+  let { method = 'get', data, url, token = false, headers = {} } = options
 
-  myAxios.interceptors.request.use(config => {
-    if (token) {
-      const ojToken = getToken()
-
-      if (!ojToken && token !== 'option') {
-        throw new Error(400)
-      }
-      config.headers.token = ojToken
+  const ojToken = getToken()
+  if (token) {
+    if (!ojToken && token !== 'option') {
+      throw new Error(400)
     }
-    return config
-  })
+  }
+
+  headers = token ? { ...headers, token: ojToken } : headers
 
   switch (method.toLowerCase()) {
     case 'get':
       return myAxios.get(url, {
-        params: data
+        params: data,
+        headers: headers
       })
     case 'delete':
       return myAxios.delete(url, {
-        data: data
+        data: data,
+        headers: headers
       })
     case 'post':
-      return myAxios.post(url, data)
+      return myAxios.post(url, data, { headers })
     case 'put':
-      return myAxios.put(url, data)
+      return myAxios.put(url, data, { headers })
     case 'patch':
-      return myAxios.patch(url, data)
+      return myAxios.patch(url, data, { headers })
     case 'export':
       return myAxios.get(url, {
         params: data,
