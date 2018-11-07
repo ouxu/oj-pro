@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Button, Form, Icon, Input, Modal, Radio, Tag, List, Divider } from 'antd'
+import { Button, Form, Icon, Input, Modal, Radio, Tag, List, Divider, Drawer } from 'antd'
 import { color } from 'utils/theme'
 import message from 'utils/message'
 import sleep from 'utils/sleep'
@@ -56,7 +56,7 @@ class AdminNews extends Component {
     })
   }
 
-  handleOk= (e) => {
+  handleOk = e => {
     e.preventDefault()
     this.props.form.validateFields(async (err, values) => {
       if (!err) {
@@ -84,7 +84,7 @@ class AdminNews extends Component {
     })
   }
 
-  delNews = (item) => {
+  delNews = item => {
     Modal.confirm({
       title: '确认删除?',
       content: '请认真审核信息，一旦删除，本次删除将无法撤销!',
@@ -109,12 +109,7 @@ class AdminNews extends Component {
     const { news = [], visible, modal } = this.state
     const { getFieldDecorator } = this.props.form
 
-    const privateStatus = [
-      '固定',
-      '普通',
-      '重要',
-      '紧急'
-    ]
+    const privateStatus = ['固定', '普通', '重要', '紧急']
     const colorArr = [color.blue, color.green, color.yellow, color.red]
     const title = (
       <span className='news-manage-table-title'>
@@ -127,86 +122,95 @@ class AdminNews extends Component {
 
     return (
       <div className='news-manage'>
-        <div className='h-1 mb-16'>
-          主页公告
-        </div>
+        <div className='h-1 mb-16'>主页公告</div>
         <List
           itemLayout='horizontal'
           dataSource={news}
           header={title}
           renderItem={item => (
-            <List.Item actions={[
-              <a onClick={() => this.showModal(item)}>编辑</a>,
-              <a onClick={() => this.delNews(item)}>删除</a>
-            ]}>
+            <List.Item
+              actions={[
+                <a onClick={() => this.showModal(item)}>编辑</a>,
+                <a onClick={() => this.delNews(item)}>删除</a>
+              ]}
+            >
               <List.Item.Meta
                 title={item.title}
-                description={(
+                description={
                   <div>
                     <Icon type='bulb' /> {item.created_at}
                     <Divider type='vertical' />
                     <Icon type='edit' /> {item.updated_at}
                   </div>
-                )}
+                }
               />
               <Tag color={colorArr[item.importance]}>{privateStatus[item.importance]}</Tag>
             </List.Item>
           )}
         />
-        <Modal
-          visible={visible}
+        <Drawer
           title={modal.id ? '编辑公告' : '发布公告'}
-          key={'' + visible}
-          onOk={this.handleOk}
-          onCancel={this.hideModal}
-          footer={[
-            <Button key='back' size='large' onClick={this.hideModal}>取消</Button>,
-            <Button
-              key='submit'
-              type='primary'
-              size='large'
-              loading={this.state.loading}
-              onClick={this.handleOk}
-            >
-              提交
-            </Button>
-          ]}
+          placement='right'
+          width={640}
+          onClose={this.hideModal}
+          maskClosable={false}
+          visible={visible}
+          className='news-manage-drawer-content'
         >
           <Form onSubmit={this.handleOk}>
-            <FormItem>
+            <FormItem label='标题'>
               {getFieldDecorator('title', {
                 rules: [{ required: true, message: '请输入标题' }],
                 initialValue: modal.title || ''
-              })(
-                <TextArea placeholder='请输入标题' autosize={{ maxRows: 6 }} />
-              )}
+              })(<TextArea placeholder='请输入标题' autosize={{ maxRows: 6 }} />)}
             </FormItem>
-            <FormItem>
+            <FormItem label='描述'>
               {getFieldDecorator('content', {
                 rules: [{ required: true, message: '请输入内容！' }],
                 initialValue: modal.content || ''
               })(
                 <TextArea
                   placeholder='请输入内容，支持 Markdown 语法，请在 Markdown 编辑器中编辑后粘贴'
-                  autosize={{ minRows: 2, maxRows: 6 }} />
+                  autosize={{ minRows: 4, maxRows: 16 }}
+                />
               )}
             </FormItem>
-            <FormItem>
-              <span style={{ marginRight: '10px' }}>请选择重要程度，会根据程度展示不同样式</span>
+            <FormItem label='请选择重要程度，会根据程度展示不同样式'>
               {getFieldDecorator('importance', {
                 rules: [{ required: true, message: '请选择！' }],
                 initialValue: modal.importance || ''
               })(
                 <RadioGroup onChange={this.onChange}>
-                  <Radio value={0}>固定</Radio>
-                  <Radio value={1}>普通</Radio>
-                  <Radio value={2}>重要</Radio>
-                  <Radio value={3}>紧急</Radio>
+                  {privateStatus.map((e, i) => (
+                    <Radio key={i} value={i}>
+                      <Tag color={colorArr[i]}>{e}</Tag>
+                    </Radio>
+                  ))}
                 </RadioGroup>
               )}
             </FormItem>
+            <div
+              style={{
+                position: 'absolute',
+                bottom: 0,
+                width: '100%',
+                borderTop: '1px solid #e8e8e8',
+                padding: '10px 16px',
+                textAlign: 'right',
+                left: 0,
+                background: '#fff',
+                borderRadius: '0 0 4px 4px'
+              }}
+            >
+              <Button key='back' onClick={this.hideModal} className='mr-8'>
+                取消
+              </Button>
+              <Button key='submit' type='primary' loading={this.state.loading} onClick={this.handleOk}>
+                提交
+              </Button>
+            </div>
           </Form>
-        </Modal>
+        </Drawer>
       </div>
     )
   }
