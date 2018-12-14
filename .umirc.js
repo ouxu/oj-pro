@@ -14,7 +14,13 @@ export default {
           webpackChunkName: true,
           loadingComponent: '/components/plugins/Loading',
           level: 1
-        }
+        },
+        pwa: {
+          workboxPluginMode: 'InjectManifest',
+          workboxOptions: {
+            importWorkboxFrom: 'cdn',
+          },
+        },
       }
     ]
   ],
