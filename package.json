@@ -47,6 +47,7 @@
     "scroll-into-view": "^1.9.1"
   },
   "devDependencies": {
+    "babel-eslint": "^10.0.1",
     "cross-env": "^5.1.3",
     "eslint": "^4.14.0",
     "eslint-config-standard": "^10.2.1",
