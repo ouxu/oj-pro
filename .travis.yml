@@ -3,7 +3,7 @@ node_js:
 - '8'
 cache: yarn
 before_install:
-- openssl aes-256-cbc -K $encrypted_31b203c7ef4f_key -iv $encrypted_31b203c7ef4f_iv
+- openssl aes-256-cbc -K $encrypted_f7bd41e3372a_key -iv $encrypted_f7bd41e3372a_iv
   -in .travis.enc -out pushConfig.js -d
 script:
 - yarn pub
