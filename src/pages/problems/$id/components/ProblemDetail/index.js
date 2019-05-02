@@ -5,7 +5,7 @@ import React from 'react'
 import { Tabs, Popover, Icon, List, Tooltip } from 'antd'
 import Link from 'umi/link'
 import Description from './Description'
-import Simple from './Simple'
+import Sample from './Sample'
 import Result from './Result'
 import TweenOne from 'rc-tween-one'
 import qs from 'query-string'
@@ -98,7 +98,7 @@ const ProblemDetail = (props) => {
             <Description detail={detail} />
           </TabPane>
           <TabPane tab='数据' key='data'>
-            <Simple detail={detail} />
+            <Sample detail={detail} />
           </TabPane>
           <TabPane tab='评测' key='submit'>
             <Result solutionId={solutionId} />

@@ -8,7 +8,7 @@ export default {
         dva: true,
         antd: true,
         routes: {
-          exclude: [/model\.(j|t)sx?$/, /service\.(j|t)sx?$/, /models\//, /components\//, /services\//]
+          exclude: [/model\.(j|t)sx?$/, /service\.(j|t)sx?$/, /models\//, /components\//, /services\//, /config\.(j|t)sx?$/]
         },
         dynamicImport: {
           webpackChunkName: true,

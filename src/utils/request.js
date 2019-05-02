@@ -1,5 +1,6 @@
 import axios from 'axios'
 import AppConfig from 'config/app'
+import message from './message'
 
 const baseConfig = {
   timeout: AppConfig.requestTime,
@@ -15,7 +16,7 @@ const getToken = () => {
   return ojToken
 }
 
-const fetch = options => {
+const fetch = (options, isExport) => {
   let { method = 'get', data, url, token = false, headers = {} } = options
 
   const ojToken = getToken()
@@ -26,6 +27,16 @@ const fetch = options => {
   }
 
   headers = token ? { ...headers, token: ojToken } : headers
+
+  if (isExport) {
+    return myAxios.request({
+      url,
+      method,
+      params: data,
+      responseType: 'blob',
+      headers: headers
+    })
+  }
 
   switch (method.toLowerCase()) {
     case 'get':
@@ -44,11 +55,6 @@ const fetch = options => {
       return myAxios.put(url, data, { headers })
     case 'patch':
       return myAxios.patch(url, data, { headers })
-    case 'export':
-      return myAxios.get(url, {
-        params: data,
-        responseType: 'blob'
-      })
     default:
       return myAxios(options)
   }
@@ -72,12 +78,9 @@ const downFile = (blob, fileName) => {
  * @param options See below examples
  * @returns {Promise.<*>}
  */
-export default async options => {
+const request = async options => {
   const res = await fetch(options)
-  if (options.method === 'export') {
-    downFile(res.data, options.filename)
-    return true
-  }
+
   const { data } = res
   if (data.code !== 0) {
     window.fundebug && window.fundebug.notifyError(data.code, options)
@@ -85,3 +88,18 @@ export default async options => {
   }
   return data.data
 }
+
+request.export = async options => {
+  try {
+    const res = await fetch(options, true)
+    downFile(res.data, options.filename)
+    return res
+  } catch {
+    message.error('下载失败')
+  }
+}
+
+request.downFile = downFile
+request.fetch = fetch
+
+export default request

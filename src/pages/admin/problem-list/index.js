@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Table, Input, Button, Icon, Modal, Tooltip } from 'antd'
+import { Table, Input, Button, Icon, Modal, Tooltip, Divider } from 'antd'
 import { connect } from 'dva'
 import Link from 'umi/link'
 import router from 'umi/router'
@@ -110,16 +110,16 @@ export default class ProblemList extends Component {
       {
         title: '操作',
         render: record => (
-          <Link to={'/admin/problem-edit?id=' + record.id}>修改</Link>
+          <div>
+            <Link to={'/admin/problem-edit?id=' + record.id}>管理题目</Link>
+            <Divider type='vertical' />
+            <Link to={'/admin/problem-data?id=' + record.id}>查看数据</Link>
+            <Divider type='vertical' />
+            <a onClick={() => this.delProblem(record)}>删除</a>
+          </div>
         ),
-        width: 60,
+        width: 200,
         key: 'problem-manage-action'
-      },
-      {
-        title: '删除',
-        render: record => <a onClick={() => this.delProblem(record)}>删除</a>,
-        width: 60,
-        key: 'problem-manage-del'
       }
     ]
     const rowSelection = {

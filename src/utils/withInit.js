@@ -7,6 +7,10 @@ export default request => WrappedComponent => {
       loading: true
     }
     componentDidMount () {
+      this.init()
+    }
+
+    init = () => {
       request(this.props).then(data => this.setState({ ...data, loading: false }))
     }
 
@@ -14,7 +18,7 @@ export default request => WrappedComponent => {
       if (this.state.loading) {
         return <Loading />
       }
-      return <WrappedComponent {...this.state} {...this.props} />
+      return <WrappedComponent reInit={this.init} {...this.state} {...this.props} />
     }
   }
   return HocComponent

@@ -7,7 +7,7 @@ import copy from 'copy-to-clipboard'
 import message from 'utils/message'
 import Markdown from 'components/plugins/Markdown/async'
 
-const Simple = ({detail}) => {
+const Sample = ({detail}) => {
   const style = {
     display: 'inline',
     background: '#d2eafc',
@@ -48,4 +48,4 @@ const Simple = ({detail}) => {
   )
 }
 
-export default Simple
+export default Sample

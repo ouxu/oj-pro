@@ -31,6 +31,12 @@ export default {
   problemsImport: 'problems/import',
   queryResult: 'judge/:id/result',
 
+  // Problem Rundata
+  rundata: 'problem/:id/rundata',
+  downloadRundata: 'rundata',
+  deleteRundata: 'rundata/:id/delete',
+  uploadRundata: 'problem/:id/rundata/add',
+
   // Tags
   tag: 'tag/',
   tagCreate: 'tag/createTag',

@@ -106,11 +106,13 @@ const ProblemEditor = ({language, value, dispatch, params, user, location}) => {
           </Tooltip>
         </div>
         <div>
+          {/* 暂时无用
           <Tooltip title='是否公开自己写的代码'>
             <Checkbox onChange={privateChange}>
               私有
             </Checkbox>
           </Tooltip>
+          */}
           <Button disabled={!user.token} onClick={onSubmit} type='primary'><Icon type='rocket' />
             {user.token ? '提交' : '请登录'}
           </Button>

@@ -1,10 +1,10 @@
 import React, { Component } from 'react'
 import router from 'umi/router'
+import Link from 'umi/link'
 import { delProblem, createProblem, updateProblem } from './service'
 import { getProblem } from '../../problems/$id/service'
 import errorHandler from 'utils/errorHandler'
 import message from 'utils/message'
-
 /* eslint-disable import/no-duplicates */
 import { Form, Input, Radio, Row, Col, Switch } from 'antd'
 import { InputNumber, Button, Modal } from 'antd'
@@ -126,7 +126,12 @@ export default class ProblemEdit extends Component {
       <div className='admin-problem-edit'>
         <div className='header'>
           {isEdit ? (
-            <div className='h-1'>编辑题目 - {detail.id}</div>
+            <div className='h-1 flex-lol' style={{ maxWidth: 680 }}>
+              <span>编辑题目 - {detail.id}</span>
+              <Button type='primary'>
+                <Link to={`/admin/problem-data?id=${detail.id}`}>管理题目数据</Link>
+              </Button>
+            </div>
           ) : (
             <div className='h-1'>添加题目</div>
           )}
