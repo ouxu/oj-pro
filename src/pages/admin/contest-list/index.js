@@ -5,7 +5,6 @@ import { Tag, List, Divider, Input, Avatar, Button } from 'antd'
 import { getContests, getMyContests } from 'services/contests'
 import { connect } from 'dva'
 import { color } from 'utils/theme'
-import scrollToAnchor from 'utils/scrollToAnchor'
 const privateStatus = ['公开', '密码', '私有']
 const colorArr = {
   0: color.green,
@@ -46,7 +45,6 @@ class ContestList extends Component {
       count: res.total_count,
       data: res.contests ? res.contests : []
     })
-    scrollToAnchor('navigation')
   }
 
   editContest = record => {

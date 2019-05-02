@@ -3,7 +3,6 @@ import { Table, Input, Button, Icon, Modal, Tooltip } from 'antd'
 import { connect } from 'dva'
 import Link from 'umi/link'
 import router from 'umi/router'
-import scrollToAnchor from 'utils/scrollToAnchor'
 import errorHandler from 'utils/errorHandler'
 import message from 'utils/message'
 import { delProblem } from '../problem-edit/service'
@@ -43,7 +42,6 @@ export default class ProblemList extends Component {
       data = await getProblems(body)
     }
     this.setState(data)
-    scrollToAnchor('navigation')
   }
 
   onSearch = value => {

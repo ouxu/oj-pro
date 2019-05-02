@@ -4,13 +4,11 @@
 import React from 'react'
 import { Menu } from 'antd'
 import router from 'umi/router'
-import windowScroll from 'utils/scrollToAnchor'
 
 const SubMenu = Menu.SubMenu
 
 const handleClick = (e) => {
   router.push(e.key)
-  windowScroll('navigation')
 }
 
 const AdminSider = props => (

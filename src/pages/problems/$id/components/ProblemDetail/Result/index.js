@@ -7,11 +7,12 @@ import { queryResult } from '../../../service'
 import globalConfig from 'config/app'
 import { randomNumBoth } from 'utils/numberAbout'
 
-const shutUp = [-3, -1, 2, 3, 4]
+const shutUp = [-3, -1, 2, 3, 4, 8]
 const status = {
   '-1': '系统错误',
   '2': '编译错误',
   '3': '部分正确',
+  '8': '答案错误',
   '4': '正确',
   '0': '尚未提交'
 }
@@ -141,7 +142,7 @@ class Result extends Component {
             />
           </div>
         )}
-        {(resultCode === 3 || resultCode === 4) &&
+        {(resultCode === 3 || resultCode === 4 || resultCode === 8) &&
           UnPassed.length > 0 && (
           <div className='mt-16'>
               未通过的数据:
