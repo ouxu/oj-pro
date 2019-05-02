@@ -1,200 +1,207 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
+
 <head>
-    <title>NEUQer</title>
-    <link rel="icon" href="/app/favicon.ico" type="image/x-icon" data-react-helmet="true">
-    <meta name="viewport"
-          content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no" />
-   <!-- Hotjar Tracking Code for newoj.outxu.cn -->
-   <% if (process.env.NODE_ENV === 'production') { %>
-    <script>
-            (function(h,o,t,j,a,r){
-                h.hj=h.hj||function(){(h.hj.q=h.hj.q||[]).push(arguments)};
-                h._hjSettings={hjid:798111,hjsv:6};
-                a=o.getElementsByTagName('head')[0];
-                r=o.createElement('script');r.async=1;
-                r.src=t+h._hjSettings.hjid+j+h._hjSettings.hjsv;
-                a.appendChild(r);
-            })(window,document,'https://static.hotjar.com/c/hotjar-','.js?sv=');
-        </script>
-    <% } %>
+  <meta charset="UTF-8">
+  <title>NEUQer</title>
+  <link rel="icon" href="/app/favicon.ico" type="image/x-icon" data-react-helmet="true">
+  <meta name="viewport"
+    content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no" />
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <!-- Hotjar Tracking Code for newoj.outxu.cn -->
+  <% if (process.env.NODE_ENV === 'production') { %>
+  <!-- Hotjar Tracking Code for newoj.outxu.cn -->
+  <script>
+    (function (h, o, t, j, a, r) {
+      h.hj = h.hj || function () { (h.hj.q = h.hj.q || []).push(arguments) };
+      h._hjSettings = { hjid: 798111, hjsv: 6 };
+      a = o.getElementsByTagName('head')[0];
+      r = o.createElement('script'); r.async = 1;
+      r.src = t + h._hjSettings.hjid + j + h._hjSettings.hjsv;
+      a.appendChild(r);
+    })(window, document, 'https://static.hotjar.com/c/hotjar-', '.js?sv=');
+  </script>
+  <% } %>
 </head>
- <style>
-      @-webkit-keyframes rotate_pacman_half_up {
-          0% {
-              -webkit-transform: rotate(270deg);
-              transform: rotate(270deg);
-          }
+<style>
+  @-webkit-keyframes rotate_pacman_half_up {
+    0% {
+      -webkit-transform: rotate(270deg);
+      transform: rotate(270deg);
+    }
 
-          50% {
-              -webkit-transform: rotate(360deg);
-              transform: rotate(360deg);
-          }
+    50% {
+      -webkit-transform: rotate(360deg);
+      transform: rotate(360deg);
+    }
 
-          100% {
-              -webkit-transform: rotate(270deg);
-              transform: rotate(270deg);
-          }
-      }
+    100% {
+      -webkit-transform: rotate(270deg);
+      transform: rotate(270deg);
+    }
+  }
 
-      @keyframes rotate_pacman_half_up {
-          0% {
-              -webkit-transform: rotate(270deg);
-              transform: rotate(270deg);
-          }
+  @keyframes rotate_pacman_half_up {
+    0% {
+      -webkit-transform: rotate(270deg);
+      transform: rotate(270deg);
+    }
 
-          50% {
-              -webkit-transform: rotate(360deg);
-              transform: rotate(360deg);
-          }
+    50% {
+      -webkit-transform: rotate(360deg);
+      transform: rotate(360deg);
+    }
 
-          100% {
-              -webkit-transform: rotate(270deg);
-              transform: rotate(270deg);
-          }
-      }
+    100% {
+      -webkit-transform: rotate(270deg);
+      transform: rotate(270deg);
+    }
+  }
 
-      @-webkit-keyframes rotate_pacman_half_down {
-          0% {
-              -webkit-transform: rotate(90deg);
-              transform: rotate(90deg);
-          }
+  @-webkit-keyframes rotate_pacman_half_down {
+    0% {
+      -webkit-transform: rotate(90deg);
+      transform: rotate(90deg);
+    }
 
-          50% {
-              -webkit-transform: rotate(0deg);
-              transform: rotate(0deg);
-          }
+    50% {
+      -webkit-transform: rotate(0deg);
+      transform: rotate(0deg);
+    }
 
-          100% {
-              -webkit-transform: rotate(90deg);
-              transform: rotate(90deg);
-          }
-      }
+    100% {
+      -webkit-transform: rotate(90deg);
+      transform: rotate(90deg);
+    }
+  }
 
-      @keyframes rotate_pacman_half_down {
-          0% {
-              -webkit-transform: rotate(90deg);
-              transform: rotate(90deg);
-          }
+  @keyframes rotate_pacman_half_down {
+    0% {
+      -webkit-transform: rotate(90deg);
+      transform: rotate(90deg);
+    }
 
-          50% {
-              -webkit-transform: rotate(0deg);
-              transform: rotate(0deg);
-          }
+    50% {
+      -webkit-transform: rotate(0deg);
+      transform: rotate(0deg);
+    }
 
-          100% {
-              -webkit-transform: rotate(90deg);
-              transform: rotate(90deg);
-          }
-      }
+    100% {
+      -webkit-transform: rotate(90deg);
+      transform: rotate(90deg);
+    }
+  }
 
-      @-webkit-keyframes pacman-balls {
-          75% {
-              opacity: 0.7;
-          }
+  @-webkit-keyframes pacman-balls {
+    75% {
+      opacity: 0.7;
+    }
 
-          100% {
-              -webkit-transform: translate(-100px, -6.25px);
-              transform: translate(-100px, -6.25px);
-          }
-      }
+    100% {
+      -webkit-transform: translate(-100px, -6.25px);
+      transform: translate(-100px, -6.25px);
+    }
+  }
 
-      @keyframes pacman-balls {
-          75% {
-              opacity: 0.7;
-          }
+  @keyframes pacman-balls {
+    75% {
+      opacity: 0.7;
+    }
 
-          100% {
-              -webkit-transform: translate(-100px, -6.25px);
-              transform: translate(-100px, -6.25px);
-          }
-      }
+    100% {
+      -webkit-transform: translate(-100px, -6.25px);
+      transform: translate(-100px, -6.25px);
+    }
+  }
 
-      .loader {
-          position: fixed;
-          left: 50%;
-          top: 50%;
-          margin-left: -29px;
-      }
+  .loader {
+    position: fixed;
+    left: 50%;
+    top: 50%;
+    margin-left: -29px;
+  }
 
-      .pacman {
-          position: relative;
-      }
+  .pacman {
+    position: relative;
+  }
 
-      .pacman > div:nth-child(2) {
-          -webkit-animation: pacman-balls 1s 0s infinite linear;
-          animation: pacman-balls 1s 0s infinite linear;
-      }
+  .pacman>div:nth-child(2) {
+    -webkit-animation: pacman-balls 1s 0s infinite linear;
+    animation: pacman-balls 1s 0s infinite linear;
+  }
 
-      .pacman > div:nth-child(3) {
-          -webkit-animation: pacman-balls 1s 0.33s infinite linear;
-          animation: pacman-balls 1s 0.33s infinite linear;
-      }
+  .pacman>div:nth-child(3) {
+    -webkit-animation: pacman-balls 1s 0.33s infinite linear;
+    animation: pacman-balls 1s 0.33s infinite linear;
+  }
 
-      .pacman > div:nth-child(4) {
-          -webkit-animation: pacman-balls 1s 0.66s infinite linear;
-          animation: pacman-balls 1s 0.66s infinite linear;
-      }
+  .pacman>div:nth-child(4) {
+    -webkit-animation: pacman-balls 1s 0.66s infinite linear;
+    animation: pacman-balls 1s 0.66s infinite linear;
+  }
 
-      .pacman > div:nth-child(5) {
-          -webkit-animation: pacman-balls 1s 0.99s infinite linear;
-          animation: pacman-balls 1s 0.99s infinite linear;
-      }
+  .pacman>div:nth-child(5) {
+    -webkit-animation: pacman-balls 1s 0.99s infinite linear;
+    animation: pacman-balls 1s 0.99s infinite linear;
+  }
 
-      .pacman > div:first-of-type {
-          width: 0px;
-          height: 0px;
-          border: 25px solid #00abff;
-          border-right-color: transparent;
-          border-radius: 25px;
-          -webkit-animation: rotate_pacman_half_up 0.5s 0s infinite;
-          animation: rotate_pacman_half_up 0.5s 0s infinite;
-      }
+  .pacman>div:first-of-type {
+    width: 0px;
+    height: 0px;
+    border: 25px solid #00abff;
+    border-right-color: transparent;
+    border-radius: 25px;
+    -webkit-animation: rotate_pacman_half_up 0.5s 0s infinite;
+    animation: rotate_pacman_half_up 0.5s 0s infinite;
+  }
 
-      .pacman > div:nth-child(2) {
-          width: 0px;
-          height: 0px;
-          border: 25px solid #00abff;
-          border-right-color: transparent;
-          border-radius: 25px;
-          -webkit-animation: rotate_pacman_half_down 0.5s 0s infinite;
-          animation: rotate_pacman_half_down 0.5s 0s infinite;
-          margin-top: -50px;
-      }
+  .pacman>div:nth-child(2) {
+    width: 0px;
+    height: 0px;
+    border: 25px solid #00abff;
+    border-right-color: transparent;
+    border-radius: 25px;
+    -webkit-animation: rotate_pacman_half_down 0.5s 0s infinite;
+    animation: rotate_pacman_half_down 0.5s 0s infinite;
+    margin-top: -50px;
+  }
 
-      .pacman > div:nth-child(3),
-      .pacman > div:nth-child(4),
-      .pacman > div:nth-child(5),
-      .pacman > div:nth-child(6) {
-          background-color: #00abff;
+  .pacman>div:nth-child(3),
+  .pacman>div:nth-child(4),
+  .pacman>div:nth-child(5),
+  .pacman>div:nth-child(6) {
+    background-color: #00abff;
 
-          border-radius: 100%;
-          margin: 2px;
-          width: 10px;
-          height: 10px;
-          position: absolute;
-          -webkit-transform: translate(0, -6.25px);
-          -ms-transform: translate(0, -6.25px);
-          transform: translate(0, -6.25px);
-          top: 25px;
-          left: 100px;
-      }
-    </style>
+    border-radius: 100%;
+    margin: 2px;
+    width: 10px;
+    height: 10px;
+    position: absolute;
+    -webkit-transform: translate(0, -6.25px);
+    -ms-transform: translate(0, -6.25px);
+    transform: translate(0, -6.25px);
+    top: 25px;
+    left: 100px;
+  }
+</style>
+
 <body>
-<div id="root" style="position: relative;height: 100%">
-  <div class="loader">
-    <div class="loader-inner pacman">
-      <div></div>
-      <div></div>
-      <div></div>
-      <div></div>
-      <div></div>
+  <div id="root" style="position: relative;height: 100%">
+    <div class="loader">
+      <div class="loader-inner pacman">
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+      </div>
     </div>
   </div>
-</div>
-<% if (process.env.NODE_ENV === 'production') { %>
-    <script type="text/javascript" src="https://cdn.polyfill.io/v2/polyfill.min.js"></script>
-    <script src="https://js.fundebug.cn/fundebug.0.3.6.min.js" apikey="37f892106d4711831f0d3e28733fd2aa8d5e8f81b1d09bf40e7cabe4daf4b254"></script>
-<% } %>
+  <% if (process.env.NODE_ENV === 'production') { %>
+  <script type="text/javascript" src="https://cdn.polyfill.io/v2/polyfill.min.js"></script>
+  <script src="https://js.fundebug.cn/fundebug.0.3.6.min.js"
+    apikey="37f892106d4711831f0d3e28733fd2aa8d5e8f81b1d09bf40e7cabe4daf4b254"></script>
+  <% } %>
 </body>
+
 </html>
