@@ -64,7 +64,6 @@ export default withInit(init)(props => {
             size='small'
             columns={columns(id, props.reInit)}
             dataSource={runData}
-            width={1000}
             pagination={false}
           />
           <div style={{ marginTop: 16, height: 180 }}>

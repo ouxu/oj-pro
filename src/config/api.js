@@ -76,11 +76,19 @@ export default {
 
   // Home
   homeChart: 'status/statistics',
+
   // News
   news: 'news',
   newsDetail: 'news/:id',
   editNews: 'news/:id/update',
   delNews: 'news/:id/delete',
   createNews: 'news/create',
-  newsIndex: 'news/index'
+  newsIndex: 'news/index',
+
+  // judge server
+  addJudge: 'judge/server',
+  judgeList: 'judge/server/all',
+  judgeInfo: 'judge/server/:id/info',
+  updateJudgeInfo: 'judge/server/:id/update',
+  delJudge: 'judge/server/:id/delete'
 }

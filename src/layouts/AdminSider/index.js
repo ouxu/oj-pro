@@ -15,7 +15,7 @@ const AdminSider = props => (
   <Menu
     mode='inline'
     style={{width: 200}}
-    defaultOpenKeys={['home', 'contest', 'problem']}
+    defaultOpenKeys={['home', 'contest', 'problem', 'judge', 'system']}
     defaultSelectedKeys={[props.select]}
     onClick={handleClick}
   >
@@ -40,10 +40,9 @@ const AdminSider = props => (
       <Menu.Item key='/admin/problem-data'>题目数据</Menu.Item>
       <Menu.Item key='/admin/problem-upload'>题目导入</Menu.Item>
     </SubMenu>
-    <SubMenu key='machine' title={<span>判题管理</span>}>
-      <Menu.Item key='/admin/machine-list'>机器列表</Menu.Item>
-      <Menu.Item key='/admin/machine-edit'>机器管理</Menu.Item>
-      {/* <Menu.Item key='machine-delete'>机器添加</Menu.Item> */}
+    <SubMenu key='judge' title={<span>判题管理</span>}>
+      <Menu.Item key='/admin/machine-list'>机器管理</Menu.Item>
+      <Menu.Item key='/admin/rejudge'>重新判题</Menu.Item>
     </SubMenu>
     {
       props.user.role === 'admin' &&
