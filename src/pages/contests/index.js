@@ -55,7 +55,7 @@ class Contests extends PureComponent {
     } = this.props
     const { count, data = [] } = contestsList
     const { pathname, query } = location
-    const { page, size } = query
+    const { page, size, keyword } = query
     const pagination = {
       pageSize: +size || 20,
       current: +page || 1,
@@ -156,6 +156,7 @@ class Contests extends PureComponent {
               placeholder='竞赛名称'
               style={{ width: 200 }}
               className='mr-10'
+              defaultValue={keyword}
               onSearch={value => {
                 dispatch(routerRedux.push(pathname + '?' + qs.stringify({ ...query, keyword: value })))
               }}
