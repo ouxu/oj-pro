@@ -14,12 +14,12 @@ export default modelExtend(baseModel, loadingModel, inputModel, {
     scrollFlag: false
   },
   effects: {
-    * init ({payload}, {put, select}) {
-      yield put({type: 'getProblems', payload})
-      yield put({type: 'getRecording', payload})
+    * init ({ payload }, { put, select }) {
+      yield put({ type: 'getProblems', payload })
+      yield put({ type: 'getRecording', payload })
     },
-    * getProblems ({payload}, {put, call}) {
-      const {page = 1, size = 50, keyword} = payload
+    * getProblems ({ payload }, { put, call }) {
+      const { page = 1, size = 30, keyword } = payload
       const query = {
         page,
         size,
@@ -27,21 +27,24 @@ export default modelExtend(baseModel, loadingModel, inputModel, {
       }
       try {
         // eslint-disable-next-line
-        const {problems, total_count} = keyword ? yield call(searchProblems, query) : yield call(getProblems, query)
+        const { problems, total_count } = keyword ? yield call(searchProblems, query) : yield call(getProblems, query)
         const problemsList = {
           data: problems,
-          count: total_count, // eslint-disable-line
+          count: total_count // eslint-disable-line
         }
-        yield put({type: 'update', payload: {problemsList}})
+        yield put({ type: 'update', payload: { problemsList } })
       } catch (e) {
         throw e
       }
     },
-    * getRecording ({payload}, {put, call, select}) {
-      const {token, user: {id}} = yield select(({user}) => user)
+    * getRecording ({ payload }, { put, call, select }) {
+      const {
+        token,
+        user: { id }
+      } = yield select(({ user }) => user)
       if (token) {
-        const statusList = yield call(getRecording, {user_id: id})
-        yield put({type: 'update', payload: {statusList: statusList.slice(0, 10)}})
+        const statusList = yield call(getRecording, { user_id: id })
+        yield put({ type: 'update', payload: { statusList: statusList.slice(0, 10) } })
       }
     }
   },

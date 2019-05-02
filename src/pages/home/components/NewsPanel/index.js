@@ -2,25 +2,15 @@
  * Created by out_xu on 17/8/20.
  */
 import React from 'react'
-import { Collapse } from 'antd'
 import TitleCard from 'components/plugins/TitleCard'
 import Markdown from 'components/plugins/Markdown/async'
 
-const Panel = Collapse.Panel
-
-const NewsPanel = ({news}) => {
-  const {latestNews = []} = news
+const NewsPanel = ({ news }) => {
+  const { latestNews = [] } = news
+  const fixedNews = latestNews.slice(0, 1).pop() || {}
   return (
-    <TitleCard
-      header={<span>公告板</span>}
-    >
-      <Collapse defaultActiveKey={latestNews.map(item => '' + item.id).slice(0, 1)}>
-        {latestNews.map(item => (
-          <Panel header={item.title} key={item.id}>
-            <Markdown content={item.content} />
-          </Panel>
-        ))}
-      </Collapse>
+    <TitleCard header={<span>公告板</span>}>
+      <Markdown content={fixedNews.content} className='m-8' />
     </TitleCard>
   )
 }

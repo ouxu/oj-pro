@@ -4,7 +4,6 @@ import Ellipsis from 'components/plugins/Ellipsis'
 import message from 'utils/message'
 import qs from 'query-string'
 import { connect } from 'dva'
-import windowScroll from 'utils/scrollToAnchor'
 import { routerRedux } from 'dva/router'
 import { newDate } from 'utils/dateAbout'
 import { color } from 'utils/theme'
@@ -27,9 +26,7 @@ class Contests extends PureComponent {
   componentDidMount () {
     const { dispatch, location } = this.props
     const query = location.query
-    dispatch({ type: 'contests/init', payload: query }).then(() => {
-      setTimeout(() => windowScroll('navigation'), 1000)
-    })
+    dispatch({ type: 'contests/init', payload: query })
   }
 
   verifyPermission = record => {

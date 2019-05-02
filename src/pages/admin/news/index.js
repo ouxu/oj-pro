@@ -130,6 +130,7 @@ class AdminNews extends Component {
           renderItem={item => (
             <List.Item
               actions={[
+                <a target='_blank' href={`/news?id=${item.id}`}>查看</a>,
                 <a onClick={() => this.showModal(item)}>编辑</a>,
                 <a onClick={() => this.delNews(item)}>删除</a>
               ]}

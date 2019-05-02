@@ -2,24 +2,29 @@
   height: 170px;
   margin-bottom: 10px;
   z-index: 1;
+
   .banner-anim-arrow-default {
     background: transparent;
   }
 }
+
 .banner-home-elem {
   text-align: center;
   color: #fff;
   position: relative;
   overflow: hidden;
+
   .banner-home-title {
     font-size: 28px;
     top: 20%;
   }
+
   .banner-home-text {
     top: 20%;
-    padding: 0 20px;
+    padding: 10px 20px;
   }
 }
+
 .banner-anim-elem {
   .bg {
     width: 100%;
@@ -31,16 +36,19 @@
   }
 }
 
-.custom-arrow-thumb{
+.custom-arrow-thumb {
   height: 180px;
+
   .user-arrow {
     top: 50%;
     margin-top: -40px;
+
     .img-wrapper {
       width: 120px;
       height: 80px;
       float: left;
       position: relative;
+
       li {
         width: 100%;
         height: 100%;
@@ -49,12 +57,15 @@
         position: absolute;
       }
     }
+
     .arrow {
       width: 20px;
       height: 80px;
       //background: rgba(0, 0, 0, 0.3);
       position: relative;
-      &:before, &:after {
+
+      &:before,
+      &:after {
         width: 2px;
         height: 15px;
         background: #fff;
@@ -63,16 +74,20 @@
         position: absolute;
       }
     }
+
     &.next {
       right: -120px;
+
       .arrow {
         float: left;
+
         &:before {
           -webkit-transform: rotate(-40deg);
           transform: rotate(-40deg);
           top: 28px;
           left: 10px;
         }
+
         &:after {
           -webkit-transform: rotate(40deg);
           transform: rotate(40deg);
@@ -81,16 +96,20 @@
         }
       }
     }
+
     &.prev {
       left: -120px;
+
       .arrow {
         float: right;
+
         &:before {
           -webkit-transform: rotate(40deg);
           transform: rotate(40deg);
           top: 28px;
           left: 8px;
         }
+
         &:after {
           -webkit-transform: rotate(-40deg);
           transform: rotate(-40deg);
@@ -100,11 +119,13 @@
       }
     }
   }
+
   .user-thumb {
     overflow: hidden;
     background: rgba(255, 255, 255, 0.15);
     height: 40px;
-    > span {
+
+    >span {
       width: 50px;
       height: 30px;
       margin: 5px;
@@ -112,9 +133,11 @@
       -webkit-transition: background .3s;
       transition: background .3s;
       background: transparent;
+
       &.active {
         background: rgba(255, 255, 255, 0.45);
       }
+
       i {
         display: block;
         width: 46px;

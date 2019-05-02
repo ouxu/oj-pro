@@ -16,24 +16,24 @@ const HomeChart = dynamic({
 
 class Home extends PureComponent {
   componentDidMount () {
-    this.props.dispatch({type: 'home/init'})
+    this.props.dispatch({ type: 'home/init' })
   }
 
   render () {
-    const {home, dispatch, utils} = this.props
+    const { home, dispatch, utils } = this.props
     const { hotProblems, news, chartData, submits } = home
-    const {loading} = utils
-    const problemItemProps = {hotProblems, loading, dispatch}
-    const cardBodyStyle = {padding: 0}
+    const { loading } = utils
+    const problemItemProps = { hotProblems, loading, dispatch }
+    const cardBodyStyle = { padding: 0 }
     return (
       <div className='homepage m-16'>
         <Row gutter={12} type='flex'>
-          <Col className='left-content' xs={{span: 24, order: 2}} sm={{span: 18}}>
+          <Col className='left-content' xs={{ span: 24, order: 2 }} sm={{ span: 18 }}>
             <div>
               <div key='home-banner'>
-                <HomeBanner />
+                <HomeBanner news={news} />
               </div>
-              <Card bodyStyle={cardBodyStyle} style={{marginBottom: 10}} key='home-chart'>
+              <Card bodyStyle={cardBodyStyle} style={{ marginBottom: 10 }} key='home-chart'>
                 <HomeChart chartData={chartData} />
               </Card>
               <Card bodyStyle={cardBodyStyle} key='problem-list' className='mb-10'>
@@ -41,7 +41,7 @@ class Home extends PureComponent {
               </Card>
             </div>
           </Col>
-          <Col className='right-content' xs={{span: 24, order: 1}} sm={{span: 6, order: 3}}>
+          <Col className='right-content' xs={{ span: 24, order: 1 }} sm={{ span: 6, order: 3 }}>
             <div>
               <div key='status-panel' className='status-panel'>
                 <StatusPanel submits={submits} />
@@ -57,4 +57,4 @@ class Home extends PureComponent {
   }
 }
 
-export default connect(({home, utils}) => ({home, utils}))(Home)
+export default connect(({ home, utils }) => ({ home, utils }))(Home)

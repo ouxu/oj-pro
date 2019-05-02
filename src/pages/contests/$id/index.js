@@ -1,30 +1,30 @@
-import React, { PureComponent } from 'react'
+import React from 'react'
 import { connect } from 'dva'
 
 import ErrorResult from './components/Error'
 import SuccessResult from './components/Success'
+import withInit from 'utils/withInit'
 
-@connect(({contest}) => ({contest}))
-class ContestDetail extends PureComponent {
-  componentDidMount () {
-    const {id} = this.props.match.params
-    this.props.dispatch({type: 'contest/init', payload: id})
-  }
-
-  render () {
-    const {contest, dispatch} = this.props
-    const {id} = this.props.match.params
-    const {error, errorMsg, errorCode} = contest
-    return (
-      <div>
-        {error ? (
-          <ErrorResult id={id} err={errorMsg} errCode={errorCode} dispatch={dispatch} />
-        ) : (
-          <SuccessResult id={id} {...this.props} />
-        )}
-      </div>
-    )
-  }
+const init = async props => {
+  const { id } = props.match.params
+  await props.dispatch({ type: 'contest/init', payload: id })
+  return {}
 }
 
-export default ContestDetail
+const ContestDetail = props => {
+  const { contest, dispatch } = props
+  const { id } = props.match.params
+  const { error, errorMsg, errorCode } = contest
+
+  return (
+    <div>
+      {error ? (
+        <ErrorResult id={id} err={errorMsg} errCode={errorCode} dispatch={dispatch} />
+      ) : (
+        <SuccessResult id={id} {...props} />
+      )}
+    </div>
+  )
+}
+
+export default connect(({ contest }) => ({ contest }))(withInit(init)(ContestDetail))
