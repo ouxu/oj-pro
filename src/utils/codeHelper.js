@@ -48,7 +48,6 @@ const codeMap = {
   8004: '竞赛已结束',
   8005: '作业不存在',
   8006: '作业现在不可用'
-
 }
 
-export default (code) => codeMap[code] || '未知错误'
+export default code => codeMap[code] || '未知错误'

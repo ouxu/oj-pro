@@ -5,10 +5,10 @@ export default (error, dispatch) => {
   if (error.message >= 400) {
     switch (+error.message) {
       case 1004:
-        dispatch({type: 'user/logout'})
+        dispatch({ type: 'user/logout' })
         break
       case 1013:
-        dispatch({type: 'user/logout'})
+        dispatch({ type: 'user/logout' })
         break
       default:
         break
@@ -17,5 +17,5 @@ export default (error, dispatch) => {
   } else {
     console.error('top:->', error)
   }
-  error.preventDefault()
+  error && error.preventDefault && error.preventDefault()
 }

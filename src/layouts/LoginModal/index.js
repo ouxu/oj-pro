@@ -64,7 +64,7 @@ const LoginModal = ({form, user, dispatch, location, utils}) => {
         <a onClick={() => handleLink('/user/register')}>
           <span>注册账号</span>
         </a>
-        <a onClick={() => handleLink('/user/forget')}>
+        <a onClick={() => handleLink('/forget')}>
           <span className='login-form-forgot'>忘记密码</span>
         </a>
       </Form>

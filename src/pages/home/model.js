@@ -15,9 +15,9 @@ export default modelExtend(baseModel, loadingModel, {
     },
     chartData: [],
     submits: {
-      day: 999,
-      month: 999,
-      week: 999
+      day: '',
+      month: '',
+      week: ''
     }
   },
   subscriptions: {},
