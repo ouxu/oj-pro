@@ -47,7 +47,8 @@ const AdminSider = props => (
     {
       props.user.role === 'admin' &&
       <SubMenu key='system' title={<span>系统管理</span>}>
-        <Menu.Item key='/admin/team-generator'>账号生成</Menu.Item>
+        <Menu.Item key='/admin/account-generate'>账号生成</Menu.Item>
+        <Menu.Item key='/admin/account'>修改密码</Menu.Item>
       </SubMenu>
     }
   </Menu>

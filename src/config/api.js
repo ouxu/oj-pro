@@ -4,6 +4,7 @@
 
 export default {
   host: '',
+
   // user
   tokenVerify: 'token-verify',
   register: 'user/register',
@@ -19,6 +20,7 @@ export default {
   updateUserInfo: 'user/update',
   messageCount: 'message/getMessageCount',
   checkMessage: 'message/checkMessage/',
+  userGenerate: 'admin/users/generate/prefix',
   // Problems
   problems: 'problems',
   problem: 'problem/:id',
@@ -42,6 +44,7 @@ export default {
   tagCreate: 'tag/createTag',
   tagDelete: 'tag/deleteTag/',
   tagSearchProblem: 'tag/getSameTagProblem',
+
   // UserGroup
   groups: 'user-groups',
   group: 'user-group/',
