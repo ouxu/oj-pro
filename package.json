@@ -39,7 +39,6 @@
     "react": "^16.8.6",
     "react-ace": "^5.8.0",
     "react-dom": "^16.8.6",
-    "react-fullscreenable": "^2.4.3",
     "react-helmet": "^5.2.0",
     "react-markdown": "^2.5.0",
     "react-media": "^1.6.1",

@@ -1194,10 +1194,6 @@ add-dom-event-listener@^1.1.0:
   dependencies:
     object-assign "4.x"
 
-add-event-listener@0.0.1:
-  version "0.0.1"
-  resolved "http://registry.npm.taobao.org/add-event-listener/download/add-event-listener-0.0.1.tgz#a76229ebc64c8aefae204a16273a2f255abea2d0"
-
 address@1.0.3, address@>=0.0.1, address@^1.0.1, address@^1.0.3:
   version "1.0.3"
   resolved "http://registry.npm.taobao.org/address/download/address-1.0.3.tgz#b5f50631f8d6cec8bd20c963963afb55e06cbce9"
@@ -4852,12 +4848,6 @@ ftp@~0.3.10:
   dependencies:
     readable-stream "1.1.x"
     xregexp "2.0.0"
-
-fullscreen@^1.1.1:
-  version "1.1.1"
-  resolved "http://registry.npm.taobao.org/fullscreen/download/fullscreen-1.1.1.tgz#b9017c3bf9b23e07effd1bbce910cf5ec2459129"
-  dependencies:
-    add-event-listener "0.0.1"
 
 function-bind@^1.0.2, function-bind@^1.1.0, function-bind@^1.1.1:
   version "1.1.1"
@@ -9783,10 +9773,6 @@ react-dev-utils@^5.0.0:
     strip-ansi "3.0.1"
     text-table "0.2.0"
 
-react-display-name@^0.2.0:
-  version "0.2.4"
-  resolved "http://registry.npm.taobao.org/react-display-name/download/react-display-name-0.2.4.tgz#e2a670b81d79a2204335510c01246f4c92ff12cf"
-
 react-dom@^16.4.2:
   version "16.5.2"
   resolved "http://registry.npm.taobao.org/react-dom/download/react-dom-16.5.2.tgz#b69ee47aa20bab5327b2b9d7c1fe2a30f2cfa9d7"
@@ -9809,14 +9795,6 @@ react-dom@^16.8.6:
 react-error-overlay@^4.0.0:
   version "4.0.0"
   resolved "http://registry.npm.taobao.org/react-error-overlay/download/react-error-overlay-4.0.0.tgz#d198408a85b4070937a98667f500c832f86bd5d4"
-
-react-fullscreenable@^2.4.3:
-  version "2.5.0"
-  resolved "http://registry.npm.taobao.org/react-fullscreenable/download/react-fullscreenable-2.5.0.tgz#95fa4ff5ed7b1be3b179319b65d6601e2b123a70"
-  dependencies:
-    classnames "^2.2.5"
-    fullscreen "^1.1.1"
-    react-display-name "^0.2.0"
 
 react-helmet@^5.2.0:
   version "5.2.0"
