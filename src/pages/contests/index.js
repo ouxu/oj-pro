@@ -155,7 +155,7 @@ class Contests extends PureComponent {
               className='mr-10'
               defaultValue={keyword}
               onSearch={value => {
-                dispatch(routerRedux.push(pathname + '?' + qs.stringify({ ...query, keyword: value })))
+                dispatch(routerRedux.push(pathname + '?' + qs.stringify({ keyword: value })))
               }}
             />
           </div>

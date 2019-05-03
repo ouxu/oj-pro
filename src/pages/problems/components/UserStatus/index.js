@@ -13,10 +13,6 @@ const UserStatus = props => {
   const submits = home.submits || {}
   const userStatus = user.user || {}
 
-  console.log('submits: ', submits)
-
-  console.log('userStatus: ', userStatus)
-
   const listItemStyle = {
     width: '100%'
   }
