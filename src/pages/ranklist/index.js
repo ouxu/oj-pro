@@ -70,7 +70,7 @@ export default class Ranklist extends React.PureComponent {
       <div className='ranklist'>
         <div className='page-header'>
           <h1 className='page-header-title my-8'>排行榜</h1>
-          <div className='page-header-description'>没啥用的排行榜，AC：正确数，ANS：提交数，仅显示前200</div>
+          <div className='page-header-description'>AC：正确数，ANS：提交数，仅显示前200</div>
         </div>
         <div className='page-header-extra'>
           <Tabs activeKey={this.props.location.query.scope || 'total'} className='tabs' onChange={this.tabChange}>

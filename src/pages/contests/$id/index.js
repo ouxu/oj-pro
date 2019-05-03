@@ -15,16 +15,10 @@ const ContestDetail = props => {
   const { contest, dispatch } = props
   const { id } = props.match.params
   const { error, errorMsg, errorCode } = contest
-
-  return (
-    <div>
-      {error ? (
-        <ErrorResult id={id} err={errorMsg} errCode={errorCode} dispatch={dispatch} />
-      ) : (
-        <SuccessResult id={id} {...props} />
-      )}
-    </div>
-  )
+  if (error) {
+    return <ErrorResult id={id} err={errorMsg} errCode={errorCode} dispatch={dispatch} />
+  }
+  return <SuccessResult id={id} {...props} />
 }
 
 export default connect(({ contest }) => ({ contest }))(withInit(init)(ContestDetail))

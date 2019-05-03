@@ -1,0 +1,74 @@
+.contest-rank-table {
+  background: #fff;
+  .ant-table-title {
+    padding: 0;
+  }
+  .ant-table-tbody>tr>td {
+    font-size: 12px;
+    padding: 0 !important;
+    text-align: center;
+    vertical-align: middle;
+  }
+
+  .ant-table-thead>tr>th {
+    font-size: 12px;
+    padding: 8px 0;
+    text-align: center;
+    vertical-align: middle;
+  }
+
+  .contest-rank-table-title {
+    background: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+}
+
+.contest-info {
+  &-content {
+    margin-top: 20px;
+
+    &-table {
+      border-radius: 4px;
+    }
+  }
+
+  &-source,
+  &-code,
+  &-title {
+    overflow: hidden;
+    word-break: keep-all;
+    /* 不换行 */
+    white-space: nowrap;
+    /* 不换行 */
+  }
+
+  &-user {
+    overflow: hidden;
+    word-break: keep-all;
+    /* 不换行 */
+    white-space: nowrap;
+    /* 不换行 */
+  }
+
+  &-time {
+    max-width: 90px;
+    overflow: hidden;
+    word-break: keep-all;
+    /* 不换行 */
+    white-space: nowrap;
+
+    /* 不换行 */
+    div {
+      padding: 2px;
+      display: flex;
+      height: 100%;
+      align-items: center;
+      /*垂直居中*/
+      justify-content: center;
+
+      span {}
+    }
+  }
+}

@@ -17,7 +17,7 @@ class LayoutContent extends PureComponent {
   render () {
     const { root, dispatch, location, user, utils } = this.props
 
-    if (location.pathname.indexOf('admin') !== -1) {
+    if (location.pathname.indexOf('admin') !== -1 || location.pathname.indexOf('full') !== -1) {
       return this.props.children
     }
 

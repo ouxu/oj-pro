@@ -64,6 +64,7 @@ export default {
   contestsSearch: 'contest/search',
   contest: 'contest/:id',
   contestRankList: 'contest/:id/ranklist',
+  downRankList: 'contest/:id/excelranklist',
   contestSubmit: 'contest/:cid/problem/:pnum/submit',
   joinContest: 'contest/:id/join',
 

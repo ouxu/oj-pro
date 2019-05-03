@@ -17,8 +17,8 @@ export default (record, i, first_ac = []) => {
       bgColor = 'aaaaff'
     }
     return (
-      <div style={{ height: '100%', backgroundColor: '#' + bgColor }}>
-        <span style={{ padding: '3px 0' }}>
+      <div style={{ backgroundColor: '#' + bgColor }}>
+        <span className='py-4'>
           {sec2Str(record.problem_ac_sec[i])} {record.problem_wa_num[i] ? '(-' + record.problem_wa_num[i] + ')' : ''}{' '}
         </span>
       </div>
@@ -30,8 +30,8 @@ export default (record, i, first_ac = []) => {
 
     bgColor = 'ff' + aa + aa
     return (
-      <div style={{ height: '100%', backgroundColor: '#' + bgColor }}>
-        <span style={{ padding: '3px 0' }}>{'-' + record.problem_wa_num[i]}</span>
+      <div style={{ backgroundColor: '#' + bgColor }}>
+        <span className='py-4'>{'-' + record.problem_wa_num[i]}</span>
       </div>
     )
   }
