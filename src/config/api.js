@@ -21,6 +21,8 @@ export default {
   messageCount: 'message/getMessageCount',
   checkMessage: 'message/checkMessage/',
   userGenerate: 'admin/users/generate/prefix',
+  adminResetAccount: 'admin/password/change',
+
   // Problems
   problems: 'problems',
   problem: 'problem/:id',
