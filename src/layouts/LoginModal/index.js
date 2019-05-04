@@ -61,7 +61,7 @@ const LoginModal = ({form, user, dispatch, location, utils}) => {
         </Form.Item>
 
         <Button onClick={handleSubmit} type='primary' id='login-btn' loading={utils.loading}>登录</Button>
-        <a onClick={() => handleLink('/user/register')}>
+        <a onClick={() => handleLink('/register')}>
           <span>注册账号</span>
         </a>
         <a onClick={() => handleLink('/forget')}>

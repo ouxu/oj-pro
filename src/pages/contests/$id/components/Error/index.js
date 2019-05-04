@@ -45,13 +45,17 @@ class ErrorResult extends Component {
     })
   }
 
+  refresh = () => window.location.reload()
+
   render () {
     const {dispatch, err, errCode} = this.props
     const extraArr = [
       {
         description: '竞赛不存在'
       }, {
-        description: '竞赛未开始'
+        description: '竞赛未开始',
+        actionText: '刷新竞赛详情',
+        action: this.refresh
       }, {
         description: '您未登录或登录过期',
         actionText: '立即登录',
@@ -74,6 +78,7 @@ class ErrorResult extends Component {
     )
     const actions = (
       <div>
+        <Button type='primary' onClick={this.refresh}>刷新竞赛详情</Button>
         {+errCode === 1007 && (
           <Button type='primary' onClick={this.showModal}>加密竞赛进入</Button>
         )}

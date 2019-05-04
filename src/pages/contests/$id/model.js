@@ -18,9 +18,6 @@ export default modelExtend(baseModel, {
   effects: {
     * init ({ payload }, { put, call, select }) {
       const { contest_info } = yield select(({ contest }) => contest) // eslint-disable-line
-      if (+contest_info.id === +payload) {
-        return
-      }
       try {
         const data = yield call(getContest, payload)
         yield put({

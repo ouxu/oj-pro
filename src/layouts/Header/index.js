@@ -29,6 +29,9 @@ class HeaderContent extends Component {
     const { user, dispatch, utils } = this.props
     const menu = (
       <Menu style={{ width: 90, float: 'right' }}>
+        <Menu.Item>
+          <Link to={'/user'}>个人信息</Link>
+        </Menu.Item>
         {enAdmin.includes(user.role) && (
           <Menu.Item>
             <Link to='/admin'>进入后台</Link>
@@ -69,7 +72,7 @@ class HeaderContent extends Component {
                 登录
               </Button>
               <Button className='user-login-btn' type='primary' size='small' ghost>
-                <Link to='/user/register'>注册</Link>
+                <Link to='/register'>注册</Link>
               </Button>
             </ButtonGroup>
           </div>

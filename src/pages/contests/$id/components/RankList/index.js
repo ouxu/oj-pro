@@ -15,7 +15,7 @@ const handleData = (data = {}) => {
   rankData.forEach((e, i) => {
     e.rank = i + 1
     e.user = (
-      <a target='_blank' href={`/userpage/${e.user_id}`}>
+      <a target='_blank' href={`/user/${e.user_id}`}>
         {' '}
         {e.user_name}
       </a>

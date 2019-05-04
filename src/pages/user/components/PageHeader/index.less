@@ -1,0 +1,89 @@
+@import "~antd/lib/style/themes/default.less";
+
+.user-wrap {
+  .page-header {
+    background: #fff;
+    padding: 16px 32px 0;
+
+    @media (max-width: 560px) {
+      .page-header-avatar {
+        display: none;
+      }
+      .page-header-item {
+        padding: 0 16px;
+      }
+    }
+
+    &-title {
+      flex: 1;
+    }
+
+    &-username {
+      margin-bottom: 12px;
+      color: rgba(0, 0, 0, .85);
+      font-weight: 500;
+      font-size: 20px;
+      line-height: 28px;
+    }
+
+    &-sign {
+      color: rgba(15, 10, 10, 0.45);
+      line-height: 22px;
+    }
+
+    &-meta {
+      display: flex;
+      justify-content: flex-end;
+    }
+
+    &-item {
+      position: relative;
+      text-align: right;
+      display: inline-block;
+      padding: 0 32px;
+
+      .label {
+        margin-bottom: 4px;
+        color: rgba(0, 0, 0, .45);
+        font-size: 14px;
+        line-height: 22px
+      }
+
+      .value {
+        margin: 0;
+        color: rgba(0, 0, 0, .85);
+        font-size: 30px;
+        line-height: 38px;
+      }
+
+      &::after {
+        position: absolute;
+        top: 8px;
+        right: 0;
+        width: 1px;
+        height: 40px;
+        background-color: #e8e8e8;
+        content: "";
+      }
+      &:last-child {
+        padding-right: 0;
+        &::after {
+          display: none;
+        }
+      }
+    }
+  }
+
+  .page-header-extra {
+    .tabs {
+      margin-bottom: -17px;
+
+      .ant-tabs-bar {
+        background: #fff;
+        padding: 0 32px;
+        margin-bottom: 0;
+        border-bottom: @border-width-base @border-style-base @border-color-split;
+      }
+    }
+  }
+}

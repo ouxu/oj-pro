@@ -64,7 +64,7 @@ class Navigation extends React.Component {
                 </a>
                 <ul>
                   <li>
-                    <Link to={`/userpage/${window.localStorage['neuq_oj.id']}`}>
+                    <Link to={`/user/${window.localStorage['neuq_oj.id']}`}>
                       {message.count > 0 ? <Badge status='processing' /> : <Icon type='solution' />} 个人信息
                     </Link>
                   </li>

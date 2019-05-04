@@ -1,7 +1,9 @@
 import codeHelper from './codeHelper'
 import message from 'utils/message'
 
-export default (error, dispatch) => {
+const noop = () => null
+
+export default (error, dispatch = noop) => {
   if (error.message >= 400) {
     switch (+error.message) {
       case 1004:
