@@ -143,7 +143,7 @@ class ContestList extends Component {
                     </span>
                   }
                   description={
-                    <div>
+                    <div style={{width: 'max-content'}}>
                       开始时间： {item.start_time}
                       <Divider type='vertical' />
                       结束时间： {item.end_time}

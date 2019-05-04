@@ -330,7 +330,6 @@ export default class ContestEdit extends Component {
             {cid ? (
               <Button
                 className='mr-16'
-                size='large'
                 type='primary'
                 onClick={this.handleSubmit}
               >

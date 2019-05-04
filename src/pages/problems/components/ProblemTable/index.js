@@ -51,7 +51,7 @@ const ProblemTable = ({ problemsList, loading, dispatch, location }) => {
         <Search
           defaultValue={query.keyword}
           style={{ width: 240 }}
-          placeholder='题号/标题/作者/标签'
+          placeholder='题号/标题'
           onSearch={onSearch}
         />
         <Button type='danger' onClick={() => dispatch(routerRedux.push('/problems/' + randomNumBoth(1000, 1888)))}>

@@ -11,9 +11,9 @@ import { getProblems, searchProblems } from 'services/problems'
 const Search = Input.Search
 const confirm = Modal.confirm
 
-@connect()
-export default class ProblemList extends Component {
-  constructor (props) {
+@connect(({ user }) => ({ user }))
+class ProblemList extends Component {
+  constructor(props) {
     super(props)
     this.state = {
       selected: [],
@@ -57,9 +57,9 @@ export default class ProblemList extends Component {
       title: `是否决定要删除题目-${record.id}?删除后无法恢复！`,
       content: (
         <Input
-          type='password'
+          type="password"
           onChange={e => this.setState({ password: e.target.value })}
-          placeholder='请输入您的登录密码'
+          placeholder="请输入您的登录密码"
         />
       ),
       onOk: async () => {
@@ -83,9 +83,11 @@ export default class ProblemList extends Component {
       }
     })
   }
-  render () {
+  render() {
     const { problems = [], total_count: totalCount } = this.state
+
     const { query = {}, pathname } = this.props.location
+
     const { page = 1, size = 50 } = query
     const columns = [
       {
@@ -97,11 +99,7 @@ export default class ProblemList extends Component {
       {
         title: '标题',
         render: record => (
-          <Link
-            target='_blank'
-            to={`/problems/${record.id}`}
-            className='mock-a'
-          >
+          <Link target="_blank" to={`/problems/${record.id}`} className="mock-a">
             {record.title}
           </Link>
         ),
@@ -112,9 +110,9 @@ export default class ProblemList extends Component {
         render: record => (
           <div>
             <Link to={'/admin/problem-edit?id=' + record.id}>管理题目</Link>
-            <Divider type='vertical' />
+            <Divider type="vertical" />
             <Link to={'/admin/problem-data?id=' + record.id}>查看数据</Link>
-            <Divider type='vertical' />
+            <Divider type="vertical" />
             <a onClick={() => this.delProblem(record)}>删除</a>
           </div>
         ),
@@ -148,9 +146,9 @@ export default class ProblemList extends Component {
             已选择 {selected.length} 道
             <Tooltip title={selected.join('、')}>
               <Button
-                type='primary'
-                className='mx-8'
-                size='small'
+                type="primary"
+                className="mx-8"
+                size="small"
                 onClick={this.createContest}
                 disabled={selected.length < 1}
               >
@@ -181,36 +179,36 @@ export default class ProblemList extends Component {
       }
     }
     const title = () => (
-      <div className='flex-lol'>
+      <div className="flex-lol">
         <span>
           创建问题
-          <Link to='/admin/problem-edit' className='ml-8'>
-            <Icon type='plus-square-o' />
+          <Link to="/admin/problem-edit" className="ml-8">
+            <Icon type="plus-square-o" />
           </Link>
         </span>
         <span>
           <Search
-            placeholder='题号/标题/作者/标签'
+            placeholder="题号/标题"
             defaultValue={query.keyword}
             onSearch={this.onSearch}
-            size='small'
+            size="small"
             style={{ width: 180 }}
           />
         </span>
       </div>
     )
     return (
-      <div className='problem-list'>
-        <div className='header'>
-          <span className='h-1'>题目列表</span>
+      <div className="problem-list">
+        <div className="header">
+          <span className="h-1">题目列表</span>
         </div>
-        <div className='content'>
+        <div className="content">
           <Table
             columns={columns}
             rowKey={record => record.id}
             dataSource={problems}
             pagination={pagination}
-            size='small'
+            size="small"
             title={title}
             rowClassName={rowClassName}
             rowSelection={rowSelection}
@@ -222,3 +220,5 @@ export default class ProblemList extends Component {
 }
 
 const rowClassName = (record, index) => (index % 2 ? 'color-row' : '')
+
+export default ProblemList

@@ -27,7 +27,7 @@ class ErrorResult extends Component {
 
   showModal = () => {
     Modal.confirm({
-      title: '此竞赛私有，需要校验密码进入',
+      title: '此竞赛私有，需要校验竞赛密码进入',
       content: (
         <Input type='password' onBlur={(e) => {
           this.setState({password: e.target.value})

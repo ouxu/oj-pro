@@ -4,6 +4,7 @@ import router from 'umi/router'
 import withInit from 'utils/withInit'
 import { draggerProps, columns } from './config'
 import { getRundata } from './services'
+import errorHandler from 'utils/errorHandler'
 
 const Dragger = Upload.Dragger
 const Search = Input.Search
@@ -17,7 +18,8 @@ const init = async props => {
     const res = await getRundata(id)
     const data = res.files
     return { id, data }
-  } catch {
+  } catch (e) {
+    errorHandler(e)
     return { id, error: true }
   }
 }
@@ -55,7 +57,12 @@ export default withInit(init)(props => {
       </div>
       {error ? (
         <div className='mt-16'>
-          <Alert message='获取题目数据失败' type="error" showIcon description="请重新输入正确的题号"/>
+          <Alert
+            message='获取题目数据失败'
+            type='error'
+            showIcon
+            description='请重新输入正确的题号，或者您无权限查看该题数据'
+          />
         </div>
       ) : (
         <div>

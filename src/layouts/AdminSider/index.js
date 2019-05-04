@@ -7,24 +7,23 @@ import router from 'umi/router'
 
 const SubMenu = Menu.SubMenu
 
-const handleClick = (e) => {
+const handleClick = e => {
   router.push(e.key)
 }
 
 const AdminSider = props => (
   <Menu
     mode='inline'
-    style={{width: 200}}
+    style={{ width: 200 }}
     defaultOpenKeys={['home', 'contest', 'problem', 'judge', 'system']}
     defaultSelectedKeys={[props.select]}
     onClick={handleClick}
   >
-    {
-      props.user.role === 'admin' &&
+    {props.user.role === 'admin' && (
       <SubMenu key='home' title={<span>主页管理</span>}>
         <Menu.Item key='/admin/news'>公告管理</Menu.Item>
       </SubMenu>
-    }
+    )}
     {/* <SubMenu key='group' title={<span>用户组管理</span>}>
       <Menu.Item key='groups-list'>用户组列表 </Menu.Item>
       <Menu.Item key='group-create'>创建用户组 </Menu.Item>
@@ -37,20 +36,22 @@ const AdminSider = props => (
     <SubMenu key='problem' title={<span>题目管理</span>}>
       <Menu.Item key='/admin/problem-list'>题目列表</Menu.Item>
       <Menu.Item key='/admin/problem-edit'>创建题目</Menu.Item>
-      <Menu.Item key='/admin/problem-data'>题目数据</Menu.Item>
-      <Menu.Item key='/admin/problem-upload'>题目导入</Menu.Item>
+      {/* <Menu.Item key='/admin/problem-data'>题目数据</Menu.Item> */}
+      {/* <Menu.Item key='/admin/problem-upload'>题目导入</Menu.Item> */}
     </SubMenu>
-    <SubMenu key='judge' title={<span>判题管理</span>}>
-      <Menu.Item key='/admin/machine-list'>机器管理</Menu.Item>
-      <Menu.Item key='/admin/rejudge'>重新判题</Menu.Item>
-    </SubMenu>
-    {
-      props.user.role === 'admin' &&
+    {props.user.role === 'admin' && (
+      <SubMenu key='judge' title={<span>判题管理</span>}>
+        <Menu.Item key='/admin/machine-list'>机器管理</Menu.Item>
+        <Menu.Item key='/admin/rejudge'>重新判题</Menu.Item>
+      </SubMenu>
+    )}
+
+    {props.user.role === 'admin' && (
       <SubMenu key='system' title={<span>系统管理</span>}>
         <Menu.Item key='/admin/account-generate'>账号生成</Menu.Item>
         <Menu.Item key='/admin/account'>重置密码</Menu.Item>
       </SubMenu>
-    }
+    )}
   </Menu>
 )
 
