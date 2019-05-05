@@ -53,7 +53,7 @@ class HeaderContent extends Component {
           <LoginModal user={user} utils={utils} dispatch={dispatch} />
         </div>
         {user.token ? (
-          <Dropdown overlay={menu}>
+          <Dropdown trigger={['hover', 'click']} overlay={menu}>
             <span style={{ marginLeft: 10 }} className='user-login-warp'>
               <Icon type='user' className='mr-8' />
               {user.user.name || '未命名用户'}
