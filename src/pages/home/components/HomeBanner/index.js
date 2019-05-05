@@ -53,10 +53,10 @@ const HomeBanner = ({ news = {} }) => {
   const latestNews = (news.latestNews || []).slice()
 
   latestNews.unshift({
-    title: '全新 OJ2.0 缓慢开发中',
-    btn: '开始刷题',
-    content: 'The Fast The Beautiful',
-    href: ''
+    title: '全新 NEUQ OJ 2.0 上线测试',
+    btn: '反馈问题',
+    content: 'The Fast The Beautiful. 使用过程中有任何体验问题或者 BUG 欢迎反馈！',
+    href: 'https://github.com/ouxu/oj-pro/issues'
   })
   return (
     <BannerAnim prefixCls='banner-home' autoPlay>

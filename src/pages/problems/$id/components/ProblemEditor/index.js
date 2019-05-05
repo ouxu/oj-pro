@@ -8,6 +8,8 @@ import { Button, Checkbox, Divider, Icon, Modal, Select, Tooltip } from 'antd'
 import { Link } from 'dva/router'
 import copy from 'copy-to-clipboard'
 import message from 'utils/message'
+import withRouter from 'umi/withRouter'
+import { getStatus } from '../../service'
 import './index.less'
 
 const { Option } = Select
@@ -16,11 +18,26 @@ const languages = ['golang', 'golang', 'java', 'python']
 
 const languageArr = ['C', 'C++', 'Java', 'Python']
 
+@withRouter
 class ProblemEditor extends Component {
   state = {
     private: 0,
     source_code: '',
     language: '1'
+  }
+
+  componentDidMount () {
+    const { solution = '' } = this.props.location.query
+    if (solution) {
+      getStatus(solution).then(
+        res => {
+          if (res && res.source) {
+            this.setState({ source_code: res.source })
+          }
+        },
+        rej => null
+      )
+    }
   }
 
   onRefresh = () => {
@@ -67,7 +84,6 @@ class ProblemEditor extends Component {
 
   render () {
     const { canSubmit, focusEdit, preLink, afterLink } = this.props
-    console.log('preLink, afterLink: ', preLink, afterLink)
     const { language } = this.state
 
     const aceEditProps = {

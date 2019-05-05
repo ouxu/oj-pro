@@ -42,8 +42,8 @@ class Account extends Component {
         <Form onSubmit={this.handleSubmit} style={{ maxWidth: 300 }}>
           <FormItem>
             {getFieldDecorator('identifier', {
-              rules: [{ required: true, message: '请输入要重置的用户名!' }]
-            })(<Input prefix={<Icon type='user' style={{ color: 'rgba(0,0,0,.25)' }} />} placeholder='请输入用户名' />)}
+              rules: [{ required: true, message: '请输入要重置的账号!' }]
+            })(<Input prefix={<Icon type='user' style={{ color: 'rgba(0,0,0,.25)' }} />} placeholder='请输入账号' />)}
           </FormItem>
           <FormItem>
             {getFieldDecorator('password', {
@@ -59,7 +59,7 @@ class Account extends Component {
             )}
           </FormItem>
           <Button key='submit' type='primary' onClick={this.handleSubmit}>
-            确认重置密码
+            重置
           </Button>
         </Form>
       </div>

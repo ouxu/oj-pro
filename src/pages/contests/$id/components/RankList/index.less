@@ -1,5 +1,17 @@
 .contest-rank-table {
   background: #fff;
+  ::-webkit-scrollbar {
+    width: 4px;
+    height: 4px;
+    background-color: #f0f2f5;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    width: 4px;
+    height: 4px;
+    background-color: rgba(0, 0, 0, 0.2);
+  }
+
   .ant-table-title {
     padding: 0;
   }
@@ -34,32 +46,19 @@
     }
   }
 
-  &-source,
-  &-code,
-  &-title {
-    overflow: hidden;
-    word-break: keep-all;
-    /* 不换行 */
-    white-space: nowrap;
-    /* 不换行 */
-  }
-
   &-user {
-    overflow: hidden;
-    word-break: keep-all;
-    /* 不换行 */
+    max-width: 150px;
     white-space: nowrap;
-    /* 不换行 */
+    text-overflow: ellipsis;
+    overflow: hidden;
   }
 
   &-time {
     max-width: 90px;
-    overflow: hidden;
-    word-break: keep-all;
-    /* 不换行 */
     white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
 
-    /* 不换行 */
     div {
       padding: 2px;
       display: flex;
@@ -67,8 +66,6 @@
       align-items: center;
       /*垂直居中*/
       justify-content: center;
-
-      span {}
     }
   }
 }

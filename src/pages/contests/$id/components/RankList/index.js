@@ -8,6 +8,7 @@ import { generateWord } from 'utils/numberAbout'
 import message from 'utils/message'
 import { newDate, sec2Str } from 'utils/dateAbout'
 import { getRank, getDownloadUrl } from '../../service'
+
 import './index.less'
 
 const handleData = (data = {}) => {
@@ -16,7 +17,6 @@ const handleData = (data = {}) => {
     e.rank = i + 1
     e.user = (
       <a target='_blank' href={`/user/${e.user_id}`}>
-        {' '}
         {e.user_name}
       </a>
     )
@@ -110,7 +110,7 @@ class RankList extends Component {
         dataIndex: 'user',
         fixed: 'left',
         className: 'contest-info-user',
-        width: '100px'
+        width: '150px'
       },
       {
         title: '解决',
