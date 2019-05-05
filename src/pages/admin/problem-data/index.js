@@ -3,7 +3,7 @@ import { Icon, Upload, Table, Input, Alert } from 'antd'
 import router from 'umi/router'
 import withInit from 'utils/withInit'
 import { draggerProps, columns } from './config'
-import { getRundata } from './services'
+import { getRundata } from './service'
 import errorHandler from 'utils/errorHandler'
 
 const Dragger = Upload.Dragger

@@ -6,32 +6,18 @@ import { Row, Col, Icon, Button } from 'antd'
 import { connect } from 'dva'
 import Link from 'umi/link'
 
-import ProblemEditor from './components/ProblemEditor'
-import ProblemDetail from './components/ProblemDetail'
+import ProblemEditor from 'pages/problems/$id/components/ProblemEditor'
+import ProblemDetail from 'pages/problems/$id/components/ProblemDetail'
 import withInit from 'utils/withInit'
-import { getProblem, submit } from './service'
+import { getProblem, submitContest } from 'pages/problems/$id/service'
 import errorHandler from 'utils/errorHandler'
 import Result from 'components/plugins/Result'
 
-import './index.less'
-
-const baseLink = '/problems/'
-
 const init = async props => {
-  const { match, dispatch, user } = props
-  const id = match.params.id
-  const intPnum = Number(id)
-
+  const { meta = {}, dispatch } = props
   try {
-    const detail = await getProblem(id)
-    const meta = {
-      canSubmit: !!user.token,
-      preLink: intPnum - 1 >= 1000 ? baseLink + (intPnum - 1) : '',
-      afterLink: intPnum + 1 < 10000 ? baseLink + (intPnum + 1) : '',
-      backUrl: '/problems',
-      icon: id
-    }
-    return { detail, meta }
+    const detail = await getProblem(meta.pid)
+    return { detail }
   } catch (e) {
     errorHandler(e, dispatch)
     return { error: true }
@@ -63,29 +49,15 @@ class ProblemPage extends Component {
   }
 
   handleSubmit = async body => {
-    const { match, dispatch } = this.props
-    const id = match.params.id
+    const { meta = {}, dispatch } = this.props
+    const { id, pnum } = meta
+
     try {
       await this.changeActiveKey('submit')
-      const { solutionId } = await submit(id, body)
+      const { solutionId } = await submitContest(id, pnum, body)
       await this.setState({ solutionId })
     } catch (e) {
       errorHandler(e, dispatch)
-    }
-  }
-
-  componentDidMount () {
-    const {dispatch, match, location} = this.props
-    dispatch({
-      type: 'problem/init',
-      payload: {
-        id: match.params.id,
-        query: location.query
-      }
-    })
-    const {solution = ''} = location.query
-    if (solution) {
-      dispatch({type: 'problem/getStatus', payload: {result: solution}})
     }
   }
 

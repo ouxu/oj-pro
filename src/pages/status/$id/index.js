@@ -1,6 +1,6 @@
 import React from 'react'
 import QueueAnim from 'rc-queue-anim'
-import { Button, Card, Icon, Divider, Tooltip } from 'antd'
+import { Button, Card, Icon, Tooltip } from 'antd'
 import Link from 'umi/link'
 import copy from 'copy-to-clipboard'
 
@@ -9,7 +9,7 @@ import withInit from 'utils/withInit'
 import message from 'utils/message'
 import errorHandler from 'utils/errorHandler'
 
-import { getStatusDetail } from '../services'
+import { getStatusDetail } from '../service'
 
 import './index.less'
 
@@ -19,7 +19,7 @@ const onCopy = text => {
 }
 
 const fetchStatus = async props => {
-  const id = props?.match?.params?.id || ''
+  const id = props.match.params.id || ''
   try {
     // TODO: private 源码保护
     const data = await getStatusDetail(id)
@@ -31,9 +31,9 @@ const fetchStatus = async props => {
 }
 
 const StatusDetail = props => {
-  const id = props?.match?.params?.id || ''
+  const id = props.match.params.id || ''
   const { data = {}, error } = props
-  const { created_at: createAt, private: isPrivate = 0, source = '' } = data
+  const { created_at: createAt, source = '' } = data
   return (
     <QueueAnim className='mx-20 my-20 status-detail-wrap' delay={200} type='bottom'>
       {error ? (
@@ -41,18 +41,17 @@ const StatusDetail = props => {
       ) : (
         <Card
           title={<span className='title'>{id}</span>}
-          extra={(
-            <span className='title'>{createAt}
+          extra={
+            <span className='title'>
+              {createAt}
               <Tooltip title='复制'>
                 <Icon type='copy' className='hand ml-8' onClick={() => onCopy(source)} />
               </Tooltip>
             </span>
-          )}
+          }
           hoverable
         >
-          <pre>
-            {source}
-          </pre>
+          <pre>{source}</pre>
         </Card>
       )}
     </QueueAnim>

@@ -7,7 +7,7 @@ import Result from 'components/plugins/Result'
 import { recordingColumn } from 'config/tableConfig'
 import qs from 'query-string'
 
-import { getStatus } from '../../services'
+import { getStatus } from '../../service'
 
 const columns = [
   ...recordingColumn,

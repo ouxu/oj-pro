@@ -3,7 +3,7 @@
  */
 import React, { Component } from 'react'
 import { Alert, Badge, Icon, Progress, Table } from 'antd'
-import { queryResult } from '../../../service'
+import { queryResult } from 'pages/problems/$id/service'
 import globalConfig from 'config/app'
 import { randomNumBoth } from 'utils/numberAbout'
 

@@ -9,7 +9,7 @@ import Result from 'components/plugins/Result'
 import PageHeader from '../components/PageHeader'
 import Userinfo from '../components/Userinfo'
 
-import { getInfoById } from '../services'
+import { getInfoById } from '../service'
 import './index.less'
 
 const TabPane = Tabs.TabPane

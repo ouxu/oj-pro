@@ -12,7 +12,7 @@ import RecentSubmit from './components/RecentSubmit'
 import EditInfo from './components/EditInfo'
 import ResetPassword from './components/ResetPassword'
 
-import { getInfo } from './services'
+import { getInfo } from './service'
 import './index.less'
 
 const TabPane = Tabs.TabPane

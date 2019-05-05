@@ -7,7 +7,8 @@ import AppConfig from 'config/app'
 
 const getContest = id => request({
   url: API.contest.replace(':id', id),
-  method: 'get'
+  method: 'get',
+  token: 'option'
 })
 
 const joinContest = (id, data) => request({

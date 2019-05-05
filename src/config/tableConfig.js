@@ -143,19 +143,7 @@ const contestProblemColumn = config => [
             <Tag style={{ minWidth: 36, textAlign: 'center' }} color={colorArr['1']}>
               {generateWord(record.pnum + 1)}
             </Tag>
-            <Link
-              style={{ color: '#666' }}
-              to={
-                '/problems/' +
-                record.pid +
-                '?' +
-                qs.stringify({
-                  from: 'contest',
-                  cid: config.cid,
-                  pnum: record.pnum
-                })
-              }
-            >
+            <Link to={`/contests/${config.cid}/p/${record.pnum}`}>
               <Ellipsis lines={1}>
                 {record.pid}. {record.title}
               </Ellipsis>
@@ -208,20 +196,16 @@ const recordingColumn = [
     key: 'id',
     render: (record, dates, index) => (
       <div className="content flex-lol">
-        <Link
+        <a
           style={{ color: '#666' }}
-          to={
-            '/problems/' +
-            record.problem_id +
-            '?' +
-            qs.stringify({
-              solution: record.id,
-              from: 'recent'
-            })
-          }
+          target='_blank'
+          href={`/problems/${record.problem_id}?${qs.stringify({
+            solution: record.id,
+            from: 'recent'
+          })}`}
         >
           <Tag color={colorArr[record.language % 6]}>{language[record.language]}</Tag> # {`${record.problem_id}`}
-        </Link>
+        </a>
         <span>{result[record.result + 1]}</span>
       </div>
     )
@@ -285,12 +269,15 @@ const statusColumns = [{
 }, {
   title: '操作',
   render: record => (
-    <Link to={`/problems/${record.problem_id}?${qs.stringify({
-      solution: record.id,
-      from: 'recent'
-    })}`}>
+    <a
+      target='_blank'
+      href={`/problems/${record.problem_id}?${qs.stringify({
+        solution: record.id,
+        from: 'recent'
+      })}`}
+    >
       查看
-    </Link>
+    </a>
   ),
   key:'operate',
   width: '55px',

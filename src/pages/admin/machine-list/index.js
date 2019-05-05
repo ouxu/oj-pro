@@ -4,7 +4,7 @@ import { color } from 'utils/theme'
 import message from 'utils/message'
 import sleep from 'utils/sleep'
 
-import { getJudgeList, getJudgeInfo, updateJudge, addJudge, delJudge } from './services'
+import { getJudgeList, getJudgeInfo, updateJudge, addJudge, delJudge } from './service'
 
 const AUTO_DELAY = 10000
 

@@ -1,12 +1,9 @@
 import React, { Component } from 'react'
-import { Card, Button, Table, Icon } from 'antd'
-
+import { Table, Icon } from 'antd'
 import { connect } from 'dva'
-import Link from 'umi/link'
-
 import errorHandler from 'utils/errorHandler'
 import { statusColumns as columns } from 'config/tableConfig'
-import { getStatus } from './services'
+import { getStatus } from './service'
 import SearchBar from './components/SearchBar'
 
 import './index.less'
@@ -22,7 +19,7 @@ class Status extends Component {
   }
 
   loadMore = () => {
-    const { page } = this.state;
+    const { page } = this.state
     this.fetchData({ page: page + 1 }, false)
   }
 
@@ -56,7 +53,6 @@ class Status extends Component {
   render () {
     const { data = [], loading } = this.state
     const { user = {}, location } = this.props
-    const role = user.role || 'student'
     const canLoad = data.length % PAGE_SIZE === 0
 
     return (
@@ -66,15 +62,15 @@ class Status extends Component {
           title={() => <SearchBar user={user} location={location} />}
           columns={columns}
           rowKey='id'
-          rowClassName={(record, index) => (index % 2) ? 'color-row' : ''}
+          rowClassName={(record, index) => (index % 2 ? 'color-row' : '')}
           dataSource={data}
           pagination={false}
-          footer= {(data) => (
-            <a
-              className='flex-center table-footer' disabled={!canLoad}
-            >
+          footer={data => (
+            <a className='flex-center table-footer' disabled={!canLoad}>
               {!canLoad ? (
-                <span><Icon type='smile-o' /> 加载完毕</span>
+                <span>
+                  <Icon type='smile-o' /> 加载完毕
+                </span>
               ) : (
                 <span onClick={this.loadMore}>{loading && <Icon type='loading' />} 加载更多</span>
               )}

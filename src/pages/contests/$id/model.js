@@ -17,10 +17,16 @@ export default modelExtend(baseModel, {
   },
   effects: {
     * init ({ payload }, { put, call, select }) {
-      const { contest_info } = yield select(({ contest }) => contest) // eslint-disable-line
       try {
+        const id = payload || ''
         const data = yield call(getContest, payload)
-        yield put({
+        const { problem_info: problemInfo = [] } = data
+        data.problem_info = problemInfo.map(e => ({
+          ...e,
+          id: e.pid,
+          url: '/contests/' + id + '/p/' + e.pnum
+        }))
+        data.problem_info = yield put({
           type: 'update',
           payload: {
             ...data,

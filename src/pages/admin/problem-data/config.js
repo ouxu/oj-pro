@@ -7,7 +7,7 @@ import AppConfig from 'config/app'
 import copy from 'copy-to-clipboard'
 import request from 'utils/request'
 
-import { getToken, downloadRundata, delRundata, getRundataFile } from './services'
+import { getToken, downloadRundata, delRundata, getRundataFile } from './service'
 
 const draggerProps = (id, reInit) => ({
   name: 'upload',

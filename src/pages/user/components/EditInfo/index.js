@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { Form, Input, Button, Modal } from 'antd'
-import { updateUserInfo } from '../../services'
+import { updateUserInfo } from '../../service'
 
 import message from 'utils/message'
 import errorHandler from 'utils/errorHandler'

@@ -3,7 +3,7 @@ import { Button, Form, Icon, Input, Modal, Radio, Tag, List, Divider, Drawer } f
 import { color } from 'utils/theme'
 import message from 'utils/message'
 import sleep from 'utils/sleep'
-import { getHomeNews, getNewsDetail, editNews, createNews, delNews } from './services'
+import { getHomeNews, getNewsDetail, editNews, createNews, delNews } from './service'
 import './index.less'
 
 const RadioGroup = Radio.Group

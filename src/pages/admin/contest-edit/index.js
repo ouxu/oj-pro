@@ -15,7 +15,7 @@ import {
   updateProblems,
   updateContest,
   createContest
-} from './services'
+} from './service'
 
 const FormItem = Form.Item
 const Option = Select.Option
