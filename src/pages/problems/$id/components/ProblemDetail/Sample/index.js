@@ -25,13 +25,13 @@ const Sample = ({detail}) => {
           <Icon type='copy' className='ml-8 hand' onClick={onCopy} />
         </Tooltip>
       </h4>
-      <Card bodyStyle={{padding: 10}} className='keep-away'>
+      <Card bodyStyle={{padding: 10}} style={{marginBottom: 10}}>
         <pre style={style}>
           {detail.sample_input}
         </pre>
       </Card>
       <h4>样例输出</h4>
-      <Card bodyStyle={{padding: 10}} className='keep-away'>
+      <Card bodyStyle={{padding: 10}} style={{marginBottom: 10}}>
         <pre style={style}>
           {detail.sample_output}
         </pre>

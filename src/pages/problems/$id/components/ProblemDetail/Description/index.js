@@ -12,15 +12,15 @@ const Description = ({detail = {tags: []}}) => {
   return (
     <div className='problem-description'>
       <h3>题目描述</h3>
-      <Card bodyStyle={{padding: 10}} className='mb-10'>
+      <Card bodyStyle={{padding: 10}} style={{marginBottom: 10}} >
         <Markdown content={detail.description} />
       </Card>
       <h3>输入描述</h3>
-      <Card bodyStyle={{padding: 10}} className='mb-10'>
+      <Card bodyStyle={{padding: 10}} style={{marginBottom: 10}}>
         <Markdown content={detail.input} />
       </Card>
       <h3>输出描述</h3>
-      <Card bodyStyle={{padding: 10}} className='mb-10'>
+      <Card bodyStyle={{padding: 10}} style={{marginBottom: 10}}>
         <Markdown content={detail.output} />
       </Card>
       {detail.tags.length > 0 && (

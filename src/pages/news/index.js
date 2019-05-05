@@ -8,12 +8,18 @@ import request from 'utils/request'
 import Result from 'components/plugins/Result'
 import Markdown from 'components/plugins/Markdown'
 import withInit from 'utils/withInit'
+import errorHandler from 'utils/errorHandler'
 import './index.less'
 
 const fetchNews = async props => {
   const { id = '' } = props.location.query
-  const data = await request({ url: API.newsDetail.replace(':id', id) }).then(res => res, () => ({}))
-  return { data }
+  try {
+    const data = await request({ url: API.newsDetail.replace(':id', id) }).then(res => res, () => ({}))
+    return { data }
+  } catch (e) {
+    errorHandler(e)
+    return { error: true }
+  }
 }
 
 const News = props => {

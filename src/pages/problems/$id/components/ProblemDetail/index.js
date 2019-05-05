@@ -59,7 +59,7 @@ const ProblemDetail = (props) => {
           placement='rightTop'
           title={<Link to={backLink}><Icon type='left' /> 返回题目列表</Link>}
         >
-          <span>{`${detail.id}. ${detail.title}`}</span>
+          <span>{`${detail.id || ''}. ${detail.title || ''}`}</span>
         </Popover>
       </h2>
       <div className='problem-detail-breadcrumb-detail'>
