@@ -12,6 +12,7 @@ import 'katex/dist/katex.css'
 import './index.less'
 
 const MarkdownArea = ({ content = '', className }) => {
+  content = !!content ? content : ''
   return (
     <div className={classnames('markdown-body', className)}>
       <Markdown

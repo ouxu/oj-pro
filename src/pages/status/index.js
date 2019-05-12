@@ -1,10 +1,12 @@
 import React, { Component } from 'react'
-import { Table, Icon } from 'antd'
+import { Table, Icon, Button } from 'antd'
+import Link from 'umi/link'
 import { connect } from 'dva'
 import errorHandler from 'utils/errorHandler'
 import { statusColumns as columns } from 'config/tableConfig'
 import { getStatus } from './service'
 import SearchBar from './components/SearchBar'
+import Result from 'components/plugins/Result'
 
 import './index.less'
 
@@ -45,16 +47,34 @@ class Status extends Component {
         })
       }
     } catch (e) {
+      this.setState({ error: true })
       errorHandler(e)
     }
     this.setState({ loading: false })
   }
 
   render () {
-    const { data = [], loading } = this.state
+    const { data = [], loading, error = false } = this.state
     const { user = {}, location } = this.props
     const canLoad = data.length % PAGE_SIZE === 0
+    if (error) {
+      return (
+        <Result
+          className='pt-20'
+          type='error'
+          title='提交状态获取失败'
+          actions={
+            <div>
+              <Button onClick={() => window.location.reload()}>刷新重试</Button>
+              <Button type='primary'>
+                <Link to='/home'>返回首页</Link>
+              </Button>
 
+            </div>
+          }
+        />
+      )
+    }
     return (
       <div className='p-16 status-wrap'>
         <Table

@@ -9,6 +9,7 @@ import { randomNumBoth } from 'utils/numberAbout'
 import { colorArr } from 'utils/theme'
 
 const Description = ({detail = {tags: []}}) => {
+  console.log(detail)
   return (
     <div className='problem-description'>
       <h3>题目描述</h3>

@@ -12,11 +12,11 @@ export default {
     icon: 'trophy',
     value: '竞赛&作业'
   },
-  // {
-  //   key: '/group',
-  //   icon: 'usergroup-add',
-  //   value: '用户组'
-  // },
+  {
+    key: '/status',
+    icon: 'clock-circle',
+    value: '状态'
+  },
   {
     key: '/ranklist',
     icon: 'area-chart',
