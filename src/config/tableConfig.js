@@ -73,7 +73,7 @@ const result = [
   <Badge status="warning" text="部分通过" />,
   <Badge status="success" text="正确" />
 ]
-const language = ['C', 'C++', 'Pascal', 'Java', 'ruby', 'Shell', 'Python', 'php', 'perl']
+const language = ['C', 'C++', 'Java', 'Python', 'ruby', 'Shell', 'Pascal', 'php', 'perl']
 
 const problemsColumn = [
   {
