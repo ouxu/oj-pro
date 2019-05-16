@@ -7,11 +7,12 @@ import { queryResult } from 'pages/problems/$id/service'
 import globalConfig from 'config/app'
 import { randomNumBoth } from 'utils/numberAbout'
 
-const shutUp = [-3, -1, 2, 3, 4, 8]
+const shutUp = [-3, -1, 2, 3, 4, 5, 8]
 const status = {
   '-1': '系统错误',
   '2': '编译错误',
   '3': '部分正确',
+  '5': '部分正确',
   '8': '答案错误',
   '4': '正确',
   '0': '尚未提交'
