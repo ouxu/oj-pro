@@ -60,7 +60,9 @@ const ProblemDetail = props => {
       <div className='content'>
         <Tabs activeKey={activeKey || 'description'} onChange={changeActiveKey}>
           <TabPane tab='描述' key='description'>
-            <Description detail={detail} />
+            <Description detail={detail}>
+              <Sample detail={detail} />
+            </Description>
           </TabPane>
           <TabPane tab='数据' key='data'>
             <Sample detail={detail} />

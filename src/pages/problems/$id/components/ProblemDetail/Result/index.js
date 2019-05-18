@@ -7,15 +7,17 @@ import { queryResult } from 'pages/problems/$id/service'
 import globalConfig from 'config/app'
 import { randomNumBoth } from 'utils/numberAbout'
 
-const shutUp = [-3, -1, 2, 3, 4, 5, 8]
+const shutUp = [-3, -1, 2, 3, 4, 5, 6, 7, 8]
 const status = {
   '-1': '系统错误',
+  '0': '尚未提交',
   '2': '编译错误',
   '3': '部分正确',
-  '5': '部分正确',
-  '8': '答案错误',
   '4': '正确',
-  '0': '尚未提交'
+  '5': '部分正确',
+  '6': '部分正确',
+  '7': '部分正确',
+  '8': '答案错误'
 }
 
 const resultBadge = [
@@ -98,7 +100,7 @@ class Result extends Component {
     let { Passed = [], UnPassed = [] } = resultData
     Passed = Passed === null ? [] : Passed
     UnPassed = UnPassed === null ? [] : UnPassed
-    const percent = ~~(Passed.length / (Passed.length + UnPassed.length)) * 100
+    const percent = ~~(Passed.length / (Passed.length + UnPassed.length) * 100)
     const tableConfig = {
       bordered: false,
       size: 'small',
@@ -130,7 +132,7 @@ class Result extends Component {
             <Alert type='error' message={'Error:'} description={resultData || ''} />
           </div>
         )}
-        {(resultCode === 3 || resultCode === 4) &&
+        {(resultCode >= 3 && resultCode <=7 ) &&
           Passed.length > 0 && (
           <div className='mt-16'>
               通过的数据：
@@ -143,7 +145,7 @@ class Result extends Component {
             />
           </div>
         )}
-        {(resultCode === 3 || resultCode === 4 || resultCode === 8) &&
+        {(resultCode >= 3 && resultCode <= 8) &&
           UnPassed.length > 0 && (
           <div className='mt-16'>
               未通过的数据:
@@ -151,6 +153,7 @@ class Result extends Component {
               {...tableConfig}
               columns={columnsP}
               dataSource={UnPassed}
+              className='b-1'
               rowKey={(record, index) => 'unPassed' + index}
             />
           </div>

@@ -2,6 +2,18 @@
   background: #fff;
 
   transition: all 0.3s ease-out;
+
+  .action {
+    background: #fff;
+    display: flex;
+    font-weight: bolder;
+    border-left: 1px solid #eee;
+    align-items: center;
+    &:hover {
+      background: rgba(16, 142, 233, 0.15);
+    }
+  }
+  
   .left {
     min-height: 100%;
     transition: all 0.3s ease-out;
@@ -14,16 +26,6 @@
     transition: all 0.3s ease-out;
     .code-edit {
       flex: 1;
-    }
-    .action {
-      background: #fff;
-      display: flex;
-      font-weight: bolder;
-      border-left: 1px solid #eee;
-      align-items: center;
-      &:hover {
-        background: rgba(16, 142, 233, 0.15);
-      }
     }
     @media screen and (max-width: 575px) {
       .action {
