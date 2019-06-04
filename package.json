@@ -19,8 +19,8 @@
     "lint": "eslint --fix --ext .js src"
   },
   "dependencies": {
-    "antd": "^3.5.2",
-    "axios": "^0.18.0",
+    "antd": "3.8.x",
+    "axios": "^0.19.0",
     "brace": "^0.11.0",
     "classnames": "^2.2.5",
     "copy-to-clipboard": "^3.0.8",
@@ -59,7 +59,7 @@
     "fjpublish": "^2.0.1",
     "prop-types": "^15.6.0",
     "qiniu-webpack-plugin": "^0.4.2",
-    "umi": "^2.2.1",
-    "umi-plugin-react": "^1.2.0"
+    "umi": "^2.7.1",
+    "umi-plugin-react": "^1.8.1"
   }
 }
