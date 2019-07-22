@@ -59,7 +59,7 @@
     "fjpublish": "^2.0.1",
     "prop-types": "^15.6.0",
     "qiniu-webpack-plugin": "^0.4.2",
-    "umi": "^2.7.1",
+    "umi": "2.8.11",
     "umi-plugin-react": "^1.8.1"
   }
 }
