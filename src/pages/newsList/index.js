@@ -77,7 +77,9 @@ const News = (props) => {
                     </div>
                   }
                 />
-                <Tag color={colorArr[item.importance]}>{privateStatus[item.importance]}</Tag>
+                <Tag className='tags' color={colorArr[item.importance]}>
+                  {privateStatus[item.importance]}
+                </Tag>
               </List.Item>
             )}
           />
