@@ -68,7 +68,7 @@ const News = (props) => {
             renderItem={(item) => (
               <List.Item actions={[<Link to={`/news?id=${item.id}`}>查看</Link>]}>
                 <List.Item.Meta
-                  title={item.title}
+                  title={<Link to={`/news?id=${item.id}`}>{item.title}</Link>}
                   description={
                     <div>
                       <Icon type='bulb' /> {item.created_at}
