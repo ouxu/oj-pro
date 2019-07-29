@@ -14,7 +14,7 @@
   "scripts": {
     "start": "umi dev",
     "build": "cross-env UMI_ENV=prod umi build",
-    "pub": "npm run build && fjpublish env prod,acm -y --nobuild",
+    "pub": "npm run build && fjpublish env acm -y --nobuild",
     "anal": "cross-env UMI_ENV=prod ANALYZE=1 umi build",
     "lint": "eslint --fix --ext .js src"
   },
