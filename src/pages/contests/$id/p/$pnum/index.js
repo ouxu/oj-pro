@@ -1,7 +1,7 @@
 import React from 'react'
 import { connect } from 'dva'
 import ErrorResult from '../../components/Error'
-import Problem from './components/Problem'
+import Problem from './components/problem'
 import { generateWord } from 'utils/numberAbout'
 
 import withInit from 'utils/withInit'
