@@ -5,7 +5,6 @@
 import React, { Component } from 'react'
 import AceEditor from 'components/plugins/AceEditor/async'
 import { Button, Checkbox, Divider, Icon, Modal, Select, Tooltip } from 'antd'
-import { Link } from 'dva/router'
 import copy from 'copy-to-clipboard'
 import message from 'utils/message'
 import withRouter from 'umi/withRouter'
@@ -17,6 +16,8 @@ const { Option } = Select
 const languages = ['golang', 'golang', 'java', 'python']
 
 const languageArr = ['C', 'C++', 'Java', 'Python']
+
+const MAX_NAVI_CHECK_COUNT = 10
 
 @withRouter
 class ProblemEditor extends Component {
@@ -30,12 +31,12 @@ class ProblemEditor extends Component {
     const { solution = '' } = this.props.location.query
     if (solution) {
       getStatus(solution).then(
-        res => {
+        (res) => {
           if (res && res.source) {
             this.setState({ source_code: res.source })
           }
         },
-        rej => null
+        (rej) => null
       )
     }
   }
@@ -57,6 +58,39 @@ class ProblemEditor extends Component {
     })
   }
 
+  onNavigation = (link = '', gap) => async () => {
+    const { jumpCheck, id, baseLink } = this.props
+
+    if (jumpCheck && gap && id && baseLink) {
+      let targetId
+      let timer = setTimeout(() => {
+        message.info('加载中···')
+      }, 2000)
+      for (let i = 1; i <= MAX_NAVI_CHECK_COUNT; i++) {
+        targetId = Number(id) + gap * i
+        if (targetId <= 1000 || targetId > 100000) {
+          targetId = undefined
+          break
+        }
+
+        const data = await jumpCheck(targetId).catch(() => false)
+        if (data.id) {
+          break
+        }
+        targetId = undefined
+      }
+
+      clearTimeout(timer)
+      if (targetId) {
+        this.props.history.push(baseLink + targetId)
+      } else {
+        message.info('暂无可用题目！')
+      }
+    } else {
+      this.props.history.push(String(link))
+    }
+  }
+
   onSubmit = () => {
     Modal.confirm({
       title: '提交确认',
@@ -70,24 +104,24 @@ class ProblemEditor extends Component {
     message.success('复制成功')
   }
 
-  codeChange = value => {
+  codeChange = (value) => {
     this.setState({ source_code: value })
   }
 
-  privateChange = e => {
+  privateChange = (e) => {
     this.setState({ private: e.target.checked })
   }
 
-  languageChange = language => {
+  languageChange = (language) => {
     this.setState({ language })
   }
 
   render () {
     const { canSubmit, focusEdit, preLink, afterLink } = this.props
-    const { language } = this.state
+    const { language, source_code: value } = this.state
 
     const aceEditProps = {
-      value: this.state.source_code,
+      value,
       mode: languages[language],
       theme: 'tomorrow',
       className: 'ace-editor',
@@ -105,13 +139,13 @@ class ProblemEditor extends Component {
         <div className='ace-edit-header flex-lol'>
           <div>编辑代码</div>
           <div className='mr-5'>
-            <Link disabled={!preLink} to={'' + preLink}>
+            <a disabled={!preLink} onClick={this.onNavigation(preLink, -1)}>
               上一题
-            </Link>
+            </a>
             <Divider type='vertical' />
-            <Link disabled={!afterLink} to={'' + afterLink}>
+            <a disabled={!afterLink} onClick={this.onNavigation(afterLink, 1)}>
               下一题
-            </Link>
+            </a>
           </div>
         </div>
         <AceEditor {...aceEditProps} />
@@ -145,8 +179,7 @@ class ProblemEditor extends Component {
             <Tooltip title='是否公开自己写的代码'>
               <Checkbox onChange={this.privateChange}>私有</Checkbox>
             </Tooltip>
-
-            <Button disabled={!canSubmit} onClick={this.onSubmit} type='primary'>
+            <Button disabled={!value || !canSubmit} onClick={this.onSubmit} type='primary'>
               <Icon type='rocket' />
               {canSubmit ? '提交' : '请登录'}
             </Button>

@@ -25,9 +25,11 @@ const init = async props => {
   try {
     const detail = await getProblem(id)
     const meta = {
+      id,
+      baseLink,
       canSubmit: !!user.token,
       preLink: intPnum - 1 >= 1000 ? baseLink + (intPnum - 1) : '',
-      afterLink: intPnum + 1 < 10000 ? baseLink + (intPnum + 1) : '',
+      afterLink: intPnum + 1 < 100000 ? baseLink + (intPnum + 1) : '',
       backUrl: '/problems',
       icon: id
     }
@@ -134,6 +136,9 @@ class ProblemPage extends Component {
             focusEdit={this.focusEdit}
             preLink={preLink}
             afterLink={afterLink}
+            id={meta.id}
+            baseLink={meta.baseLink}
+            jumpCheck={getProblem}
           />
         </Col>
       </Row>
