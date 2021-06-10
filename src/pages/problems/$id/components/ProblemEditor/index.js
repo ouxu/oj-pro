@@ -9,6 +9,7 @@ import copy from 'copy-to-clipboard'
 import message from 'utils/message'
 import withRouter from 'umi/withRouter'
 import { getStatus } from '../../service'
+import { getStatus as getStatusList } from '../../../../status/service'
 import './index.less'
 
 const { Option } = Select
@@ -30,15 +31,35 @@ class ProblemEditor extends Component {
   componentDidMount () {
     const { solution = '' } = this.props.location.query
     if (solution) {
-      getStatus(solution).then(
-        (res) => {
-          if (res && res.source) {
-            this.setState({ source_code: res.source })
-          }
-        },
-        (rej) => null
-      )
+      this.initSolution(solution)
+    } else {
+      this.initSolutionByHistory();
     }
+  }
+
+  initSolutionByHistory = async () => {
+    const { canSubmit, id, location } = this.props
+    const isNotContest = location.pathname.indexOf('contests') === -1
+    const userInfo = window._userInfo_ || {}
+    const user_id = (userInfo.user || {}).id
+
+    if (canSubmit && isNotContest && user_id && id) {
+      const recentAC = await getStatusList({ user_id, problem_id: id, result: 4, size: 1 })
+      if (recentAC && recentAC[0] && recentAC[0].id) {
+        this.initSolution(recentAC[0].id)
+      }
+    }
+  }
+
+  initSolution = (solution) => {
+    getStatus(solution).then(
+      (res) => {
+        if (res && res.source) {
+          this.setState({ source_code: res.source })
+        }
+      },
+      (rej) => null
+    )
   }
 
   onRefresh = () => {

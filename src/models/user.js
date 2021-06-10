@@ -26,6 +26,9 @@ export default {
       const user = yield select(({user}) => user)
       const {token, lastCheck, interval} = user
       const now = (new Date()).getTime()
+
+      window._userInfo_ = user
+
       if (token && (!lastCheck || (now - lastCheck) > interval)) {
         yield call(check)
         let data = {
