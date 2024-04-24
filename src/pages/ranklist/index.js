@@ -109,7 +109,7 @@ export default class Ranklist extends React.PureComponent {
                   </div>
                 ]}
               >
-                <Link to={'/user/' + item.id}>
+                <Link to={'/user/' + item.user_id}>
                   <Tag className='rank-tag' color={color.blue}>
                     {index + 1}
                   </Tag>
