@@ -21,4 +21,6 @@
 
 ---
 
+更多信息请查看 docs/TECH_OVERVIEW.md
+
 Author: NEUQer/ouxu
